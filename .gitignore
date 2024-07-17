@@ -1,3 +1,5 @@
 *.json
 *.h5
 *.log
+*.DS_Store
+jl_*/
