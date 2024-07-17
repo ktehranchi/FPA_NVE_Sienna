@@ -2,4 +2,6 @@
 *.h5
 *.log
 *.DS_Store
+*.bin
+*.sha256
 jl_*/
