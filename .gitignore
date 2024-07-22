@@ -6,3 +6,5 @@
 *.sha256
 jl_*/
 *.xml
+output/
+NVE_7_19_24/
