@@ -13,7 +13,9 @@ model_map:
     Hydrogen: ThermalStandard
     Diesel: ThermalStandard
     Waste Heat: ThermalStandard
-    
+
+# Add Infer and Fuel Mapping
+
 tech_fuel_pm_map:
     Biomass:
       fuel: WOOD_WASTE
@@ -36,3 +38,5 @@ generator_map:
     _LT_Expansion_UPV (10001 - 30000): RenewableDispatch
     Hoover Dam (NV): HydroDispatch
   # Ask DR and Hybrid objects
+
+
