@@ -1,0 +1,385 @@
+name,position,available,generator_name,bus_id,base_power,rating,input_efficiency,output_efficiency,storage_capacity,min_storage_capacity,max_storage_capacity,input_active_power_limit_min,output_active_power_limit_max,output_active_power_limit_min
+_MT_4h_Battery_head,tail,True,_MT_4h_Battery,27,140.0,1,0.935,0.935,560.0,0.03,1.0,0,140.0,0
+_MT_4h_Battery_tail,head,True,_MT_4h_Battery,27,140.0,1,0.935,0.935,560.0,0.03,1.0,0,140.0,0
+Salt River Battery Project_head,tail,True,Salt River Battery Project,3,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Salt River Battery Project_tail,head,True,Salt River Battery Project,3,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Field Battery Storage_head,tail,True,Field Battery Storage,5,1.0,1,0.935,0.935,6.0,0.03,1.0,0,1.0,0
+Field Battery Storage_tail,head,True,Field Battery Storage,5,1.0,1,0.935,0.935,6.0,0.03,1.0,0,1.0,0
+Johanna Storage 2_head,tail,True,Johanna Storage 2,40,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Johanna Storage 2_tail,head,True,Johanna Storage 2,40,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Arrow Canyon_head,tail,True,Arrow Canyon,26,75.0,1,0.935,0.935,375.0,0.03,1.0,0,75.0,0
+Arrow Canyon_tail,head,True,Arrow Canyon,26,75.0,1,0.935,0.935,375.0,0.03,1.0,0,75.0,0
+PG&E_Storage_head,tail,True,PG&E_Storage,33,580.0,1,0.935,0.935,2320.0,0.03,1.0,0,580.0,0
+PG&E_Storage_tail,head,True,PG&E_Storage,33,580.0,1,0.935,0.935,2320.0,0.03,1.0,0,580.0,0
+Prosperity Energy Storage_head,tail,True,Prosperity Energy Storage,35,0.5,1,0.935,0.935,2.0,0.03,1.0,0,0.5,0
+Prosperity Energy Storage_tail,head,True,Prosperity Energy Storage,35,0.5,1,0.935,0.935,2.0,0.03,1.0,0,0.5,0
+Miguel BESS_head,tail,True,Miguel BESS,42,2.0,1,0.935,0.935,8.0,0.0,1.0,0,2.0,0
+Miguel BESS_tail,head,True,Miguel BESS,42,2.0,1,0.935,0.935,8.0,0.0,1.0,0,2.0,0
+Gateway Energy_head,tail,True,Gateway Energy,42,250.0,1,0.935,0.935,250.0,0.03,1.0,0,250.0,0
+Gateway Energy_tail,head,True,Gateway Energy,42,250.0,1,0.935,0.935,250.0,0.03,1.0,0,250.0,0
+Fresno EGT_head,tail,True,Fresno EGT,33,50.599998474121094,1,0.935,0.935,202.39999389648438,0.0,1.0,0,50.599998474121094,0
+Fresno EGT_tail,head,True,Fresno EGT,33,50.599998474121094,1,0.935,0.935,202.39999389648438,0.0,1.0,0,50.599998474121094,0
+Escondido_head,tail,True,Escondido,42,30.0,1,0.935,0.935,120.0,0.03,1.0,0,30.0,0
+Escondido_tail,head,True,Escondido,42,30.0,1,0.935,0.935,120.0,0.03,1.0,0,30.0,0
+Desert Harvest Solar Project - Battery_head,tail,True,Desert Harvest Solar Project - Battery,40,35.0,1,0.935,0.935,140.0,0.03,1.0,0,35.0,0
+Desert Harvest Solar Project - Battery_tail,head,True,Desert Harvest Solar Project - Battery,40,35.0,1,0.935,0.935,140.0,0.03,1.0,0,35.0,0
+Demoss Petrie_head,tail,True,Demoss Petrie,47,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Demoss Petrie_tail,head,True,Demoss Petrie,47,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Alamitos Energy Center_head,tail,True,Alamitos Energy Center,40,100.0,1,0.935,0.935,100.0,0.03,1.0,0,100.0,0
+Alamitos Energy Center_tail,head,True,Alamitos Energy Center,40,100.0,1,0.935,0.935,100.0,0.03,1.0,0,100.0,0
+Dagget Solar Power 2_head,tail,True,Dagget Solar Power 2,33,46.0,1,0.935,0.935,184.0,0.03,1.0,0,46.0,0
+Dagget Solar Power 2_tail,head,True,Dagget Solar Power 2,33,46.0,1,0.935,0.935,184.0,0.03,1.0,0,46.0,0
+Dallas Energy Storage 2_head,tail,True,Dallas Energy Storage 2,33,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Dallas Energy Storage 2_tail,head,True,Dallas Energy Storage 2,33,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Acorn I BESS_head,tail,True,Acorn I BESS,40,1.9500000476837158,1,0.935,0.935,7.800000190734863,0.0,1.0,0,1.9500000476837158,0
+Acorn I BESS_tail,head,True,Acorn I BESS,40,1.9500000476837158,1,0.935,0.935,7.800000190734863,0.0,1.0,0,1.9500000476837158,0
+AggregatedBat-PSCO_head,tail,True,AggregatedBat-PSCO,36,9.25,1,0.935,0.935,9.25,0.03,1.0,0,9.25,0
+AggregatedBat-PSCO_tail,head,True,AggregatedBat-PSCO,36,9.25,1,0.935,0.935,9.25,0.03,1.0,0,9.25,0
+Edwards Sanborn BESS I_head,tail,True,Edwards Sanborn BESS I,40,169.0,1,0.935,0.935,676.0,0.0,1.0,0,169.0,0
+Edwards Sanborn BESS I_tail,head,True,Edwards Sanborn BESS I,40,169.0,1,0.935,0.935,676.0,0.0,1.0,0,169.0,0
+Panasonic Carport Solar - Battery_head,tail,True,Panasonic Carport Solar - Battery,36,1.0,1,0.935,0.935,2.200000047683716,0.03,1.0,0,1.0,0
+Panasonic Carport Solar - Battery_tail,head,True,Panasonic Carport Solar - Battery,36,1.0,1,0.935,0.935,2.200000047683716,0.03,1.0,0,1.0,0
+LeConte Energy Storage_orig_head,tail,True,LeConte Energy Storage_orig,42,125.0,1,0.935,0.935,500.0,0.03,1.0,0,125.0,0
+LeConte Energy Storage_orig_tail,head,True,LeConte Energy Storage_orig,42,125.0,1,0.935,0.935,500.0,0.03,1.0,0,125.0,0
+_IV-NG_4h_head,tail,True,_IV-NG_4h,20,302.0,1,0.935,0.935,1208.0,0.03,1.0,0,302.0,0
+_IV-NG_4h_tail,head,True,_IV-NG_4h,20,302.0,1,0.935,0.935,1208.0,0.03,1.0,0,302.0,0
+Crimson_head,tail,True,Crimson,40,200.0,1,0.935,0.935,800.0,0.0,1.0,0,200.0,0
+Crimson_tail,head,True,Crimson,40,200.0,1,0.935,0.935,800.0,0.0,1.0,0,200.0,0
+Wildcat Energy Storage_head,tail,True,Wildcat Energy Storage,40,3.0,1,0.935,0.935,3.0,0.03,1.0,0,3.0,0
+Wildcat Energy Storage_tail,head,True,Wildcat Energy Storage,40,3.0,1,0.935,0.935,3.0,0.03,1.0,0,3.0,0
+Valley Center Energy Storage_head,tail,True,Valley Center Energy Storage,42,54.0,1,0.935,0.935,216.0,0.0,1.0,0,54.0,0
+Valley Center Energy Storage_tail,head,True,Valley Center Energy Storage,42,54.0,1,0.935,0.935,216.0,0.0,1.0,0,54.0,0
+RE Tranquillity BESS_head,tail,True,RE Tranquillity BESS,33,72.0,1,0.935,0.935,288.0,0.0,1.0,0,72.0,0
+RE Tranquillity BESS_tail,head,True,RE Tranquillity BESS,33,72.0,1,0.935,0.935,288.0,0.0,1.0,0,72.0,0
+Ventura Energy Storage_head,tail,True,Ventura Energy Storage,40,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Ventura Energy Storage_tail,head,True,Ventura Energy Storage,40,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Springbok Solar Battery_head,tail,True,Springbok Solar Battery,40,1.5,1,0.935,0.935,1.5,0.03,1.0,0,1.5,0
+Springbok Solar Battery_tail,head,True,Springbok Solar Battery,40,1.5,1,0.935,0.935,1.5,0.03,1.0,0,1.5,0
+Genesis McCoy Bess_head,tail,True,Genesis McCoy Bess,40,230.0,1,0.935,0.935,920.0,0.0,1.0,0,230.0,0
+Genesis McCoy Bess_tail,head,True,Genesis McCoy Bess,40,230.0,1,0.935,0.935,920.0,0.0,1.0,0,230.0,0
+Gateway 1-2_head,tail,True,Gateway 1-2,40,250.0,1,0.935,0.935,1000.0,0.03,1.0,0,250.0,0
+Gateway 1-2_tail,head,True,Gateway 1-2,40,250.0,1,0.935,0.935,1000.0,0.03,1.0,0,250.0,0
+SCE_Storage_head,tail,True,SCE_Storage,40,550.0,1,0.935,0.935,2200.0,0.03,1.0,0,550.0,0
+SCE_Storage_tail,head,True,SCE_Storage,40,550.0,1,0.935,0.935,2200.0,0.03,1.0,0,550.0,0
+_NV_4h_Battery_head,tail,True,_NV_4h_Battery,26,791.0,1,0.935,0.935,3164.0,0.03,1.0,0,791.0,0
+_NV_4h_Battery_tail,head,True,_NV_4h_Battery,26,791.0,1,0.935,0.935,3164.0,0.03,1.0,0,791.0,0
+Blythe 1_head,tail,True,Blythe 1,40,63.0,1,0.935,0.935,301.20001220703125,0.03,1.0,0,63.0,0
+Blythe 1_tail,head,True,Blythe 1,40,63.0,1,0.935,0.935,301.20001220703125,0.03,1.0,0,63.0,0
+Orange County Energy Storage 3_head,tail,True,Orange County Energy Storage 3,40,6.0,1,0.935,0.935,24.0,0.0,1.0,0,6.0,0
+Orange County Energy Storage 3_tail,head,True,Orange County Energy Storage 3,40,6.0,1,0.935,0.935,24.0,0.0,1.0,0,6.0,0
+Vista Energy Storage_head,tail,True,Vista Energy Storage,42,40.0,1,0.935,0.935,160.0,0.0,1.0,0,40.0,0
+Vista Energy Storage_tail,head,True,Vista Energy Storage,42,40.0,1,0.935,0.935,160.0,0.0,1.0,0,40.0,0
+UASTP II_head,tail,True,UASTP II,47,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+UASTP II_tail,head,True,UASTP II,47,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Plano Storage 2_head,tail,True,Plano Storage 2,33,100.4000015258789,1,0.935,0.935,401.6000061035156,0.0,1.0,0,100.4000015258789,0
+Plano Storage 2_tail,head,True,Plano Storage 2,33,100.4000015258789,1,0.935,0.935,401.6000061035156,0.0,1.0,0,100.4000015258789,0
+Bateria Del Sur_head,tail,True,Bateria Del Sur,42,131.0,1,0.935,0.935,524.0,0.0,1.0,0,131.0,0
+Bateria Del Sur_tail,head,True,Bateria Del Sur,42,131.0,1,0.935,0.935,524.0,0.0,1.0,0,131.0,0
+Center Peaker_head,tail,True,Center Peaker,40,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Center Peaker_tail,head,True,Center Peaker,40,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Coso Battery Storage_head,tail,True,Coso Battery Storage,40,60.0,1,0.935,0.935,240.0,0.0,1.0,0,60.0,0
+Coso Battery Storage_tail,head,True,Coso Battery Storage,40,60.0,1,0.935,0.935,240.0,0.0,1.0,0,60.0,0
+Blythe 3_head,tail,True,Blythe 3,40,115.0,1,0.935,0.935,460.0,0.03,1.0,0,115.0,0
+Blythe 3_tail,head,True,Blythe 3,40,115.0,1,0.935,0.935,460.0,0.03,1.0,0,115.0,0
+Silverstrand BESS_head,tail,True,Silverstrand BESS,40,11.0,1,0.935,0.935,44.0,0.0,1.0,0,11.0,0
+Silverstrand BESS_tail,head,True,Silverstrand BESS,40,11.0,1,0.935,0.935,44.0,0.0,1.0,0,11.0,0
+Pala Energy Storage Yard_head,tail,True,Pala Energy Storage Yard,42,1.5,1,0.935,0.935,3.5,0.03,1.0,0,1.5,0
+Pala Energy Storage Yard_tail,head,True,Pala Energy Storage Yard,42,1.5,1,0.935,0.935,3.5,0.03,1.0,0,1.5,0
+HEBT Irvine_head,tail,True,HEBT Irvine,40,10.0,1,0.935,0.935,40.0,0.03,1.0,0,10.0,0
+HEBT Irvine_tail,head,True,HEBT Irvine,40,10.0,1,0.935,0.935,40.0,0.03,1.0,0,10.0,0
+Mira Loma BESS B_head,tail,True,Mira Loma BESS B,40,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Mira Loma BESS B_tail,head,True,Mira Loma BESS B,40,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+RE Mustang Solar Battery_head,tail,True,RE Mustang Solar Battery,33,75.0,1,0.935,0.935,75.0,0.03,1.0,0,75.0,0
+RE Mustang Solar Battery_tail,head,True,RE Mustang Solar Battery,33,75.0,1,0.935,0.935,75.0,0.03,1.0,0,75.0,0
+Townsite Solar BESS_head,tail,True,Townsite Solar BESS,55,90.0,1,0.935,0.935,360.0,0.0,1.0,0,90.0,0
+Townsite Solar BESS_tail,head,True,Townsite Solar BESS,55,90.0,1,0.935,0.935,360.0,0.0,1.0,0,90.0,0
+Blythe Mesa Solar 2 BESS_head,tail,True,Blythe Mesa Solar 2 BESS,40,112.0,1,0.935,0.935,448.0,0.0,1.0,0,112.0,0
+Blythe Mesa Solar 2 BESS_tail,head,True,Blythe Mesa Solar 2 BESS,40,112.0,1,0.935,0.935,448.0,0.0,1.0,0,112.0,0
+Almasol 6 BES_head,tail,True,Almasol 6 BES,40,50.0,1,0.935,0.935,200.0,0.0,1.0,0,50.0,0
+Almasol 6 BES_tail,head,True,Almasol 6 BES,40,50.0,1,0.935,0.935,200.0,0.0,1.0,0,50.0,0
+Vista ESS_head,tail,True,Vista ESS,42,40.0,1,0.935,0.935,40.0,0.03,1.0,0,40.0,0
+Vista ESS_tail,head,True,Vista ESS,42,40.0,1,0.935,0.935,40.0,0.03,1.0,0,40.0,0
+Chula Vista 2 BESS_head,tail,True,Chula Vista 2 BESS,42,3.0,1,0.935,0.935,12.0,0.0,1.0,0,3.0,0
+Chula Vista 2 BESS_tail,head,True,Chula Vista 2 BESS,42,3.0,1,0.935,0.935,12.0,0.0,1.0,0,3.0,0
+_R_INC_San_Diego_Li_Battery_head,tail,False,_R_INC_San_Diego_Li_Battery,42,10000.0,1,0.935,0.935,40000.0,0.03,1.0,0,10000.0,0
+_R_INC_San_Diego_Li_Battery_tail,head,False,_R_INC_San_Diego_Li_Battery,42,10000.0,1,0.935,0.935,40000.0,0.03,1.0,0,10000.0,0
+Eastern BESS 1_head,tail,True,Eastern BESS 1,42,7.5,1,0.935,0.935,30.0,0.0,1.0,0,7.5,0
+Eastern BESS 1_tail,head,True,Eastern BESS 1,42,7.5,1,0.935,0.935,30.0,0.0,1.0,0,7.5,0
+_CO_4h_Battery_head,tail,True,_CO_4h_Battery,36,88.0,1,0.935,0.935,352.0,0.03,1.0,0,88.0,0
+_CO_4h_Battery_tail,head,True,_CO_4h_Battery,36,88.0,1,0.935,0.935,352.0,0.03,1.0,0,88.0,0
+Dracker Solar Unit 4 BESS_head,tail,True,Dracker Solar Unit 4 BESS,40,47.0,1,0.935,0.935,188.0,0.0,1.0,0,47.0,0
+Dracker Solar Unit 4 BESS_tail,head,True,Dracker Solar Unit 4 BESS,40,47.0,1,0.935,0.935,188.0,0.0,1.0,0,47.0,0
+Vanadium Redox Flow Battery Plant_head,tail,True,Vanadium Redox Flow Battery Plant,42,4.0,1,0.935,0.935,8.0,0.03,1.0,0,4.0,0
+Vanadium Redox Flow Battery Plant_tail,head,True,Vanadium Redox Flow Battery Plant,42,4.0,1,0.935,0.935,8.0,0.03,1.0,0,4.0,0
+Glendale BESS_head,tail,True,Glendale BESS,21,2.0,1,0.935,0.935,1.0,0.03,1.0,0,2.0,0
+Glendale BESS_tail,head,True,Glendale BESS,21,2.0,1,0.935,0.935,1.0,0.03,1.0,0,2.0,0
+Norwalk_head,tail,True,Norwalk,40,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Norwalk_tail,head,True,Norwalk,40,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Yerba Buena_head,tail,True,Yerba Buena,33,4.0,1,0.935,0.935,28.0,0.03,1.0,0,4.0,0
+Yerba Buena_tail,head,True,Yerba Buena,33,4.0,1,0.935,0.935,28.0,0.03,1.0,0,4.0,0
+Santa Ana Storage 2_head,tail,True,Santa Ana Storage 2,40,20.0,1,0.935,0.935,80.0,0.0,1.0,0,20.0,0
+Santa Ana Storage 2_tail,head,True,Santa Ana Storage 2,40,20.0,1,0.935,0.935,80.0,0.0,1.0,0,20.0,0
+Daggett Solar 3 cd BESS_head,tail,True,Daggett Solar 3 cd BESS,40,12.5,1,0.935,0.935,50.0,0.0,1.0,0,12.5,0
+Daggett Solar 3 cd BESS_tail,head,True,Daggett Solar 3 cd BESS,40,12.5,1,0.935,0.935,50.0,0.0,1.0,0,12.5,0
+Elkhorn Energy Storage_head,tail,True,Elkhorn Energy Storage,33,182.5,1,0.935,0.935,730.0,0.0,1.0,0,182.5,0
+Elkhorn Energy Storage_tail,head,True,Elkhorn Energy Storage,33,182.5,1,0.935,0.935,730.0,0.0,1.0,0,182.5,0
+Blythe 4_head,tail,True,Blythe 4,40,47.0,1,0.935,0.935,188.0,0.03,1.0,0,47.0,0
+Blythe 4_tail,head,True,Blythe 4,40,47.0,1,0.935,0.935,188.0,0.03,1.0,0,47.0,0
+Daggett Solar 3 a BESS_head,tail,True,Daggett Solar 3 a BESS,40,61.5,1,0.935,0.935,246.0,0.0,1.0,0,61.5,0
+Daggett Solar 3 a BESS_tail,head,True,Daggett Solar 3 a BESS,40,61.5,1,0.935,0.935,246.0,0.0,1.0,0,61.5,0
+MESA 2_head,tail,True,MESA 2,6,2.0,1,0.935,0.935,8.0,0.03,1.0,0,2.0,0
+MESA 2_tail,head,True,MESA 2,6,2.0,1,0.935,0.935,8.0,0.03,1.0,0,2.0,0
+Pima Battery Storage_head,tail,True,Pima Battery Storage,47,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Pima Battery Storage_tail,head,True,Pima Battery Storage,47,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Millikan Ave BESS_head,tail,True,Millikan Ave BESS,40,2.0,1,0.935,0.935,8.0,0.03,1.0,0,2.0,0
+Millikan Ave BESS_tail,head,True,Millikan Ave BESS,40,2.0,1,0.935,0.935,8.0,0.03,1.0,0,2.0,0
+_NM_4h_Battery_head,tail,True,_NM_4h_Battery,35,88.0,1,0.935,0.935,352.0,0.03,1.0,0,88.0,0
+_NM_4h_Battery_tail,head,True,_NM_4h_Battery,35,88.0,1,0.935,0.935,352.0,0.03,1.0,0,88.0,0
+Surprise ES 1_head,tail,True,Surprise ES 1,3,2.0,1,0.935,0.935,8.0,0.03,1.0,0,2.0,0
+Surprise ES 1_tail,head,True,Surprise ES 1,3,2.0,1,0.935,0.935,8.0,0.03,1.0,0,2.0,0
+Vallecito Energy Storage_head,tail,True,Vallecito Energy Storage,40,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Vallecito Energy Storage_tail,head,True,Vallecito Energy Storage,40,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+McCoy_head,tail,True,McCoy,40,230.0,1,0.935,0.935,920.0,0.03,1.0,0,230.0,0
+McCoy_tail,head,True,McCoy,40,230.0,1,0.935,0.935,920.0,0.03,1.0,0,230.0,0
+Battle Mountain_head,tail,True,Battle Mountain,26,25.0,1,0.935,0.935,100.0,0.03,1.0,0,25.0,0
+Battle Mountain_tail,head,True,Battle Mountain,26,25.0,1,0.935,0.935,100.0,0.03,1.0,0,25.0,0
+AggregatedBat-PG&E_head,tail,True,AggregatedBat-PG&E,33,2.799999952316284,1,0.935,0.935,2.799999952316284,0.03,1.0,0,2.799999952316284,0
+AggregatedBat-PG&E_tail,head,True,AggregatedBat-PG&E,33,2.799999952316284,1,0.935,0.935,2.799999952316284,0.03,1.0,0,2.799999952316284,0
+Henrietta D Energy Storage_head,tail,True,Henrietta D Energy Storage,33,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Henrietta D Energy Storage_tail,head,True,Henrietta D Energy Storage,33,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Tehachapi Wind Energy Storage_head,tail,True,Tehachapi Wind Energy Storage,40,8.0,1,0.935,0.935,32.0,0.03,1.0,0,8.0,0
+Tehachapi Wind Energy Storage_tail,head,True,Tehachapi Wind Energy Storage,40,8.0,1,0.935,0.935,32.0,0.03,1.0,0,8.0,0
+Li-Ion Battery_head,tail,False,Li-Ion Battery,33,8.0,1,0.935,0.935,32.0,0.03,1.0,0,8.0,0
+Li-Ion Battery_tail,head,False,Li-Ion Battery,33,8.0,1,0.935,0.935,32.0,0.03,1.0,0,8.0,0
+San Gabriel_head,tail,True,San Gabriel,40,20.0,1,0.935,0.935,20.0,0.03,1.0,0,20.0,0
+San Gabriel_tail,head,True,San Gabriel,40,20.0,1,0.935,0.935,20.0,0.03,1.0,0,20.0,0
+_SDGE_Battery_head,tail,True,_SDGE_Battery,42,95.0,1,0.935,0.935,380.0,0.03,1.0,0,95.0,0
+_SDGE_Battery_tail,head,True,_SDGE_Battery,42,95.0,1,0.935,0.935,380.0,0.03,1.0,0,95.0,0
+Dodge Flat_head,tail,True,Dodge Flat,26,50.0,1,0.935,0.935,200.0,0.03,1.0,0,50.0,0
+Dodge Flat_tail,head,True,Dodge Flat,26,50.0,1,0.935,0.935,200.0,0.03,1.0,0,50.0,0
+Air Attack Base_head,tail,True,Air Attack Base,42,0.4699999988079071,1,0.935,0.935,1.8799999952316284,0.0,1.0,0,0.4699999988079071,0
+Air Attack Base_tail,head,True,Air Attack Base,42,0.4699999988079071,1,0.935,0.935,1.8799999952316284,0.0,1.0,0,0.4699999988079071,0
+Saticoy_head,tail,True,Saticoy,40,100.0,1,0.935,0.935,400.0,0.03,1.0,0,100.0,0
+Saticoy_tail,head,True,Saticoy,40,100.0,1,0.935,0.935,400.0,0.03,1.0,0,100.0,0
+Beacon BESS 2_head,tail,True,Beacon BESS 2,21,30.0,1,0.935,0.935,60.0,0.03,1.0,0,30.0,0
+Beacon BESS 2_tail,head,True,Beacon BESS 2,21,30.0,1,0.935,0.935,60.0,0.03,1.0,0,30.0,0
+Mustang 1 BESS_head,tail,True,Mustang 1 BESS,33,75.0,1,0.935,0.935,300.0,0.0,1.0,0,75.0,0
+Mustang 1 BESS_tail,head,True,Mustang 1 BESS,33,75.0,1,0.935,0.935,300.0,0.0,1.0,0,75.0,0
+Antelope Solar 2 LAB_head,tail,True,Antelope Solar 2 LAB,40,127.0,1,0.935,0.935,508.0,0.0,1.0,0,127.0,0
+Antelope Solar 2 LAB_tail,head,True,Antelope Solar 2 LAB,40,127.0,1,0.935,0.935,508.0,0.0,1.0,0,127.0,0
+AggregatedBat-SDGE-3h_head,tail,True,AggregatedBat-SDGE-3h,42,3.0,1,0.935,0.935,9.0,0.03,1.0,0,3.0,0
+AggregatedBat-SDGE-3h_tail,head,True,AggregatedBat-SDGE-3h,42,3.0,1,0.935,0.935,9.0,0.03,1.0,0,3.0,0
+Black Diamond Energy Storage_head,tail,True,Black Diamond Energy Storage,33,200.0,1,0.935,0.935,800.0,0.0,1.0,0,200.0,0
+Black Diamond Energy Storage_tail,head,True,Black Diamond Energy Storage,33,200.0,1,0.935,0.935,800.0,0.0,1.0,0,200.0,0
+EnerSmart El Cajon_head,tail,True,EnerSmart El Cajon,42,3.0,1,0.935,0.935,12.0,0.0,1.0,0,3.0,0
+EnerSmart El Cajon_tail,head,True,EnerSmart El Cajon,42,3.0,1,0.935,0.935,12.0,0.0,1.0,0,3.0,0
+Fly Wheel_head,tail,False,Fly Wheel,33,10.0,1,0.935,0.935,5.0,0.0,1.0,0,10.0,0
+Fly Wheel_tail,head,False,Fly Wheel,33,10.0,1,0.935,0.935,5.0,0.0,1.0,0,10.0,0
+North Central Valley Energy Storage_head,tail,True,North Central Valley Energy Storage,33,132.0,1,0.935,0.935,528.0,0.03,1.0,0,132.0,0
+North Central Valley Energy Storage_tail,head,True,North Central Valley Energy Storage,33,132.0,1,0.935,0.935,528.0,0.03,1.0,0,132.0,0
+Pomona Energy Storage_head,tail,True,Pomona Energy Storage,40,20.0,1,0.935,0.935,80.0,0.0,1.0,0,20.0,0
+Pomona Energy Storage_tail,head,True,Pomona Energy Storage,40,20.0,1,0.935,0.935,80.0,0.0,1.0,0,20.0,0
+Orange County Energy Storage 2_head,tail,True,Orange County Energy Storage 2,40,9.0,1,0.935,0.935,36.0,0.0,1.0,0,9.0,0
+Orange County Energy Storage 2_tail,head,True,Orange County Energy Storage 2,40,9.0,1,0.935,0.935,36.0,0.0,1.0,0,9.0,0
+_AZ_4h_Battery_head,tail,True,_AZ_4h_Battery,3,91.0,1,0.935,0.935,364.0,0.03,1.0,0,91.0,0
+_AZ_4h_Battery_tail,head,True,_AZ_4h_Battery,3,91.0,1,0.935,0.935,364.0,0.03,1.0,0,91.0,0
+_PG&E_Battery_head,tail,True,_PG&E_Battery,33,72.5,1,0.935,0.935,290.0,0.03,1.0,0,72.5,0
+_PG&E_Battery_tail,head,True,_PG&E_Battery,33,72.5,1,0.935,0.935,290.0,0.03,1.0,0,72.5,0
+Mira Loma Peaker_head,tail,True,Mira Loma Peaker,40,20.0,1,0.935,0.935,80.0,0.03,1.0,0,20.0,0
+Mira Loma Peaker_tail,head,True,Mira Loma Peaker,40,20.0,1,0.935,0.935,80.0,0.03,1.0,0,20.0,0
+Sanborn_head,tail,True,Sanborn,40,100.0,1,0.935,0.935,200.0,0.03,1.0,0,100.0,0
+Sanborn_tail,head,True,Sanborn,40,100.0,1,0.935,0.935,200.0,0.03,1.0,0,100.0,0
+Mira Loma BESS A_head,tail,True,Mira Loma BESS A,40,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Mira Loma BESS A_tail,head,True,Mira Loma BESS A,40,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+_LADWP_Battery_head,tail,True,_LADWP_Battery,21,142.0,1,0.935,0.935,568.0,0.03,1.0,0,142.0,0
+_LADWP_Battery_tail,head,True,_LADWP_Battery,21,142.0,1,0.935,0.935,568.0,0.03,1.0,0,142.0,0
+Escondido BESS 1_head,tail,True,Escondido BESS 1,42,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Escondido BESS 1_tail,head,True,Escondido BESS 1,42,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Arlington Solar Unit 1A BESS_head,tail,True,Arlington Solar Unit 1A BESS,40,47.0,1,0.935,0.935,188.0,0.0,1.0,0,47.0,0
+Arlington Solar Unit 1A BESS_tail,head,True,Arlington Solar Unit 1A BESS,40,47.0,1,0.935,0.935,188.0,0.0,1.0,0,47.0,0
+Sierra Nevada Brewing Co Rooftop Solar_head,tail,True,Sierra Nevada Brewing Co Rooftop Solar,33,0.5,1,0.935,0.935,1.0,0.03,1.0,0,0.5,0
+Sierra Nevada Brewing Co Rooftop Solar_tail,head,True,Sierra Nevada Brewing Co Rooftop Solar,33,0.5,1,0.935,0.935,1.0,0.03,1.0,0,0.5,0
+_SMUD_Battery_head,tail,True,_SMUD_Battery,43,35.0,1,0.935,0.935,140.0,0.03,1.0,0,35.0,0
+_SMUD_Battery_tail,head,True,_SMUD_Battery,43,35.0,1,0.935,0.935,140.0,0.03,1.0,0,35.0,0
+Dracker Solar Unit 2 BESS_head,tail,True,Dracker Solar Unit 2 BESS,40,115.0,1,0.935,0.935,460.0,0.0,1.0,0,115.0,0
+Dracker Solar Unit 2 BESS_tail,head,True,Dracker Solar Unit 2 BESS,40,115.0,1,0.935,0.935,460.0,0.0,1.0,0,115.0,0
+_IID_4h_head,tail,True,_IID_4h,16,88.0,1,0.935,0.935,352.0,0.03,1.0,0,88.0,0
+_IID_4h_tail,head,True,_IID_4h,16,88.0,1,0.935,0.935,352.0,0.03,1.0,0,88.0,0
+Redwood Coast Airport Microgrid_head,tail,True,Redwood Coast Airport Microgrid,33,1.75,1,0.935,0.935,8.800000190734863,0.0,1.0,0,1.75,0
+Redwood Coast Airport Microgrid_tail,head,True,Redwood Coast Airport Microgrid,33,1.75,1,0.935,0.935,8.800000190734863,0.0,1.0,0,1.75,0
+Kearny North Energy Storage_head,tail,True,Kearny North Energy Storage,42,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Kearny North Energy Storage_tail,head,True,Kearny North Energy Storage,42,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+_PG&E_4h_head,tail,True,_PG&E_4h,33,438.0,1,0.935,0.935,1752.0,0.03,1.0,0,438.0,0
+_PG&E_4h_tail,head,True,_PG&E_4h,33,438.0,1,0.935,0.935,1752.0,0.03,1.0,0,438.0,0
+Southern Big Horn_head,tail,True,Southern Big Horn,26,135.0,1,0.935,0.935,540.0,0.03,1.0,0,135.0,0
+Southern Big Horn_tail,head,True,Southern Big Horn,26,135.0,1,0.935,0.935,540.0,0.03,1.0,0,135.0,0
+Vaca Dixon_head,tail,True,Vaca Dixon,33,2.0,1,0.935,0.935,14.0,0.03,1.0,0,2.0,0
+Vaca Dixon_tail,head,True,Vaca Dixon,33,2.0,1,0.935,0.935,14.0,0.03,1.0,0,2.0,0
+Titanium 1 BESS_head,tail,True,Titanium 1 BESS,40,1.399999976158142,1,0.935,0.935,5.599999904632568,0.0,1.0,0,1.399999976158142,0
+Titanium 1 BESS_tail,head,True,Titanium 1 BESS,40,1.399999976158142,1,0.935,0.935,5.599999904632568,0.0,1.0,0,1.399999976158142,0
+Dallas Energy Storage 4_head,tail,True,Dallas Energy Storage 4,33,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Dallas Energy Storage 4_tail,head,True,Dallas Energy Storage 4,33,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Desert Sunlight PV II Storage_head,tail,True,Desert Sunlight PV II Storage,40,230.0,1,0.935,0.935,920.0,0.0,1.0,0,230.0,0
+Desert Sunlight PV II Storage_tail,head,True,Desert Sunlight PV II Storage,40,230.0,1,0.935,0.935,920.0,0.0,1.0,0,230.0,0
+Lancaster Battery_head,tail,True,Lancaster Battery,40,127.0,1,0.935,0.935,508.0,0.03,1.0,0,127.0,0
+Lancaster Battery_tail,head,True,Lancaster Battery,40,127.0,1,0.935,0.935,508.0,0.03,1.0,0,127.0,0
+Punkin Center Battery Storage 4hr Li-Ion_head,tail,True,Punkin Center Battery Storage 4hr Li-Ion,3,2.0,1,0.935,0.935,8.0,0.03,1.0,0,2.0,0
+Punkin Center Battery Storage 4hr Li-Ion_tail,head,True,Punkin Center Battery Storage 4hr Li-Ion,3,2.0,1,0.935,0.935,8.0,0.03,1.0,0,2.0,0
+IID BESS_head,tail,True,IID BESS,16,30.0,1,0.935,0.935,20.0,0.03,1.0,0,30.0,0
+IID BESS_tail,head,True,IID BESS,16,30.0,1,0.935,0.935,20.0,0.03,1.0,0,30.0,0
+HEBT Irvine 2_head,tail,True,HEBT Irvine 2,40,5.800000190734863,1,0.935,0.935,34.79999923706055,0.03,1.0,0,5.800000190734863,0
+HEBT Irvine 2_tail,head,True,HEBT Irvine 2,40,5.800000190734863,1,0.935,0.935,34.79999923706055,0.03,1.0,0,5.800000190734863,0
+Dallas Energy Storage 3_head,tail,True,Dallas Energy Storage 3,33,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Dallas Energy Storage 3_tail,head,True,Dallas Energy Storage 3,33,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Crimson 2_head,tail,True,Crimson 2,40,150.0,1,0.935,0.935,600.0,0.0,1.0,0,150.0,0
+Crimson 2_tail,head,True,Crimson 2,40,150.0,1,0.935,0.935,600.0,0.0,1.0,0,150.0,0
+Pinal Central Energy Center 4hr Li-Ion_head,tail,True,Pinal Central Energy Center 4hr Li-Ion,47,10.0,1,0.935,0.935,40.0,0.03,1.0,0,10.0,0
+Pinal Central Energy Center 4hr Li-Ion_tail,head,True,Pinal Central Energy Center 4hr Li-Ion,47,10.0,1,0.935,0.935,40.0,0.03,1.0,0,10.0,0
+Kearny Mesa Storage_head,tail,True,Kearny Mesa Storage,42,1.0,1,0.935,0.935,4.0,0.0,1.0,0,1.0,0
+Kearny Mesa Storage_tail,head,True,Kearny Mesa Storage,42,1.0,1,0.935,0.935,4.0,0.0,1.0,0,1.0,0
+SEPV Sierra NGR BESS_head,tail,True,SEPV Sierra NGR BESS,40,8.25,1,0.935,0.935,25.0,0.0,1.0,0,8.25,0
+SEPV Sierra NGR BESS_tail,head,True,SEPV Sierra NGR BESS,40,8.25,1,0.935,0.935,25.0,0.0,1.0,0,8.25,0
+Top Gun Energy Storage_orig_head,tail,True,Top Gun Energy Storage_orig,42,30.0,1,0.935,0.935,120.0,0.03,1.0,0,30.0,0
+Top Gun Energy Storage_orig_tail,head,True,Top Gun Energy Storage_orig,42,30.0,1,0.935,0.935,120.0,0.03,1.0,0,30.0,0
+Gemini Battery Storage Project_head,tail,True,Gemini Battery Storage Project,26,380.0,1,0.935,0.935,380.0,0.03,1.0,0,380.0,0
+Gemini Battery Storage Project_tail,head,True,Gemini Battery Storage Project,26,380.0,1,0.935,0.935,380.0,0.03,1.0,0,380.0,0
+Tranquility - Battery_head,tail,True,Tranquility - Battery,33,72.0,1,0.935,0.935,288.0,0.03,1.0,0,72.0,0
+Tranquility - Battery_tail,head,True,Tranquility - Battery,33,72.0,1,0.935,0.935,288.0,0.03,1.0,0,72.0,0
+Escondido BESS 2_head,tail,True,Escondido BESS 2,42,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Escondido BESS 2_tail,head,True,Escondido BESS 2,42,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Millikan Avenue BESS_head,tail,True,Millikan Avenue BESS,40,2.0,1,0.935,0.935,8.0,0.0,1.0,0,2.0,0
+Millikan Avenue BESS_tail,head,True,Millikan Avenue BESS,40,2.0,1,0.935,0.935,8.0,0.0,1.0,0,2.0,0
+Los Alamitos BESS_head,tail,True,Los Alamitos BESS,40,20.0,1,0.935,0.935,40.0,0.0,1.0,0,20.0,0
+Los Alamitos BESS_tail,head,True,Los Alamitos BESS,40,20.0,1,0.935,0.935,40.0,0.0,1.0,0,20.0,0
+EnerSmart Chula Vista 1_head,tail,True,EnerSmart Chula Vista 1,42,3.0,1,0.935,0.935,12.0,0.0,1.0,0,3.0,0
+EnerSmart Chula Vista 1_tail,head,True,EnerSmart Chula Vista 1,42,3.0,1,0.935,0.935,12.0,0.0,1.0,0,3.0,0
+Johanna Energy Center_head,tail,True,Johanna Energy Center,40,20.0,1,0.935,0.935,80.0,0.03,1.0,0,20.0,0
+Johanna Energy Center_tail,head,True,Johanna Energy Center,40,20.0,1,0.935,0.935,80.0,0.03,1.0,0,20.0,0
+Arlington Solar Unit 1B BESS_head,tail,True,Arlington Solar Unit 1B BESS,40,63.0,1,0.935,0.935,252.0,0.0,1.0,0,63.0,0
+Arlington Solar Unit 1B BESS_tail,head,True,Arlington Solar Unit 1B BESS,40,63.0,1,0.935,0.935,252.0,0.0,1.0,0,63.0,0
+Santa Rita Jail_head,tail,True,Santa Rita Jail,33,2.0,1,0.935,0.935,2.0,0.03,1.0,0,2.0,0
+Santa Rita Jail_tail,head,True,Santa Rita Jail,33,2.0,1,0.935,0.935,2.0,0.03,1.0,0,2.0,0
+Desert Harvest BESS_head,tail,True,Desert Harvest BESS,40,35.0,1,0.935,0.935,140.0,0.0,1.0,0,35.0,0
+Desert Harvest BESS_tail,head,True,Desert Harvest BESS,40,35.0,1,0.935,0.935,140.0,0.0,1.0,0,35.0,0
+Ultrapower Chinese Station BESS_head,tail,True,Ultrapower Chinese Station BESS,33,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Ultrapower Chinese Station BESS_tail,head,True,Ultrapower Chinese Station BESS,33,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Alamitos Energy Storage_head,tail,True,Alamitos Energy Storage,40,100.44999694824219,1,0.935,0.935,400.0,0.0,1.0,0,100.44999694824219,0
+Alamitos Energy Storage_tail,head,True,Alamitos Energy Storage,40,100.44999694824219,1,0.935,0.935,400.0,0.0,1.0,0,100.44999694824219,0
+Daggett Solar 3 b BESS_head,tail,True,Daggett Solar 3 b BESS,40,60.0,1,0.935,0.935,240.0,0.0,1.0,0,60.0,0
+Daggett Solar 3 b BESS_tail,head,True,Daggett Solar 3 b BESS,40,60.0,1,0.935,0.935,240.0,0.0,1.0,0,60.0,0
+Tesla Moss Landing Energy Storage Project_head,tail,True,Tesla Moss Landing Energy Storage Project,33,182.5,1,0.935,0.935,730.0,0.03,1.0,0,182.5,0
+Tesla Moss Landing Energy Storage Project_tail,head,True,Tesla Moss Landing Energy Storage Project,33,182.5,1,0.935,0.935,730.0,0.03,1.0,0,182.5,0
+Johanna Storage 1_head,tail,True,Johanna Storage 1,40,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Johanna Storage 1_tail,head,True,Johanna Storage 1,40,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Tierra Buena Energy Storage_head,tail,True,Tierra Buena Energy Storage,33,6.0,1,0.935,0.935,24.0,0.0,1.0,0,6.0,0
+Tierra Buena Energy Storage_tail,head,True,Tierra Buena Energy Storage,33,6.0,1,0.935,0.935,24.0,0.0,1.0,0,6.0,0
+Putah Creek Solar Farm North_head,tail,True,Putah Creek Solar Farm North,33,3.0,1,0.935,0.935,12.0,0.0,1.0,0,3.0,0
+Putah Creek Solar Farm North_tail,head,True,Putah Creek Solar Farm North,33,3.0,1,0.935,0.935,12.0,0.0,1.0,0,3.0,0
+California Flats Solar Battery_head,tail,True,California Flats Solar Battery,33,60.0,1,0.935,0.935,240.0,0.0,1.0,0,60.0,0
+California Flats Solar Battery_tail,head,True,California Flats Solar Battery,33,60.0,1,0.935,0.935,240.0,0.0,1.0,0,60.0,0
+Fish Springs Ranch_head,tail,True,Fish Springs Ranch,26,25.0,1,0.935,0.935,100.0,0.03,1.0,0,25.0,0
+Fish Springs Ranch_tail,head,True,Fish Springs Ranch,26,25.0,1,0.935,0.935,100.0,0.03,1.0,0,25.0,0
+MESA 1a_head,tail,True,MESA 1a,6,4.199999809265137,1,0.935,0.935,2.0999999046325684,0.03,1.0,0,4.199999809265137,0
+MESA 1a_tail,head,True,MESA 1a,6,4.199999809265137,1,0.935,0.935,2.0999999046325684,0.03,1.0,0,4.199999809265137,0
+Plano Storage 3_head,tail,True,Plano Storage 3,33,74.5999984741211,1,0.935,0.935,298.3999938964844,0.0,1.0,0,74.5999984741211,0
+Plano Storage 3_tail,head,True,Plano Storage 3,33,74.5999984741211,1,0.935,0.935,298.3999938964844,0.0,1.0,0,74.5999984741211,0
+Sagebrush Solar 2_head,tail,True,Sagebrush Solar 2,40,80.0,1,0.935,0.935,320.0,0.0,1.0,0,80.0,0
+Sagebrush Solar 2_tail,head,True,Sagebrush Solar 2,40,80.0,1,0.935,0.935,320.0,0.0,1.0,0,80.0,0
+Jicarilla Apache Nation Solar Energy Storage_head,tail,True,Jicarilla Apache Nation Solar Energy Storage,35,20.0,1,0.935,0.935,80.0,0.03,1.0,0,20.0,0
+Jicarilla Apache Nation Solar Energy Storage_tail,head,True,Jicarilla Apache Nation Solar Energy Storage,35,20.0,1,0.935,0.935,80.0,0.03,1.0,0,20.0,0
+Fallbrook Energy Storage_head,tail,True,Fallbrook Energy Storage,42,40.0,1,0.935,0.935,160.0,0.0,1.0,0,40.0,0
+Fallbrook Energy Storage_tail,head,True,Fallbrook Energy Storage,42,40.0,1,0.935,0.935,160.0,0.0,1.0,0,40.0,0
+Edwards Sanborn BESS III_head,tail,True,Edwards Sanborn BESS III,40,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Edwards Sanborn BESS III_tail,head,True,Edwards Sanborn BESS III,40,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Plano Storage 1_head,tail,True,Plano Storage 1,33,100.4000015258789,1,0.935,0.935,401.6000061035156,0.0,1.0,0,100.4000015258789,0
+Plano Storage 1_tail,head,True,Plano Storage 1,33,100.4000015258789,1,0.935,0.935,401.6000061035156,0.0,1.0,0,100.4000015258789,0
+Los Alamos PV Site_head,tail,True,Los Alamos PV Site,35,1.7999999523162842,1,0.935,0.935,7.199999809265137,0.03,1.0,0,1.7999999523162842,0
+Los Alamos PV Site_tail,head,True,Los Alamos PV Site,35,1.7999999523162842,1,0.935,0.935,7.199999809265137,0.03,1.0,0,1.7999999523162842,0
+Glacier Battery Storage_head,tail,True,Glacier Battery Storage,37,2.0,1,0.935,0.935,4.400000095367432,0.03,1.0,0,2.0,0
+Glacier Battery Storage_tail,head,True,Glacier Battery Storage,37,2.0,1,0.935,0.935,4.400000095367432,0.03,1.0,0,2.0,0
+Escondido BESS 3_head,tail,True,Escondido BESS 3,42,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Escondido BESS 3_tail,head,True,Escondido BESS 3,42,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+SDGE_Storage_head,tail,True,SDGE_Storage,42,155.0,1,0.935,0.935,620.0,0.03,1.0,0,155.0,0
+SDGE_Storage_tail,head,True,SDGE_Storage,42,155.0,1,0.935,0.935,620.0,0.03,1.0,0,155.0,0
+Garland B BESS_head,tail,True,Garland B BESS,40,88.0,1,0.935,0.935,352.0,0.0,1.0,0,88.0,0
+Garland B BESS_tail,head,True,Garland B BESS,40,88.0,1,0.935,0.935,352.0,0.0,1.0,0,88.0,0
+Mojave 89 BESS_head,tail,True,Mojave 89 BESS,40,60.5,1,0.935,0.935,242.0,0.0,1.0,0,60.5,0
+Mojave 89 BESS_tail,head,True,Mojave 89 BESS,40,60.5,1,0.935,0.935,242.0,0.0,1.0,0,60.5,0
+Wildcat I BESS_head,tail,True,Wildcat I BESS,40,3.0,1,0.935,0.935,12.0,0.0,1.0,0,3.0,0
+Wildcat I BESS_tail,head,True,Wildcat I BESS,40,3.0,1,0.935,0.935,12.0,0.0,1.0,0,3.0,0
+_SCE_4h_head,tail,True,_SCE_4h,40,500.0,1,0.935,0.935,1208.0,0.03,1.0,0,500.0,0
+_SCE_4h_tail,head,True,_SCE_4h,40,500.0,1,0.935,0.935,1208.0,0.03,1.0,0,500.0,0
+Mojave 89 BESS 2B_head,tail,True,Mojave 89 BESS 2B,40,70.5999984741211,1,0.935,0.935,282.3999938964844,0.0,1.0,0,70.5999984741211,0
+Mojave 89 BESS 2B_tail,head,True,Mojave 89 BESS 2B,40,70.5999984741211,1,0.935,0.935,282.3999938964844,0.0,1.0,0,70.5999984741211,0
+Borrego Springs MG_head,tail,True,Borrego Springs MG,42,0.5,1,0.935,0.935,1.5,0.03,1.0,0,0.5,0
+Borrego Springs MG_tail,head,True,Borrego Springs MG,42,0.5,1,0.935,0.935,1.5,0.03,1.0,0,0.5,0
+EdSan 1A_head,tail,True,EdSan 1A,40,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+EdSan 1A_tail,head,True,EdSan 1A,40,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Rabbitbrush BESS_head,tail,True,Rabbitbrush BESS,40,20.0,1,0.935,0.935,50.0,0.0,1.0,0,20.0,0
+Rabbitbrush BESS_tail,head,True,Rabbitbrush BESS,40,20.0,1,0.935,0.935,50.0,0.0,1.0,0,20.0,0
+Etiwanda Peaker_head,tail,True,Etiwanda Peaker,40,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Etiwanda Peaker_tail,head,True,Etiwanda Peaker,40,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Tropico Solar Big Beau_head,tail,True,Tropico Solar Big Beau,40,40.0,1,0.935,0.935,160.0,0.0,1.0,0,40.0,0
+Tropico Solar Big Beau_tail,head,True,Tropico Solar Big Beau,40,40.0,1,0.935,0.935,160.0,0.0,1.0,0,40.0,0
+Dagget Solar Power 3_head,tail,True,Dagget Solar Power 3,33,15.0,1,0.935,0.935,60.0,0.03,1.0,0,15.0,0
+Dagget Solar Power 3_tail,head,True,Dagget Solar Power 3,33,15.0,1,0.935,0.935,60.0,0.03,1.0,0,15.0,0
+Blythe 2_head,tail,True,Blythe 2,40,115.0,1,0.935,0.935,460.0,0.03,1.0,0,115.0,0
+Blythe 2_tail,head,True,Blythe 2,40,115.0,1,0.935,0.935,460.0,0.03,1.0,0,115.0,0
+Ironhorse_head,tail,True,Ironhorse,47,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Ironhorse_tail,head,True,Ironhorse,47,10.0,1,0.935,0.935,10.0,0.03,1.0,0,10.0,0
+Dracker Solar Unit 3 BESS_head,tail,True,Dracker Solar Unit 3 BESS,40,115.0,1,0.935,0.935,460.0,0.0,1.0,0,115.0,0
+Dracker Solar Unit 3 BESS_tail,head,True,Dracker Solar Unit 3 BESS,40,115.0,1,0.935,0.935,460.0,0.0,1.0,0,115.0,0
+AltaGas Pomona Energy Storage_head,tail,True,AltaGas Pomona Energy Storage,40,20.0,1,0.935,0.935,80.0,0.03,1.0,0,20.0,0
+AltaGas Pomona Energy Storage_tail,head,True,AltaGas Pomona Energy Storage,40,20.0,1,0.935,0.935,80.0,0.03,1.0,0,20.0,0
+Gaskell West 2 BESS_head,tail,True,Gaskell West 2 BESS,40,20.0,1,0.935,0.935,80.0,0.0,1.0,0,20.0,0
+Gaskell West 2 BESS_tail,head,True,Gaskell West 2 BESS,40,20.0,1,0.935,0.935,80.0,0.0,1.0,0,20.0,0
+Dallas Energy Storage_head,tail,True,Dallas Energy Storage,33,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Dallas Energy Storage_tail,head,True,Dallas Energy Storage,33,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+AggregatedBat-SCE_head,tail,True,AggregatedBat-SCE,40,33.5,1,0.935,0.935,33.5,0.03,1.0,0,33.5,0
+AggregatedBat-SCE_tail,head,True,AggregatedBat-SCE,40,33.5,1,0.935,0.935,33.5,0.03,1.0,0,33.5,0
+High 5 Solar BESS_head,tail,True,High 5 Solar BESS,40,50.0,1,0.935,0.935,200.0,0.0,1.0,0,50.0,0
+High 5 Solar BESS_tail,head,True,High 5 Solar BESS,40,50.0,1,0.935,0.935,200.0,0.0,1.0,0,50.0,0
+Edwards Sanborn BESS II_head,tail,True,Edwards Sanborn BESS II,40,5.5,1,0.935,0.935,22.0,0.0,1.0,0,5.5,0
+Edwards Sanborn BESS II_tail,head,True,Edwards Sanborn BESS II,40,5.5,1,0.935,0.935,22.0,0.0,1.0,0,5.5,0
+Dracker Solar Unit 1 BESS_head,tail,True,Dracker Solar Unit 1 BESS,40,63.0,1,0.935,0.935,252.0,0.0,1.0,0,63.0,0
+Dracker Solar Unit 1 BESS_tail,head,True,Dracker Solar Unit 1 BESS,40,63.0,1,0.935,0.935,252.0,0.0,1.0,0,63.0,0
+Buckeye ES_head,tail,True,Buckeye ES,3,2.0,1,0.935,0.935,8.0,0.03,1.0,0,2.0,0
+Buckeye ES_tail,head,True,Buckeye ES,3,2.0,1,0.935,0.935,8.0,0.03,1.0,0,2.0,0
+Garland_head,tail,True,Garland,40,88.0,1,0.935,0.935,352.0,0.03,1.0,0,88.0,0
+Garland_tail,head,True,Garland,40,88.0,1,0.935,0.935,352.0,0.03,1.0,0,88.0,0
+Beacon BESS 1_head,tail,True,Beacon BESS 1,21,40.0,1,0.935,0.935,40.0,0.03,1.0,0,40.0,0
+Beacon BESS 1_tail,head,True,Beacon BESS 1,21,40.0,1,0.935,0.935,40.0,0.03,1.0,0,40.0,0
+Vistra Moss Landing Energy Storage_head,tail,True,Vistra Moss Landing Energy Storage,33,400.0,1,0.935,0.935,1600.0,0.03,1.0,0,400.0,0
+Vistra Moss Landing Energy Storage_tail,head,True,Vistra Moss Landing Energy Storage,33,400.0,1,0.935,0.935,1600.0,0.03,1.0,0,400.0,0
+Antelope Solar 2 Luna_head,tail,True,Antelope Solar 2 Luna,40,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Antelope Solar 2 Luna_tail,head,True,Antelope Solar 2 Luna,40,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Santa Ana Storage 1_head,tail,True,Santa Ana Storage 1,40,20.0,1,0.935,0.935,80.0,0.0,1.0,0,20.0,0
+Santa Ana Storage 1_tail,head,True,Santa Ana Storage 1,40,20.0,1,0.935,0.935,80.0,0.0,1.0,0,20.0,0
+Daggett Solar 3 e BESS_head,tail,True,Daggett Solar 3 e BESS,40,15.0,1,0.935,0.935,60.0,0.0,1.0,0,15.0,0
+Daggett Solar 3 e BESS_tail,head,True,Daggett Solar 3 e BESS,40,15.0,1,0.935,0.935,60.0,0.0,1.0,0,15.0,0
+EdSan 1B_head,tail,True,EdSan 1B,40,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+EdSan 1B_tail,head,True,EdSan 1B,40,100.0,1,0.935,0.935,400.0,0.0,1.0,0,100.0,0
+Top Gun Energy Storage_head,tail,True,Top Gun Energy Storage,42,30.0,1,0.935,0.935,120.0,0.0,1.0,0,30.0,0
+Top Gun Energy Storage_tail,head,True,Top Gun Energy Storage,42,30.0,1,0.935,0.935,120.0,0.0,1.0,0,30.0,0
+Kearny South Energy Storage_head,tail,True,Kearny South Energy Storage,42,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Kearny South Energy Storage_tail,head,True,Kearny South Energy Storage,42,10.0,1,0.935,0.935,40.0,0.0,1.0,0,10.0,0
+Santa Ana Storage 3_head,tail,True,Santa Ana Storage 3,40,40.0,1,0.935,0.935,160.0,0.0,1.0,0,40.0,0
+Santa Ana Storage 3_tail,head,True,Santa Ana Storage 3,40,40.0,1,0.935,0.935,160.0,0.0,1.0,0,40.0,0
+LeConte Energy Storage_head,tail,True,LeConte Energy Storage,42,125.0,1,0.935,0.935,500.0,0.0,1.0,0,125.0,0
+LeConte Energy Storage_tail,head,True,LeConte Energy Storage,42,125.0,1,0.935,0.935,500.0,0.0,1.0,0,125.0,0
+El Cajon Energy Storage_head,tail,True,El Cajon Energy Storage,42,7.5,1,0.935,0.935,30.0,0.03,1.0,0,7.5,0
+El Cajon Energy Storage_tail,head,True,El Cajon Energy Storage,42,7.5,1,0.935,0.935,30.0,0.03,1.0,0,7.5,0
+AggregatedBat-SDGE-1h_head,tail,True,AggregatedBat-SDGE-1h,42,7.5,1,0.935,0.935,7.5,0.03,1.0,0,7.5,0
+AggregatedBat-SDGE-1h_tail,head,True,AggregatedBat-SDGE-1h,42,7.5,1,0.935,0.935,7.5,0.03,1.0,0,7.5,0
+Gateway Energy Storage_head,tail,True,Gateway Energy Storage,42,250.0,1,0.935,0.935,1000.0,0.0,1.0,0,250.0,0
+Gateway Energy Storage_tail,head,True,Gateway Energy Storage,42,250.0,1,0.935,0.935,1000.0,0.0,1.0,0,250.0,0
+_IID_Battery_head,tail,True,_IID_Battery,16,17.5,1,0.935,0.935,40.0,0.03,1.0,0,17.5,0
+_IID_Battery_tail,head,True,_IID_Battery,16,17.5,1,0.935,0.935,40.0,0.03,1.0,0,17.5,0
+Valley Center Energy Storage B_head,tail,True,Valley Center Energy Storage B,42,85.0,1,0.935,0.935,340.0,0.0,1.0,0,85.0,0
+Valley Center Energy Storage B_tail,head,True,Valley Center Energy Storage B,42,85.0,1,0.935,0.935,340.0,0.0,1.0,0,85.0,0
+_SDGE_4h_head,tail,True,_SDGE_4h,42,127.0,1,0.935,0.935,508.0,0.03,1.0,0,127.0,0
+_SDGE_4h_tail,head,True,_SDGE_4h,42,127.0,1,0.935,0.935,508.0,0.03,1.0,0,127.0,0
+Slate BESS_head,tail,True,Slate BESS,33,141.0,1,0.935,0.935,561.0,0.0,1.0,0,141.0,0
+Slate BESS_tail,head,True,Slate BESS,33,141.0,1,0.935,0.935,561.0,0.0,1.0,0,141.0,0
+Arlington Solar Unit 2A BESS_head,tail,True,Arlington Solar Unit 2A BESS,40,132.0,1,0.935,0.935,528.0,0.0,1.0,0,132.0,0
+Arlington Solar Unit 2A BESS_tail,head,True,Arlington Solar Unit 2A BESS,40,132.0,1,0.935,0.935,528.0,0.0,1.0,0,132.0,0
