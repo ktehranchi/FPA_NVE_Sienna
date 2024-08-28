@@ -11,16 +11,14 @@ using DataFrames
 using Plots
 
 
-data_dir = "/data/my-data-dir"
+data_dir = "Projects/NVE/output/"
 base_power = 100.0
-descriptors = "./user_descriptors.yaml"
-timeseries_metadata_file = "./timeseries_pointers.json"
-generator_mapping_file = "./generator_mapping.yaml"
+descriptors = "Projects/NVE/user_descriptors.yaml"
+timeseries_metadata_file = "timeseries_pointers.json"
 data = PowerSystemTableData(
     data_dir,
     base_power,
     descriptors;
     timeseries_metadata_file = timeseries_metadata_file,
-    generator_mapping_file = generator_mapping_file,
 )
 sys = System(data, time_series_in_memory = true)

@@ -4,71 +4,111 @@ fmap:
   xml_file:
       fname:  PLEXOS_DB_Nevada.xml
 
-# Mapping of PLEXOS objects to Sienna objects
+# Mapping of PLEXOS Generators to Sienna Fuels and PM Types
+# {plexos_object: {fuel: sienna_fuel, pm_type: sienna_primemover_type}}
 device_map:
-    Lone Mountain: ThermalStandard
-    North Valley Eavor Loop: ThermalStandard
-    Faulkner 1 (NGP Blue Mountain): ThermalStandard
-    Pinto: ThermalStandard
-    _NVE IRP Expansion_SPPC_PV (Standalone): RenewableDispatch
-    Galena 1: ThermalStandard
-    Turquoise Nevada: RenewableDispatch
-    _LT_Expansion_UPV (10001 - 30000): RenewableDispatch
-    Hoover Dam (NV): HydroDispatch
-    North Valley 2: ThermalStandard
-    Gerlach: ThermalStandard
-    New Lahontan Truckee Carson Plant: HydroDispatch
-    _NVE IRP Expansion_NVP_PV (Standalone): RenewableDispatch
-    _NVE IRP Expansion_SPPC_PV (Hybrid): HybridSystem
-    _NVE IRP Expansion_NVP_PV (Hybrid): HybridSystem
+    Lone Mountain: 
+      fuel: GAS
+      type: GT
+    North Valley Eavor Loop: 
+      fuel: GAS
+      type: GT
+    Faulkner 1 (NGP Blue Mountain):
+      fuel: GAS
+      type: GT
+    Pinto:
+      fuel: GAS
+      type: GT
+    _NVE IRP Expansion_SPPC_PV (Standalone):
+      fuel: SOLAR
+      type: PV
+    Galena 1:
+      fuel: GAS
+      type: GT
+    Turquoise Nevada:
+      fuel: SOLAR
+      type: PV
+    _LT_Expansion_UPV (10001 - 30000):
+      fuel: SOLAR
+      type: PV
+    Hoover Dam (NV):
+      fuel: HYDRO
+      type: HY
+    North Valley 2:
+      fuel: GAS
+      type: GT
+    Gerlach:
+      fuel: GAS
+      type: GT
+    New Lahontan Truckee Carson Plant:
+      fuel: HYDRO
+      type: HY
+    _NVE IRP Expansion_NVP_PV (Standalone):
+      fuel: SOLAR
+      type: PV
+    _NVE IRP Expansion_SPPC_PV (Hybrid):
+      fuel: SOLAR
+      type: PV
+    _NVE IRP Expansion_NVP_PV (Hybrid):
+      fuel: SOLAR
+      type: PV
     # Tuning Adjustment:
     # NVE.Owned.DR/DSM.PV: 
     # NVE.Owned.DR/DSM.ACLM: 
     # PPA.Contracted.DR/DSM.PV:
     # _LT_Expansion_Open Positions:
 
-# Device mapping by fuel name
-fuel_map:
-    Nat. Gas: ThermalStandard
-    Nat. Gas (Imports): ThermalStandard
-    Landfill/Biogas: ThermalStandard
-    Coal: ThermalStandard
-    Hydrogen: ThermalStandard
-    Diesel: ThermalStandard
-    Waste Heat: ThermalStandard
-
-# Name string mapping
-device_name_inference_map:
-    wind: RenewableDispatch
-    solar: RenewableDispatch
-    upv: RenewableDispatch
-    geothermal: ThermalStandard
-    hydro: HydroDispatch
-    dpv: RenewableDispatch
-
-#Prime Mover Mapping
-tech_fuel_pm_map: #review these definitions for accuracy
+# Plexos Fuel Type Mapping
+# {plexos_fuel: {fuel: sienna_fuel, pm_type: sienna_pm_type}}
+plexos_fuel_map: 
     Landfill/Biogas:
       fuel: WOOD_WASTE
       type: GT
     Nat. Gas:
       fuel: GAS
       type: GT
+    Solar:
+      fuel: SOLAR
+      type: PV
+    Diesel:
+      fuel: OIL
+      type: 
+    Hydrogen:
+      fuel: HYDROGEN
+      type: OT
     Nat. Gas (Imports):
       fuel: GAS
       type: GT
-    Coal:
-      fuel: COAL
-      type: ST
-    Diesel:
-      fuel: DIESEL
-      type: OT
     Waste Heat:
       fuel: WASTE_HEAT
       type: OT
-    Hydrogen: ## Double Check
-      fuel: HYDROGEN
-      type: OT
+    Coal:
+      fuel: COAL
+      type: ST
     default:
-        fuel: GAS
-        type: OT
+      fuel: GAS
+      type: OT
+
+# Infers Fuel Type and PrimeMover
+# {inference_string: {fuel: sienna_fuel, pm_type: sienna_pm_type}}
+device_name_inference_map:
+    wind: 
+      fuel: SOLAR
+      type: WT
+    solar:
+      fuel: SOLAR
+      type: PV
+    upv:
+      fuel: SOLAR
+      type: PV
+    geothermal:
+      fuel: GEOTHERMAL
+      type: GT
+    hydro:
+      fuel: HYDRO
+      type: HY
+    dpv:
+      fuel: SOLAR
+      type: PV
+
+

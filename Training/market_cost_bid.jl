@@ -40,7 +40,14 @@ PiecewiseStepData([1.0, 2.0, 3.0], [24.0, 26.0])
     
 data = Dict(Dates.DateTime("2020-01-01") => [
     PiecewiseStepData([1.0, 2.0, 3.0], [4.0, 6.0]),
-    PiecewiseStepData([1.0, 2.0, 3.0], [4.0, 6.0])
+    PiecewiseStepData([1.0, 2.0, 6.0], [2.0, 12.0])
+    ]
+)
+
+# This formulation will error: the data must be of type PiecewiseStepData
+data = Dict(Dates.DateTime("2020-01-01") => [
+    LinearCurve(6.0),
+    LinearCurve(3.0),
     ]
 )
 

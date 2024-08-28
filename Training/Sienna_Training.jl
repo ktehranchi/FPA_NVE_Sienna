@@ -12,9 +12,9 @@ These files will be used to manage the dependencies for the training session.
 Next, you should add the packages you will use in the training within the REPL by running the following commands:
     ] add PowerSystems PowerSimulations PowerSystemCaseBuilder PowerGraphics HiGHS Gurobi Dates Logging DataFrames Plots
 
-Everytime you open a Julia REPL to work with sienna you can navigate to the folder and type '] activate demo_training' to activate the project environment. This will load the dependencies you added in the previous step.
+Everytime you open a Julia REPL to work with sienna you can navigate to the folder which contains the Project.toml and type '] activate .' to activate the project environment. This will load the dependencies you added in the previous step.
 """
-
+using Pkg
 using PowerSystems
 using PowerSimulations
 using PowerSystemCaseBuilder
@@ -75,7 +75,7 @@ loads = collect(get_components(PowerLoad, sys_DA))
 get_forecast_initial_times(sys_DA)
 show_time_series(loads[1]) # Load 1 has a forecast and a static time series
 
-get_time_series(loads[1], get_time_series_keys(loads[1]))
+# get_time_series(loads[1], get_time_series_keys(loads[1]))
 
 ts_arr = get_time_series_array(SingleTimeSeries, loads[1], "max_active_power")
 
@@ -208,7 +208,7 @@ load = read_parameter(results, "ActivePowerTimeSeriesParameter__PowerLoad")
 
 # Create Plot of Network Loads
 plot_dataframe(thermal_active_power)
-plot_fuel!(results; stair = true)
+plot_fuel(results; stair = true)
 
 
 ###########
