@@ -1,4 +1,0 @@
-name,connection_points_from,connection_points_to,r,x,primary_shunt,rate,branch_type
-Northern Import-Export (Sierra),2,3,0.0,0.0,0.0,,
-ON Line (NVP to Sierra),1,3,0.0,0.0,0.0,,
-Southern Import-Export (NVP),4,1,0.0,0.0,0.0,,
