@@ -1,10 +1,15 @@
+# File Types to ignore
 *.json
 *.h5
 *.log
 *.DS_Store
 *.bin
 *.sha256
+*.xlsx
+*.csv
 jl_*/
 *.xml
-output/
+
+# Folders to ignore
+*output/
 NVE_7_19_24/
