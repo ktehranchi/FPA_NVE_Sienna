@@ -3,15 +3,15 @@
 # Set-Up
 
 ## 1. Install Sotfware
-[Mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html#)
+[Mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html#): Python software package managment tool. Used to manage the r2x environment.
 
-[R2X](https://github.com/NREL/R2X/blob/main/README.md)
+[R2X](https://github.com/NREL/R2X/blob/main/README.md): R2X python package
 
-[plexosdb](https://github.com/NREL/plexosdb/tree/main)
+[plexosdb](https://github.com/NREL/plexosdb/tree/main): plexos sqlite python package that R2X uses. To be installed while your R2X mamba environment is activated.
 
-[Infrasys](https://github.com/NREL/infrasys)
+[Infrasys](https://github.com/NREL/infrasys): core dependency for R2X which is used to build the power system from plexos, ReEDS, or other file systems. To be installed while your R2X mamba environment is activated. Technically this is already installed in the main R2X dependencies, but if NREL pushes new changes pre-release to infrasys then you will need to have a local developer version installed.
 
-[DBeaver](https://dbeaver.io)
+[DBeaver](https://dbeaver.io): Used to examine the plexos sqlite database for debugging.
 
 ## 2. Download Plexos Files
 
