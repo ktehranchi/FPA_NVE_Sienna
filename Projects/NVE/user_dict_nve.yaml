@@ -6,7 +6,7 @@ fmap:
 
 # Mapping of PLEXOS Generators to Sienna Fuels and PM Types
 # {plexos_object: {fuel: sienna_fuel, pm_type: sienna_primemover_type}}
-device_map:
+plexos_device_map:
     Lone Mountain: 
       fuel: GAS
       type: GT
@@ -23,7 +23,7 @@ device_map:
       fuel: SOLAR
       type: PV
     Galena 1:
-      fuel: GAS
+      fuel: GEOTHERMAL
       type: GT
     Turquoise Nevada:
       fuel: SOLAR

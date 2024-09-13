@@ -68,6 +68,14 @@ See [here](https://github.com/NREL/R2X/blob/c169f1bda29686a7a0725bddf7b74ba08285
 NVE run: 
 `python -m r2x -i NVE_7_19_24/ --input-model plexos --output-model sienna --user-dict /Users/kamrantehranchi/Local_Documents/FPA_Sienna/Projects/NVE/user_dict_nve.yaml --debug  --weather-year=2030 -o output`
 
+## Manual Changes of Output Files
+1. If thermal gen is missing HR info, fill it in with zero (purchases in NVE sys)
+2. Hydrogen and Waste should be renamed to OTHER
+3. NA fuel prices fill to zero
+4. Fill base_mva column with 1's
+5. Change reserve direction from UP to Up
+
+
 # Debugging
 
 ## SQLite
