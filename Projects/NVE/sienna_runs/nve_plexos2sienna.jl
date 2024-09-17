@@ -81,26 +81,26 @@ timestamps = range(DateTime("2030-01-01T00:00:00"), step = Hour(1), length = 876
 #Convert the VariableReserve{ReserveUp} to a VariableReserveNonSpinning if the name contains string "NonSpinning"
 for reserve in get_components(VariableReserve{ReserveUp}, sys)
     reserve_name = get_name(reserve)
-    if occursin("Non-Spin", reserve_name)
-        remove_component!(VariableReserve{ReserveUp}, sys, get_name(reserve))
-        VarRes = VariableReserveNonSpinning(
-            name = reserve_name,
-            available = true,
-            time_frame = 0,
-            requirement = 1.0,
-        )
-        add_component!(sys, VarRes)
+    # if occursin("Non-Spin", reserve_name)
+    #     remove_component!(VariableReserve{ReserveUp}, sys, get_name(reserve))
+    #     VarRes = VariableReserveNonSpinning(
+    #         name = reserve_name,
+    #         available = true,
+    #         time_frame = 0,
+    #         requirement = 1.0,
+    #     )
+    #     add_component!(sys, VarRes)
 
-        reserve_array = df_reserve_req[!, reserve_name]
-        ta = TimeArray(timestamps, reserve_array)
-        ts = SingleTimeSeries(
-            name = "requirement",
-            data = ta,
-        )
-        add_time_series!(sys, VarRes, ts)
+    #     reserve_array = df_reserve_req[!, reserve_name]
+    #     ta = TimeArray(timestamps, reserve_array)
+    #     ts = SingleTimeSeries(
+    #         name = "requirement",
+    #         data = ta,
+    #     )
+    #     add_time_series!(sys, VarRes, ts)
 
     # Case Freq Regulation
-    else
+    # else
         reserve_array = df_reserve_req[!, reserve_name]
         ta = TimeArray(timestamps, reserve_array)
         ts = SingleTimeSeries(
@@ -109,35 +109,16 @@ for reserve in get_components(VariableReserve{ReserveUp}, sys)
         )
         add_time_series!(sys, reserve, ts)
         set_requirement!(reserve, 1)
-    end
+    # end
 end
 
-# Enable all storage devices to participate in reserves
-for storage in get_components(EnergyReservoirStorage, sys)
-    #concat the two vectors of services 
-    eligible_services = vcat(
-        collect(get_components(VariableReserve{ReserveUp}, sys)), 
-        # collect(get_components(VariableReserveNonSpinning, sys))
-        )
-    set_services!(storage, eligible_services)
-end
-
-# Set generator services (ie assign memberships)
-for gen in get_components(ThermalStandard, sys)
-    #concat the two vectors of services 
-    eligible_services = vcat(
-        collect(get_components(VariableReserve{ReserveUp}, sys)), 
-        # collect(get_components(VariableReserveNonSpinning, sys))
-        )
-    set_services!(gen, eligible_services)
-end
 
 ###########################
 # Save/Load the System
 ###########################
-# path = "Projects/NVE/sienna_runs/nve_system.json"
-to_json(sys, path, force=true)
-sys = System(path)
+path = "Projects/NVE/sienna_runs/nve_system.json"
+# to_json(sys, path, force=true)
+# sys = System(path)
 ####
 # Inspect Data
 ####
@@ -157,8 +138,40 @@ reserves_spinning = collect(get_components(VariableReserve{ReserveUp}, sys));
 reserves_non_spinning = collect(get_components(VariableReserveNonSpinning, sys));
 
 # get_time_series_array( SingleTimeSeries, get_component(ThermalStandard,sys, "Tracy 4&5 CC"), "fuel_price")
-get_time_series_array( SingleTimeSeries, get_component( RenewableDispatch ,sys, "Fish Springs Ranch Solar"), "max_active_power")
+# get_time_series_array( SingleTimeSeries, get_component( RenewableDispatch ,sys, "Fish Springs Ranch Solar"), "max_active_power")
 # get_time_series_array( SingleTimeSeries, get_component( PowerLoad ,sys, "Sierra"), "max_active_power")
+
+# Enable all storage devices to participate in reserves
+for storage in get_components(EnergyReservoirStorage, sys)
+    #concat the two vectors of services 
+    eligible_services = vcat(
+        collect(get_components(VariableReserve{ReserveUp}, sys)), 
+        # collect(get_components(VariableReserveNonSpinning, sys))
+        )
+    set_services!(storage, eligible_services)
+    set_initial_storage_capacity_level!(storage, 0.6)
+end
+
+# Set generator services (ie assign memberships)
+for gen in get_components(ThermalStandard, sys)
+    #concat the two vectors of services 
+    eligible_services = vcat(
+        collect(get_components(VariableReserve{ReserveUp}, sys)), 
+        # collect(get_components(VariableReserveNonSpinning, sys))
+        )
+    set_services!(gen, eligible_services)
+end
+
+# Set generator services (ie assign memberships)
+for gen in get_components(RenewableDispatch, sys)
+    #concat the two vectors of services 
+    eligible_services = vcat(
+        collect(get_components(VariableReserve{ReserveUp}, sys)), 
+        )
+    set_services!(gen, eligible_services)
+end
+
+# Add Renewable Generators to the VariableReserveNonSpinning
 
 ##############
 ## Additional network edits
@@ -178,6 +191,7 @@ transform_single_time_series!(sys, Hour(48), Hour(24))
 template_uc = ProblemTemplate()
 set_device_model!(template_uc, ThermalStandard, ThermalStandardUnitCommitment)
 set_device_model!(template_uc, RenewableDispatch, RenewableFullDispatch)
+# set_device_model!(template_uc, RenewableDispatch, FixedOutput) # test fixed output- no curtailment allowed
 set_device_model!(template_uc, HydroDispatch, HydroDispatchRunOfRiver)
 set_device_model!(template_uc, PowerLoad, StaticPowerLoad)
 
@@ -185,17 +199,17 @@ storage_model = DeviceModel(
     EnergyReservoirStorage,
     StorageDispatchWithReserves;
     attributes = Dict(
-        "reservation" => false,
+        "reservation" => true, # True prevents discharging and charging in the same period
         "cycling_limits" => false,
         "energy_target" => false,
         "complete_coverage" => false,
-        "regularization" => true,
+        "regularization" => false, # Regularizes storage dispatch to prevent large swings in dispatch.
     ),
 )
 set_device_model!(template_uc, storage_model)
 
-# set_service_model!(template_uc, VariableReserveNonSpinning, NonSpinningReserve)
-# set_service_model!(template_uc, VariableReserve{ReserveUp}, RangeReserve)
+# set_service_model!(template_uc, ServiceModel(VariableReserveNonSpinning, NonSpinningReserve; use_slacks = true))
+set_service_model!(template_uc, VariableReserve{ReserveUp}, RangeReserve)
 
 # set_network_model!(template_uc, NetworkModel(CopperPlatePowerModel; use_slacks = true))
 set_device_model!(template_uc, AreaInterchange, StaticBranch) 
@@ -214,13 +228,11 @@ UC_decision = DecisionModel(
     rebuild_model = false,
     store_variable_names = true,
     calculate_conflict = true,
-    # horizon=Hour(48),
 )
 
 sim_model = SimulationModels(
     decision_models = [UC_decision],
     )
-
 
 sim_sequence = SimulationSequence(
     models = sim_model,
@@ -236,14 +248,13 @@ sim = Simulation(
 
 build!(sim; console_level = Logging.Info,)
 execute!(sim, enable_progress_bar = true)
-#Look ahead period for UC problem
 
 ################################################################################
 # Read and Export Results for Comparison Notebooks
 # https://nrel-sienna.github.io/PowerSimulations.jl/latest/modeler_guide/read_results/
 ################################################################################
 sim_results = SimulationResults(sim)
-results = get_decision_problem_results(sim_results, "UC"); # UC stage result metadata
+results = get_decision_problem_results(sim_results, "lookahead_UC"); # UC stage result metadata
 
 # Input Parameters
 load_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__PowerLoad")
@@ -256,6 +267,7 @@ pc_thermal = read_realized_expression(results, "ProductionCostExpression__Therma
 # Output Variables
 thermal_active_power = read_realized_variable(results, "ActivePowerVariable__ThermalStandard")
 renewable_active_power = read_realized_variable(results, "ActivePowerVariable__RenewableDispatch")
+# renewable_active_power = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableDispatch")
 # Concatenate thermal and renewable active power by DateTime
 gen_active_power = hcat(thermal_active_power, select(renewable_active_power, Not(1)))
 
@@ -280,11 +292,6 @@ CSV.write("Projects/NVE/sienna_runs/run_output/results/generation_by_fuel.csv", 
 
 plotlyjs()
 plot_fuel(results; stair = true)
-
-
-
-
-
 
 
 
