@@ -50,6 +50,6 @@ ThermalStandard:
 - {fuel: null, type: CT}
 - {fuel: null, type: CC}
 
-GenericBattery:
+EnergyReservoirStorage:
 - {fuel: STORAGE, type: null}
 - {fuel: null, type: BA}

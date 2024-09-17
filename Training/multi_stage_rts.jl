@@ -5,7 +5,7 @@ using HydroPowerSimulations
 using StorageSystemsSimulations
 using HiGHS
 using Logging
-using Xpress
+using Gurobi
 using Dates
 
 sys_twin_rts_DA = build_system(PSISystems, "AC_TWO_RTO_RTS_1Hr_sys")
@@ -79,10 +79,7 @@ models = SimulationModels(;
             sys_twin_rts_DA;
             name = "UC",
             optimizer = optimizer_with_attributes(
-                Xpress.Optimizer,
-                "MIPRELSTOP" => 0.01, # Set the relative mip gap tolerance
-                "MAXMEMORYSOFT" => 600000,   # Set the maximum amount of memory the solver can use (in MB)
-            ),
+                Gurobi.Optimizer,),
             system_to_file = false,
             optimizer_solve_log_print = false,
             direct_mode_optimizer = true,
@@ -94,10 +91,7 @@ models = SimulationModels(;
             sys_twin_rts_HA;
             name = "HA",
             optimizer = optimizer_with_attributes(
-                Xpress.Optimizer,
-                "MIPRELSTOP" => 0.01,       # Set the relative mip gap tolerance
-                "MAXMEMORYSOFT" => 600000,   # Set the maximum amount of memory the solver can use (in MB)
-            ),
+                Gurobi.Optimizer),
             system_to_file = false,
             optimizer_solve_log_print = false,
             calculate_conflict = true,
@@ -108,9 +102,7 @@ models = SimulationModels(;
             sys_twin_rts_RT;
             name = "ED",
             optimizer = optimizer_with_attributes(
-                Xpress.Optimizer,
-                "MIPRELSTOP" => 0.01       # Set the relative mip gap tolerance
-            ),
+                Gurobi.Optimizer,),
             system_to_file = false,
             optimizer_solve_log_print = false,
             calculate_conflict = true,

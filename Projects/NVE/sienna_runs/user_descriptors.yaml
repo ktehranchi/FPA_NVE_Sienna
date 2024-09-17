@@ -14,4 +14,3 @@ reserves: []
 simulation_objects: []
 storage:
 - {custom_name: rating, name: input_active_power_limit_max, unit_system: natural_units}
-- {custom_name: rating, name: base_power}

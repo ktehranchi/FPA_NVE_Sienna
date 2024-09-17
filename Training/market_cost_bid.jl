@@ -1,10 +1,5 @@
 using PowerSystems, Dates
 
-heat_rate_curve = PiecewisePointCurve([(100.0, 7.0), (200.0, 9.0)])
-fuel_curve = FuelCurve(value_curve = heat_rate_curve, fuel_cost = 20.0)
-cost = ThermalGenerationCost(variable = fuel_curve, fixed = 6.0, start_up = 2000.0, shut_down = 1000.0)
-
-
 #### 
 # Time Varying MarketBidCost
 # We will need to use Time varying data to submit bids as generators in the network   
@@ -38,18 +33,25 @@ IncrementalCurve(PiecewiseStepData([1.0, 2.0, 3.0], [4.0, 6.0]), 20.0)
 PiecewiseIncrementalCurve(20.0, [1.0, 2.0, 3.0], [4.0, 6.0])
 PiecewiseStepData([1.0, 2.0, 3.0], [24.0, 26.0])
     
-data = Dict(Dates.DateTime("2020-01-01") => [
-    PiecewiseStepData([1.0, 2.0, 3.0], [4.0, 6.0]),
-    PiecewiseStepData([1.0, 2.0, 6.0], [2.0, 12.0])
-    ]
-)
+data = 
+    Dict(Dates.DateTime("2020-01-01") => [
+        PiecewiseStepData([1.0, 2.0, 3.0], [4.0, 6.0]),
+        PiecewiseStepData([1.0, 2.0, 6.0], [2.0, 12.0]),]
+    )
 
 # This formulation will error: the data must be of type PiecewiseStepData
-data = Dict(Dates.DateTime("2020-01-01") => [
-    LinearCurve(6.0),
-    LinearCurve(3.0),
-    ]
-)
+# data = Dict(Dates.DateTime("2020-01-01") => [
+#     PiecewiseIncrementalCurve(20.0, [1.0, 2.5, 3.0], [4.0, 16.0]),
+#     PiecewiseIncrementalCurve(20.0, [1.0, 2.0, 3.0], [4.0, 6.0])
+#     ]
+# )
+
+# # This formulation will error: the data must be of type PiecewiseStepData
+# data = Dict(Dates.DateTime("2020-01-01") => [
+#     LinearCurve(6.0),
+#     LinearCurve(3.0),
+#     ]
+# )
 
 time_series_data = Deterministic(
            name = "variable_cost",
