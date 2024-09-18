@@ -7,6 +7,7 @@ generator:
 - {custom_name: heat_rate_a0, name: heat_rate_a0}
 - {custom_name: heat_rate_a1, name: heat_rate_a1}
 - {custom_name: heat_rate_a2, name: heat_rate_a2}
+- {custom_name: start_up, name: startup_cost}
 - {custom_name: rating, name: output_point_1}
 - {custom_name: prime_mover_type, name: unit_type}
 load: []

@@ -26,7 +26,7 @@ RenewableNonDispatch:
 - {fuel: null, type: RTPV}
 
 ThermalStandard:
-- {fuel: OIL, type: null}
+- {fuel: OIL, type: IC}
 - {fuel: DISTILLATE_FUEL_OIL, type: null}
 - {fuel: COAL, type: null}
 - {fuel: NG, type: null}

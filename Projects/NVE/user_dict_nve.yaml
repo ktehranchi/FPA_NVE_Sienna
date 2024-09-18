@@ -72,7 +72,7 @@ plexos_fuel_map:
       type: PV
     Diesel:
       fuel: OIL
-      type: 
+      type: IC
     Hydrogen:
       fuel: HYDROGEN
       type: OT

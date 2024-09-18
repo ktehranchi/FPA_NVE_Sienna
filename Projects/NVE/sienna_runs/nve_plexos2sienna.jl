@@ -149,7 +149,7 @@ for storage in get_components(EnergyReservoirStorage, sys)
         # collect(get_components(VariableReserveNonSpinning, sys))
         )
     set_services!(storage, eligible_services)
-    set_initial_storage_capacity_level!(storage, 0.6)
+    set_initial_storage_capacity_level!(storage, 0.33)
 end
 
 # Set generator services (ie assign memberships)
@@ -171,7 +171,6 @@ for gen in get_components(RenewableDispatch, sys)
     set_services!(gen, eligible_services)
 end
 
-# Add Renewable Generators to the VariableReserveNonSpinning
 
 ##############
 ## Additional network edits
@@ -290,10 +289,9 @@ fuel_agg = PowerAnalytics.combine_categories(fuel)
 CSV.write("Projects/NVE/sienna_runs/run_output/results/generation_by_fuel.csv", fuel_agg)
 
 
+# Interactive Plot
 plotlyjs()
 plot_fuel(results; stair = true)
-
-
 
 
 #######
