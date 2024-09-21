@@ -47,12 +47,8 @@
             "count": 73
         },
         {
-            "type": "VariableReserveNonSpinning",
-            "count": 2
-        },
-        {
             "type": "VariableReserve{ReserveUp}",
-            "count": 4
+            "count": 6
         }
     ],
     "time_series_counts": [

@@ -1160,7 +1160,7 @@ version = "1.3.7"
 
 [[deps.PowerSystems]]
 deps = ["CSV", "DataFrames", "DataStructures", "Dates", "DocStringExtensions", "InfrastructureSystems", "InteractiveUtils", "JSON3", "LinearAlgebra", "Logging", "PowerFlowData", "PrettyTables", "TimeSeries", "UUIDs", "Unicode", "YAML"]
-git-tree-sha1 = "a509a6d4d1198d7920efd10273eb4bf482b5f01c"
+path = "/Users/kamrantehranchi/Local_Documents/PowerSystems.jl"
 uuid = "bcd98974-b02a-5e2f-9ee0-a103f5c450dd"
 version = "4.3.1"
 

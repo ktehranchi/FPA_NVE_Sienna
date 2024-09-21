@@ -1,3 +1,4 @@
+
 using Pkg
 using PowerSystems
 using PowerSimulations
@@ -63,8 +64,8 @@ for line in get_components(Line, sys)
             from_area = get_area(from_bus),
             to_area = get_area(to_bus),
             flow_limits = (
-                from_to= abs(area_interchange_data[area_interchange_data.name .== get_name(line), :rating_up][1]),
-                to_from= abs(area_interchange_data[area_interchange_data.name .== get_name(line), :rating_down][1]),
+                from_to=  abs(area_interchange_data[area_interchange_data.name .== get_name(line), :rating_down][1]),
+                to_from= abs(area_interchange_data[area_interchange_data.name .== get_name(line), :rating_up][1]),
                 )
         )
     )
@@ -117,7 +118,7 @@ end
 # Save/Load the System
 ###########################
 path = "Projects/NVE/sienna_runs/nve_system.json"
-# to_json(sys, path, force=true)
+to_json(sys, path, force=true)
 # sys = System(path)
 ####
 # Inspect Data
@@ -143,41 +144,52 @@ reserves_non_spinning = collect(get_components(VariableReserveNonSpinning, sys))
 
 # Enable all storage devices to participate in reserves
 for storage in get_components(EnergyReservoirStorage, sys)
-    #concat the two vectors of services 
-    eligible_services = vcat(
-        collect(get_components(VariableReserve{ReserveUp}, sys)), 
-        # collect(get_components(VariableReserveNonSpinning, sys))
-        )
-    set_services!(storage, eligible_services)
+    # #concat the two vectors of services 
+    # eligible_services = vcat(
+    #     collect(get_components(VariableReserve{ReserveUp}, sys)), 
+    #     # collect(get_components(VariableReserveNonSpinning, sys))
+    #     )
+    # set_services!(storage, eligible_services)
     set_initial_storage_capacity_level!(storage, 0.33)
 end
 
 # Set generator services (ie assign memberships)
 for gen in get_components(ThermalStandard, sys)
-    #concat the two vectors of services 
-    eligible_services = vcat(
-        collect(get_components(VariableReserve{ReserveUp}, sys)), 
-        # collect(get_components(VariableReserveNonSpinning, sys))
-        )
-    set_services!(gen, eligible_services)
+    if !occursin("Purchases", get_name(gen))
+        #concat the two vectors of services 
+        eligible_services = vcat(
+            collect(get_components(VariableReserve{ReserveUp}, sys)), 
+            # collect(get_components(VariableReserveNonSpinning, sys))
+            )
+        set_services!(gen, eligible_services)
+    end
 end
 
-# Set generator services (ie assign memberships)
-for gen in get_components(RenewableDispatch, sys)
-    #concat the two vectors of services 
-    eligible_services = vcat(
-        collect(get_components(VariableReserve{ReserveUp}, sys)), 
-        )
-    set_services!(gen, eligible_services)
-end
+# # Set generator services (ie assign memberships)
+# for gen in get_components(RenewableDispatch, sys)
+#     #concat the two vectors of services 
+#     eligible_services = vcat(
+#         collect(get_components(VariableReserve{ReserveUp}, sys)), 
+#         )
+#     set_services!(gen, eligible_services)
+# end
 
 
 ##############
 ## Additional network edits
 ##############
 # Set market purchases availability to false
-set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), false)
-set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
+# set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), false)
+# set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
+southern = get_component(ThermalStandard, sys, "Southern Purchases (NVP)")
+southern_op_cost = get_operation_cost(southern)
+
+set_available!(reserves_spinning[1], false)
+set_available!(reserves_spinning[2], false)
+set_available!(reserves_spinning[3], false)
+set_available!(reserves_spinning[4], false)
+set_available!(reserves_spinning[5], false)
+set_available!(reserves_spinning[6], false)
 
 # No Slack bus was created, set our own.
 set_bustype!(get_component(ACBus, sys, "Sierra"), "REF")
@@ -208,11 +220,25 @@ storage_model = DeviceModel(
 set_device_model!(template_uc, storage_model)
 
 # set_service_model!(template_uc, ServiceModel(VariableReserveNonSpinning, NonSpinningReserve; use_slacks = true))
-set_service_model!(template_uc, VariableReserve{ReserveUp}, RangeReserve)
+# set_service_model!(template_uc, ServiceModel(VariableReserve{ReserveUp}, RangeReserve; use_slacks = true))
 
-# set_network_model!(template_uc, NetworkModel(CopperPlatePowerModel; use_slacks = true))
+
+# copper_plate = NetworkModel(
+#         CopperPlatePowerModel,
+#         use_slacks=true,
+#         PTDF_matrix=PTDF(sys),
+#         duals=[CopperPlateBalanceConstraint],
+#     )
+# set_network_model!(template_uc, copper_plate)
+
+area_interchange = NetworkModel(
+        AreaBalancePowerModel,
+        use_slacks=false,
+        # PTDF_matrix=PTDF(sys),
+        # duals=[CopperPlateBalanceConstraint],
+    )
 set_device_model!(template_uc, AreaInterchange, StaticBranch) 
-set_network_model!(template_uc, NetworkModel(AreaBalancePowerModel))
+set_network_model!(template_uc, area_interchange)
 
 # Build Decision Model and Simulaiton
 UC_decision = DecisionModel(
@@ -239,12 +265,12 @@ sim_sequence = SimulationSequence(
 
 sim = Simulation(
     name = "test-sim",
-    steps = 7,  # Step in your simulation
+    steps = 5,  # Step in your simulation
     models = sim_model,
     sequence = sim_sequence,
     simulation_folder = mktempdir("Projects/NVE/sienna_runs/run_output/simulation_files", cleanup = true),
 )
-
+#create this output simulation folder
 build!(sim; console_level = Logging.Info,)
 execute!(sim, enable_progress_bar = true)
 
@@ -266,9 +292,8 @@ pc_thermal = read_realized_expression(results, "ProductionCostExpression__Therma
 # Output Variables
 thermal_active_power = read_realized_variable(results, "ActivePowerVariable__ThermalStandard")
 renewable_active_power = read_realized_variable(results, "ActivePowerVariable__RenewableDispatch")
-# renewable_active_power = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableDispatch")
-# Concatenate thermal and renewable active power by DateTime
 gen_active_power = hcat(thermal_active_power, select(renewable_active_power, Not(1)))
+tx_flow = read_realized_variable(results, "FlowActivePowerVariable__AreaInterchange")
 
 storage_charge = read_realized_variable(results, "ActivePowerInVariable__EnergyReservoirStorage")
 CSV.write("Projects/NVE/sienna_runs/run_output/results/storage_charge.csv", storage_charge)
@@ -276,6 +301,7 @@ CSV.write("Projects/NVE/sienna_runs/run_output/results/storage_charge.csv", stor
 # Export Dataframes to csv
 CSV.write("Projects/NVE/sienna_runs/run_output/results/load_active_power.csv", load_parameter)
 CSV.write("Projects/NVE/sienna_runs/run_output/results/generator_active_power.csv", gen_active_power)
+CSV.write("Projects/NVE/sienna_runs/run_output/results/tx_flow.csv", tx_flow)
 
 # ### Post Process and Analyze Network results
 # plot_dataframe(load)
@@ -292,6 +318,11 @@ CSV.write("Projects/NVE/sienna_runs/run_output/results/generation_by_fuel.csv", 
 # Interactive Plot
 plotlyjs()
 plot_fuel(results; stair = true)
+
+
+### get LMPS
+network_dual = read_realized_dual(results, "CopperPlateBalanceConstraint__System")
+
 
 
 #######
