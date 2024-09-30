@@ -1,4 +1,5 @@
 
+using Revise
 using Pkg
 using PowerSystems
 using PowerSimulations
@@ -17,7 +18,7 @@ using CSV
 using TimeSeries
 
 ## Load and Save System From Parse R2X Data
-logger = configure_logging(console_level=Logging.Warn)
+logger = configure_logging(console_level=Logging.Info)
 data_dir = "Projects/NVE/output/"
 base_power = 1.0
 descriptors = "Projects/NVE/sienna_runs/user_descriptors.yaml"
@@ -31,7 +32,6 @@ data = PowerSystemTableData(
     timeseries_metadata_file = timeseries_metadata_file,
 )
 sys = System(data, time_series_in_memory= true)
-
 
 #############################################
 # Modify System
@@ -114,11 +114,12 @@ for reserve in get_components(VariableReserve{ReserveUp}, sys)
 end
 
 
+
 ###########################
 # Save/Load the System
 ###########################
 path = "Projects/NVE/sienna_runs/nve_system.json"
-to_json(sys, path, force=true)
+# to_json(sys, path, force=true)
 # sys = System(path)
 ####
 # Inspect Data
@@ -139,8 +140,6 @@ reserves_spinning = collect(get_components(VariableReserve{ReserveUp}, sys));
 reserves_non_spinning = collect(get_components(VariableReserveNonSpinning, sys));
 
 # get_time_series_array( SingleTimeSeries, get_component(ThermalStandard,sys, "Tracy 4&5 CC"), "fuel_price")
-# get_time_series_array( SingleTimeSeries, get_component( RenewableDispatch ,sys, "Fish Springs Ranch Solar"), "max_active_power")
-# get_time_series_array( SingleTimeSeries, get_component( PowerLoad ,sys, "Sierra"), "max_active_power")
 
 # Enable all storage devices to participate in reserves
 for storage in get_components(EnergyReservoirStorage, sys)
@@ -174,6 +173,46 @@ end
 #     set_services!(gen, eligible_services)
 # end
 
+######
+# Artificially Constraint Imports
+######
+plexos_imports = data_dir * "plexos_imports.csv"
+df_plexos_imports = DataFrame(CSV.File(plexos_imports))
+timestamps = range(DateTime("2030-01-01T00:00:00"), step = Hour(1), length = 8760)
+
+southern = get_component(ThermalStandard, sys, "Southern Purchases (NVP)")
+northern = get_component(ThermalStandard, sys, "Northern Purchases (Sierra)")
+
+names = ["Southern Purchases (NVP)", "Northern Purchases (Sierra)"]
+for name in names
+    thermal_gen = get_component(ThermalStandard, sys, name)
+    set_available!(thermal_gen, false)
+
+    renew_dispatch = RenewableDispatch(
+        name = name,
+        bus = get_bus(thermal_gen),
+        available = true,
+        rating = get_max_active_power(thermal_gen),
+        active_power = 0.0,
+        reactive_power = 0.0,
+        operation_cost = get_operation_cost(gens_renew[1]),
+        prime_mover_type = PrimeMovers.PVe,
+        reactive_power_limits = (0.0, 0.0),
+        power_factor = 1.0,
+        base_power= 1.0,
+    )
+    add_component!(sys, renew_dispatch)
+    import_limits = df_plexos_imports[!, name]
+    ta = TimeArray(timestamps, import_limits)
+    ts = SingleTimeSeries(
+        name = "max_active_power",
+        data = ta,
+        # scaling_factor_multiplier = get_max_active_power
+    )
+    add_time_series!(sys, renew_dispatch, ts)
+end
+
+
 
 ##############
 ## Additional network edits
@@ -183,6 +222,26 @@ end
 # set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
 southern = get_component(ThermalStandard, sys, "Southern Purchases (NVP)")
 southern_op_cost = get_operation_cost(southern)
+
+harry = get_component(ThermalStandard, sys, "Harry Allen 3")
+harry_op_cost = get_operation_cost(harry)
+
+new_vc = PiecewisePointCurve(
+    [
+        (35 , 682.0648711),
+        (44.8, 682.1),
+        (54.6, 712.2643009),
+        (64.4, 796.2433112),
+        (74.2, 928.1068642),
+        (84, 1107.85496),
+    ]
+)
+
+fuel_curve = FuelCurve(
+    value_curve = new_vc, 
+    fuel_cost = harry_op_cost.variable.fuel_cost
+    )    
+set_operation_cost!(harry, ThermalGenerationCost(variable = fuel_curve, fixed = 0, start_up = harry_op_cost.start_up, shut_down = harry_op_cost.shut_down))
 
 set_available!(reserves_spinning[1], false)
 set_available!(reserves_spinning[2], false)
@@ -202,7 +261,6 @@ transform_single_time_series!(sys, Hour(48), Hour(24))
 template_uc = ProblemTemplate()
 set_device_model!(template_uc, ThermalStandard, ThermalStandardUnitCommitment)
 set_device_model!(template_uc, RenewableDispatch, RenewableFullDispatch)
-# set_device_model!(template_uc, RenewableDispatch, FixedOutput) # test fixed output- no curtailment allowed
 set_device_model!(template_uc, HydroDispatch, HydroDispatchRunOfRiver)
 set_device_model!(template_uc, PowerLoad, StaticPowerLoad)
 
@@ -245,7 +303,7 @@ UC_decision = DecisionModel(
     template_uc,
     sys;
     name = "lookahead_UC",
-    optimizer = optimizer_with_attributes(Gurobi.Optimizer),
+    optimizer = optimizer_with_attributes(Gurobi.Optimizer, "MIPGap" => 2e-2),
     system_to_file = false,
     initialize_model = true,
     optimizer_solve_log_print = true,
@@ -253,6 +311,7 @@ UC_decision = DecisionModel(
     rebuild_model = false,
     store_variable_names = true,
     calculate_conflict = true,
+    export_optimization_model = true,
 )
 
 sim_model = SimulationModels(
@@ -281,6 +340,14 @@ execute!(sim, enable_progress_bar = true)
 sim_results = SimulationResults(sim)
 results = get_decision_problem_results(sim_results, "lookahead_UC"); # UC stage result metadata
 
+# Get Production Costs
+pc_thermal = read_expression(results, "ProductionCostExpression__ThermalStandard")
+
+pc_thermal = read_realized_expression(results, "ProductionCostExpression__ThermalStandard")
+pc_renewable = read_realized_expression(results, "ProductionCostExpression__RenewableDispatch")
+pc_hydro = read_realized_expression(results, "ProductionCostExpression__HydroDispatch")
+all_pc = hcat(pc_thermal,select(pc_renewable, Not(1)), select(pc_hydro, Not(1)))
+
 # Input Parameters
 load_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__PowerLoad")
 renewable_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableDispatch")
@@ -300,8 +367,11 @@ CSV.write("Projects/NVE/sienna_runs/run_output/results/storage_charge.csv", stor
 
 # Export Dataframes to csv
 CSV.write("Projects/NVE/sienna_runs/run_output/results/load_active_power.csv", load_parameter)
+CSV.write("Projects/NVE/sienna_runs/run_output/results/renewable_parameters.csv", renewable_parameter)
+CSV.write("Projects/NVE/sienna_runs/run_output/results/renewable_active_power.csv", renewable_active_power)
 CSV.write("Projects/NVE/sienna_runs/run_output/results/generator_active_power.csv", gen_active_power)
 CSV.write("Projects/NVE/sienna_runs/run_output/results/tx_flow.csv", tx_flow)
+CSV.write("Projects/NVE/sienna_runs/run_output/results/production_costs.csv", all_pc)
 
 # ### Post Process and Analyze Network results
 # plot_dataframe(load)
@@ -314,6 +384,7 @@ fuel = PowerAnalytics.categorize_data(all_gen_data.data, cat; curtailment = true
 fuel_agg = PowerAnalytics.combine_categories(fuel)
 CSV.write("Projects/NVE/sienna_runs/run_output/results/generation_by_fuel.csv", fuel_agg)
 
+gen_active_power[!, southern.name]
 
 # Interactive Plot
 plotlyjs()

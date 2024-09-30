@@ -1,3 +1,23 @@
+# branch: []
+# bus: []
+# dc_branch: []
+# generator:
+# - {custom_name: active_power_limits_max, name: active_power_limits_max, unit_system: natural_units}
+# - {custom_name: min_rated_capacity, name: active_power_limits_min, unit_system: natural_units}
+# - {custom_name: heat_rate_a0, name: heat_rate_a0}
+# - {custom_name: heat_rate_a1, name: heat_rate_a1}
+# - {custom_name: heat_rate_a2, name: heat_rate_a2}
+# # - {custom_name: output_point_0, name: output_point_0}
+# # - {custom_name: output_point_1, name: output_point_1}
+# # - {custom_name: output_point_2, name: output_point_2}
+# load: []
+# reserves: []
+# simulation_objects: []
+# storage:
+# - {custom_name: rating, name: input_active_power_limit_max, unit_system: natural_units}
+# - {custom_name: initial_storage_capacity_level, name: initial_storage}
+
+
 branch: []
 bus: []
 dc_branch: []
