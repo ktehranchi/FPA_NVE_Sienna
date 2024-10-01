@@ -98,3 +98,12 @@ python
 ```
 
 3: Open the SQLite database in DBeaver. The main `object_query` used in plexosdb is [here](https://github.com/NREL/plexosdb/blob/main/src/plexosdb/queries/object_query.sql)
+
+
+## Changing Branches in Julia
+
+If NREL pushes a changes to a sienna julia package, and you need to test those change before they are published to the main branch, you need to follow the following steps:
+
+1. Activate your Project Environment
+2. Switch branches by enterings `] add PowerSimulations#jd/multiple_fixes`
+3. Restart your julia instance by closing the terminal and resarting

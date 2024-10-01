@@ -17,9 +17,14 @@ using Plots
 using CSV
 using TimeSeries
 
+#Set all Paths
+data_dir = "Projects/NVE/output/" # r2x output
+output_dir = "Projects/NVE/sienna_runs/run_output/" # Sienna outputs
+scenario_dir = output_dir * "results_no_imports/" # Change if youre creating a different sienna scenario
+mkdir(scenario_dir)
+
 ## Load and Save System From Parse R2X Data
 logger = configure_logging(console_level=Logging.Info)
-data_dir = "Projects/NVE/output/"
 base_power = 1.0
 descriptors = "Projects/NVE/sienna_runs/user_descriptors.yaml"
 generator_mapping = "Projects/NVE/sienna_runs/generator_mapping.yaml"
@@ -113,14 +118,12 @@ for reserve in get_components(VariableReserve{ReserveUp}, sys)
     # end
 end
 
-
-
 ###########################
 # Save/Load the System
 ###########################
-path = "Projects/NVE/sienna_runs/nve_system.json"
-# to_json(sys, path, force=true)
-# sys = System(path)
+# to_json(sys, output_dir * "nve_system.json", force=true)
+# sys = System(output_dir * "nve_system.json")
+
 ####
 # Inspect Data
 ####
@@ -140,6 +143,10 @@ reserves_spinning = collect(get_components(VariableReserve{ReserveUp}, sys));
 reserves_non_spinning = collect(get_components(VariableReserveNonSpinning, sys));
 
 # get_time_series_array( SingleTimeSeries, get_component(ThermalStandard,sys, "Tracy 4&5 CC"), "fuel_price")
+
+##### 
+# Modifying Reserve Requirements
+#####
 
 # Enable all storage devices to participate in reserves
 for storage in get_components(EnergyReservoirStorage, sys)
@@ -173,6 +180,14 @@ end
 #     set_services!(gen, eligible_services)
 # end
 
+# Disable all reserves
+set_available!(reserves_spinning[1], false)
+set_available!(reserves_spinning[2], false)
+set_available!(reserves_spinning[3], false)
+set_available!(reserves_spinning[4], false)
+set_available!(reserves_spinning[5], false)
+set_available!(reserves_spinning[6], false)
+
 ######
 # Artificially Constraint Imports
 ######
@@ -183,42 +198,44 @@ timestamps = range(DateTime("2030-01-01T00:00:00"), step = Hour(1), length = 876
 southern = get_component(ThermalStandard, sys, "Southern Purchases (NVP)")
 northern = get_component(ThermalStandard, sys, "Northern Purchases (Sierra)")
 
-names = ["Southern Purchases (NVP)", "Northern Purchases (Sierra)"]
-for name in names
-    thermal_gen = get_component(ThermalStandard, sys, name)
-    set_available!(thermal_gen, false)
+# # Add Market Purchases as RenewableDispatch
+# names = ["Southern Purchases (NVP)", "Northern Purchases (Sierra)"]
+# for name in names
+#     thermal_gen = get_component(ThermalStandard, sys, name)
+#     set_available!(thermal_gen, false)
 
-    renew_dispatch = RenewableDispatch(
-        name = name,
-        bus = get_bus(thermal_gen),
-        available = true,
-        rating = get_max_active_power(thermal_gen),
-        active_power = 0.0,
-        reactive_power = 0.0,
-        operation_cost = get_operation_cost(gens_renew[1]),
-        prime_mover_type = PrimeMovers.PVe,
-        reactive_power_limits = (0.0, 0.0),
-        power_factor = 1.0,
-        base_power= 1.0,
-    )
-    add_component!(sys, renew_dispatch)
-    import_limits = df_plexos_imports[!, name]
-    ta = TimeArray(timestamps, import_limits)
-    ts = SingleTimeSeries(
-        name = "max_active_power",
-        data = ta,
-        # scaling_factor_multiplier = get_max_active_power
-    )
-    add_time_series!(sys, renew_dispatch, ts)
-end
+#     renew_dispatch = RenewableDispatch(
+#         name = name,
+#         bus = get_bus(thermal_gen),
+#         available = true,
+#         rating = get_max_active_power(thermal_gen),
+#         active_power = 0.0,
+#         reactive_power = 0.0,
+#         operation_cost = get_operation_cost(gens_renew[1]),
+#         prime_mover_type = PrimeMovers.PVe,
+#         reactive_power_limits = (0.0, 0.0),
+#         power_factor = 1.0,
+#         base_power= 1.0,
+#     )
+#     add_component!(sys, renew_dispatch)
+#     import_limits = df_plexos_imports[!, name]
+#     ta = TimeArray(timestamps, import_limits)
+#     ts = SingleTimeSeries(
+#         name = "max_active_power",
+#         data = ta,
+#         # scaling_factor_multiplier = get_max_active_power
+#     )
+#     add_time_series!(sys, renew_dispatch, ts)
+# end
 
+# Set market purchases availability to false
+set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), false)
+set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
 
 ##############
 ## Additional network edits
 ##############
-# Set market purchases availability to false
-# set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), false)
-# set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
+
 set_available!(get_component(RenewableDispatch, sys, "Sierra Solar II"), false)
 
 southern = get_component(ThermalStandard, sys, "Southern Purchases (NVP)")
@@ -244,12 +261,6 @@ fuel_curve = FuelCurve(
     )    
 set_operation_cost!(harry, ThermalGenerationCost(variable = fuel_curve, fixed = 0, start_up = harry_op_cost.start_up, shut_down = harry_op_cost.shut_down))
 
-set_available!(reserves_spinning[1], false)
-set_available!(reserves_spinning[2], false)
-set_available!(reserves_spinning[3], false)
-set_available!(reserves_spinning[4], false)
-set_available!(reserves_spinning[5], false)
-set_available!(reserves_spinning[6], false)
 
 # No Slack bus was created, set our own.
 set_bustype!(get_component(ACBus, sys, "Sierra"), "REF")
@@ -328,7 +339,7 @@ sim = Simulation(
     steps = 5,  # Step in your simulation
     models = sim_model,
     sequence = sim_sequence,
-    simulation_folder = mktempdir("Projects/NVE/sienna_runs/run_output/simulation_files", cleanup = true),
+    simulation_folder = mktempdir(output_dir * "simulation_files", cleanup = true),
 )
 #create this output simulation folder
 build!(sim; console_level = Logging.Info,)
@@ -338,6 +349,7 @@ execute!(sim, enable_progress_bar = true)
 # Read and Export Results for Comparison Notebooks
 # https://nrel-sienna.github.io/PowerSimulations.jl/latest/modeler_guide/read_results/
 ################################################################################
+
 sim_results = SimulationResults(sim)
 results = get_decision_problem_results(sim_results, "lookahead_UC"); # UC stage result metadata
 
@@ -363,16 +375,18 @@ renewable_active_power = read_realized_variable(results, "ActivePowerVariable__R
 gen_active_power = hcat(thermal_active_power, select(renewable_active_power, Not(1)))
 tx_flow = read_realized_variable(results, "FlowActivePowerVariable__AreaInterchange")
 
+storage_discharge = read_realized_variable(results, "StorageEnergyOutput__EnergyReservoirStorage")
 storage_charge = read_realized_variable(results, "ActivePowerInVariable__EnergyReservoirStorage")
-CSV.write("Projects/NVE/sienna_runs/run_output/results/storage_charge.csv", storage_charge)
 
 # Export Dataframes to csv
-CSV.write("Projects/NVE/sienna_runs/run_output/results/load_active_power.csv", load_parameter)
-CSV.write("Projects/NVE/sienna_runs/run_output/results/renewable_parameters.csv", renewable_parameter)
-CSV.write("Projects/NVE/sienna_runs/run_output/results/renewable_active_power.csv", renewable_active_power)
-CSV.write("Projects/NVE/sienna_runs/run_output/results/generator_active_power.csv", gen_active_power)
-CSV.write("Projects/NVE/sienna_runs/run_output/results/tx_flow.csv", tx_flow)
-CSV.write("Projects/NVE/sienna_runs/run_output/results/production_costs.csv", all_pc)
+CSV.write(scenario_dir * "storage_charge.csv", storage_charge)
+CSV.write(scenario_dir * "storage_discharge.csv", storage_discharge)
+CSV.write(scenario_dir * "load_active_power.csv", load_parameter)
+CSV.write(scenario_dir * "renewable_parameters.csv", renewable_parameter)
+CSV.write(scenario_dir * "renewable_active_power.csv", renewable_active_power)
+CSV.write(scenario_dir * "generator_active_power.csv", gen_active_power)
+CSV.write(scenario_dir * "tx_flow.csv", tx_flow)
+CSV.write(scenario_dir * "production_costs.csv", all_pc)
 
 # ### Post Process and Analyze Network results
 # plot_dataframe(load)
@@ -383,15 +397,20 @@ all_gen_data = PowerAnalytics.get_generation_data(results)
 cat = PowerAnalytics.make_fuel_dictionary(sys)
 fuel = PowerAnalytics.categorize_data(all_gen_data.data, cat; curtailment = true, slacks = true)
 fuel_agg = PowerAnalytics.combine_categories(fuel)
-CSV.write("Projects/NVE/sienna_runs/run_output/results/generation_by_fuel.csv", fuel_agg)
-
-# Interactive Plot
-plotlyjs()
-plot_fuel(results; stair = true)
+CSV.write(scenario_dir * "generation_by_fuel.csv", fuel_agg)
 
 
-### get LMPS
-network_dual = read_realized_dual(results, "CopperPlateBalanceConstraint__System")
+
+
+################################################################################
+
+# # Interactive Plot
+# plotlyjs()
+# plot_fuel(results; stair = true)
+
+
+# ### get LMPS
+# network_dual = read_realized_dual(results, "CopperPlateBalanceConstraint__System")
 
 
 

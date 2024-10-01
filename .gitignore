@@ -9,6 +9,7 @@
 *.csv
 jl_*/
 *.xml
+*.png 
 
 # Folders to ignore
 *output/
