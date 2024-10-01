@@ -213,13 +213,14 @@ for name in names
 end
 
 
-
 ##############
 ## Additional network edits
 ##############
 # Set market purchases availability to false
 # set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), false)
 # set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
+set_available!(get_component(RenewableDispatch, sys, "Sierra Solar II"), false)
+
 southern = get_component(ThermalStandard, sys, "Southern Purchases (NVP)")
 southern_op_cost = get_operation_cost(southern)
 
@@ -383,8 +384,6 @@ cat = PowerAnalytics.make_fuel_dictionary(sys)
 fuel = PowerAnalytics.categorize_data(all_gen_data.data, cat; curtailment = true, slacks = true)
 fuel_agg = PowerAnalytics.combine_categories(fuel)
 CSV.write("Projects/NVE/sienna_runs/run_output/results/generation_by_fuel.csv", fuel_agg)
-
-gen_active_power[!, southern.name]
 
 # Interactive Plot
 plotlyjs()
