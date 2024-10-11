@@ -10,6 +10,7 @@
 jl_*/
 *.xml
 *.png 
+*.db
 
 # Folders to ignore
 *output/
