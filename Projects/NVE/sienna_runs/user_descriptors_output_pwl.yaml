@@ -1,0 +1,23 @@
+branch: []
+bus: []
+dc_branch: []
+generator:
+- {custom_name: startup_cost, name: startup, unit_system: natural_units}
+- {custom_name: fixed_cost, name: fixed, unit_system: natural_units}
+- {custom_name: variable_cost, name: vom_price, unit_system: natural_units}
+- {custom_name: unit_type, name: prime_mover_type, unit_system: natural_units}
+- {custom_name: active_power, name: output_point_1}
+- {custom_name: active_power, name: rating}
+- {custom_name: unit_type, name: prime_mover_type}
+- {custom_name: heat_rate_a0, name: heat_rate_a0}
+- {custom_name: heat_rate_a1, name: heat_rate_a1}
+- {custom_name: heat_rate_a2, name: heat_rate_a2}
+# - {custom_name: output_point_0, name: output_point_0}
+# - {custom_name: output_point_1, name: output_point_1}
+# - {custom_name: output_point_2, name: output_point_2}
+load: []
+reserves: []
+simulation_objects: []
+storage:
+- {custom_name: rating, name: input_active_power_limit_max, unit_system: natural_units}
+- {custom_name: initial_storage_capacity_level, name: initial_storage}
