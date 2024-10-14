@@ -130,6 +130,7 @@ function constrain_market_imports(sys::System, data_dir::String)
     plexos_imports = data_dir * "/plexos_imports.csv"
     df_plexos_imports = DataFrame(CSV.File(plexos_imports))
     timestamps = range(DateTime("2030-01-01T00:00:00"), step = Hour(1), length = 8760)
+    gens_renew = collect(get_components(RenewableDispatch, sys));
 
     southern = get_component(ThermalStandard, sys, "Southern Purchases (NVP)")
     northern = get_component(ThermalStandard, sys, "Northern Purchases (Sierra)")

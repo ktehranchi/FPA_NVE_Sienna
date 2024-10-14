@@ -1164,8 +1164,8 @@ version = "0.11.1"
 
 [[deps.PowerSimulations]]
 deps = ["CSV", "DataFrames", "DataStructures", "Dates", "Distributed", "DocStringExtensions", "HDF5", "InfrastructureSystems", "InteractiveUtils", "JSON", "JSON3", "JuMP", "LinearAlgebra", "Logging", "MathOptInterface", "PowerModels", "PowerNetworkMatrices", "PowerSystems", "PrettyTables", "ProgressMeter", "Serialization", "TimeSeries", "TimerOutputs"]
-git-tree-sha1 = "dda0dc806c0c558463870e058b1c9b919efc905a"
-repo-rev = "jd/multiple_fixes"
+git-tree-sha1 = "af443bf75ee93fd1616370355c6867044f9c1094"
+repo-rev = "jd/add_thermal_time_series"
 repo-url = "https://github.com/NREL-Sienna/PowerSimulations.jl.git"
 uuid = "e690365d-45e2-57bb-ac84-44ba829e73c4"
 version = "0.28.3"
@@ -1178,9 +1178,9 @@ version = "1.3.7"
 
 [[deps.PowerSystems]]
 deps = ["CSV", "DataFrames", "DataStructures", "Dates", "DocStringExtensions", "InfrastructureSystems", "InteractiveUtils", "JSON3", "LinearAlgebra", "Logging", "PowerFlowData", "PrettyTables", "TimeSeries", "UUIDs", "Unicode", "YAML"]
-path = "/Users/kamrantehranchi/Local_Documents/PowerSystems.jl"
+git-tree-sha1 = "ae41153cb68fc8fb0582a40e1f34b8329a2d94a1"
 uuid = "bcd98974-b02a-5e2f-9ee0-a103f5c450dd"
-version = "4.3.1"
+version = "4.4.0"
 
 [[deps.PrecompileTools]]
 deps = ["Preferences"]

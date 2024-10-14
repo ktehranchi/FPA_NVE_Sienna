@@ -45,7 +45,7 @@ data = PowerSystemTableData(
 pw_data = DataFrame(CSV.File(data_dir * r2x_output_name * "/generator_PWL_output.csv"))
 sys = System(data, time_series_in_memory= true)
 
-gemini = get_component(RenewableDispatch, sys, "Gemini Solar")
+gemini = get_component(ThermalStandard, sys, "Beowawe Geothermal Power Plant")
 get_time_series_array(SingleTimeSeries, gemini, "max_active_power")
 ###########################
 # Modify System
@@ -87,7 +87,7 @@ end
 
 
 # Disable all reserves
-for reserve in reserves_spinning
+for reserve in collect(get_components(VariableReserve{ReserveUp}, sys))
     set_available!(reserve, false)
 end
 
@@ -102,6 +102,10 @@ constrain_market_imports(sys, data_dir * r2x_output_name)
 set_available!(get_component(RenewableDispatch, sys, "Sierra Solar II"), false)
 for hydro in get_components(HydroDispatch, sys)
     set_available!(hydro, true)
+end
+
+for thermal_gen in get_components(ThermalStandard, sys)
+    set_active_power!(thermal_gen, 0.0)
 end
 
 ##############
@@ -159,7 +163,8 @@ reserves_non_spinning = collect(get_components(VariableReserveNonSpinning, sys))
 ##  Network Simulation
 ############################################################
 template_uc = ProblemTemplate()
-set_device_model!(template_uc, ThermalStandard, ThermalStandardUnitCommitment)
+thermal_model = DeviceModel(ThermalStandard, ThermalStandardUnitCommitment; time_series_names = Dict(ActivePowerTimeSeriesParameter => "max_active_power"))
+set_device_model!(template_uc, thermal_model) 
 set_device_model!(template_uc, RenewableDispatch, RenewableFullDispatch)
 set_device_model!(template_uc, HydroDispatch, HydroDispatchRunOfRiver)
 set_device_model!(template_uc, PowerLoad, StaticPowerLoad)
