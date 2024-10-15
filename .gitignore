@@ -16,3 +16,10 @@ jl_*/
 *output/
 NVE_7_19_24/
 NVE_9_16_24/
+Projects/Learning_Tutorials
+
+#specific files to ignore
+nve_env/Manifest.toml
+nve_env/Project.toml
+Projects/NVE/sienna_runs/nve_plexos2sienna_FPA_v1.jl
+Projects/NVE/sienna_runs/nve_plexos2sienna_FPA_v3_old.jl
