@@ -1,73 +1,23 @@
 
-function modify_data(data::PowerSystemTableData, data_dir::String)
-    # Manual Modifications to Data
+function modify_data(data::PowerSystemTableData)
     df_gen = data.category_to_df[PowerSystems.InputCategoryModule.InputCategory.GENERATOR]
     df_gen[!, :fuel] = replace(df_gen[!, :fuel], "HYDROGEN" => "OTHER")
     df_gen[!, :fuel] = replace(df_gen[!, :fuel], "WASTE_HEAT" => "OTHER")
-    df_gen[!, :fuel_price] = replace(df_gen[!, :fuel_price], "NA" => "0")
-    df_gen[!, :fuel_price] = parse.(Float64, df_gen[!, :fuel_price])
-    df_gen[!, :base_mva] = ones(nrow(df_gen))
-    df_gen[!, :shut_down] = zeros(nrow(df_gen))
-    df_gen[!, :start_up] = df_gen[!, :startup_cost]
-    df_gen[!, :fixed] = df_gen[!, :variable_cost] # variable and fixed are flipped from r2x
+    df_gen[!, :fixed] = df_gen[!, :variable_cost]
     df_gen[!, :vom_price] = df_gen[!, :fixed_cost]
-    df_gen[!, :prime_mover_type] = df_gen[!, :unit_type]
-    df_gen[!, :rating] = df_gen[!, :active_power]
-    # Cols to drop
-    columns_to_drop = ["startup_cost", "fixed_cost", "variable_cost"]
-    df_gen = select(df_gen, Not(columns_to_drop))
 
-    # Need to manually fill in the NA values in the linear heat rate data which I will later replace with the PWL function data, in the file i manully put trash values in there.
-    for i in 1:nrow(df_gen)
-        if df_gen[i, :heat_rate_incr_1] != "NA"
-            df_gen[i, :heat_rate_a0] = "0"
-            df_gen[i, :heat_rate_a1] = "0"
-        end
-    end
-
-    # Specify the list of columns that should not be dropped
-    columns_to_keep = ["heat_rate_a2", "category", "pump_load"]  
-    df_gen = select(df_gen, Not([col for col in names(df_gen) if all(x -> x == "NA", df_gen[!, col]) && !(col in columns_to_keep)]))
-
-    # Specify the list of columns to move into the new DataFrame
-    cols = ["heat_rate_avg_0", "heat_rate_incr_1", "heat_rate_incr_2", "heat_rate_incr_3", "heat_rate_incr_4", "heat_rate_incr_5", "output_point_0", "output_point_1", "output_point_2", "output_point_3", "output_point_4", "output_point_5"]
-    columns_to_remove= []
-    columns_to_copy = ["name"]
-    for col in cols
-        if col in names(df_gen)
-            push!(columns_to_copy, col)
-            push!(columns_to_remove, col)
-        end
-    end
-    pw_data = select(df_gen, columns_to_copy)
-    if "heat_rate_incr_1" in names(pw_data)
-        pw_data = filter(row -> row.heat_rate_incr_1 != "NA", pw_data)
-    end
-    for col in names(pw_data)
-        if col != "name"
-            pw_data[!, col] = parse.(Float64, pw_data[!, col])
-        end
-    end
-
-    df_gen = select(df_gen, Not(columns_to_remove))
-
-    CSV.write(data_dir * "/generator_TDP_output.csv", df_gen)
-    CSV.write(data_dir * "/generator_PWL_output.csv", pw_data)
     data.category_to_df[PowerSystems.InputCategoryModule.InputCategory.GENERATOR] = df_gen
 
     df_storage = data.category_to_df[PowerSystems.InputCategoryModule.InputCategory.STORAGE]
     df_storage[!, :base_power] = ones(nrow(df_storage))
     data.category_to_df[PowerSystems.InputCategoryModule.InputCategory.STORAGE] = df_storage
 
-    # # Get the list of column names for both DataFrames
-    # cols_df1 = names(df_gen_stable)
-    # cols_df2 = names(df_gen)
-    # missing_in_df2 = setdiff(cols_df1, cols_df2)
-    # missing_in_df1 = setdiff(cols_df2, cols_df1)
-    # println("Columns in Stable but not in NEW: ", missing_in_df2)
-    # println("Columns in NEW but not in STABLE: ", missing_in_df1)
-    
-    return pw_data
+
+    df_branches = data.category_to_df[PowerSystems.InputCategoryModule.InputCategory.BRANCH]
+    df_branches[!, :r] = zeros(nrow(df_branches))
+    df_branches[!, :x] = zeros(nrow(df_branches))
+    df_branches[!, :primary_shunt] = zeros(nrow(df_branches))
+    data.category_to_df[PowerSystems.InputCategoryModule.InputCategory.BRANCH] = df_branches
 end
 
 function create_area_interchanges(sys::System, data_dir::String)
@@ -125,6 +75,13 @@ function attach_reserve_requirements(sys::System, data_dir::String)
     end
 end
 
+function set_market_imports_availability(sys::System, enable::Bool)
+    """Disables the two market imports of the NVE System
+    """
+    set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), enable)
+    set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), enable)
+end
+
 
 function constrain_market_imports(sys::System, data_dir::String)
     plexos_imports = data_dir * "/plexos_imports.csv"
@@ -160,7 +117,6 @@ function constrain_market_imports(sys::System, data_dir::String)
         ts = SingleTimeSeries(
             name = "max_active_power",
             data = ta,
-            # scaling_factor_multiplier = get_max_active_power
         )
         add_time_series!(sys, renew_dispatch, ts)
     end

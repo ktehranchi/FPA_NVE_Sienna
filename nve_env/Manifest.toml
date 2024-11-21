@@ -1385,9 +1385,9 @@ version = "0.34.3"
 
 [[deps.StorageSystemsSimulations]]
 deps = ["DataStructures", "Dates", "DocStringExtensions", "InfrastructureSystems", "JuMP", "LinearAlgebra", "MathOptInterface", "PowerSimulations", "PowerSystems"]
-git-tree-sha1 = "eead17e7a2ac1c553a274860b39b5953720c6893"
+git-tree-sha1 = "64226b69bdf70a6b7d827cec55c66f4789015b06"
 uuid = "e2f1a126-19d0-4674-9252-42b2384f8e3c"
-version = "0.10.1"
+version = "0.10.2"
 
 [[deps.StringEncodings]]
 deps = ["Libiconv_jll"]
