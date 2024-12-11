@@ -1,5 +1,6 @@
 
 using Pkg
+using Revise
 using PowerSystems
 using PowerSimulations
 using PowerSystemCaseBuilder
@@ -13,15 +14,16 @@ using DataFrames
 using Plots
 using CSV
 using TimeSeries
-# include("Projects/NVE/sienna_runs/_helpers.jl")
-include("_helpers.jl")
+
+include("sienna_runs/_helpers.jl")
+# include("_helpers.jl")
 
 #Set all Paths
-data_dir = "Projects/NVE/" # r2x output
+data_dir = "" #"Projects/NVE/" # r2x output
 output_dir =  data_dir * "sienna_runs/run_output/" # Sienna outputs
 
-r2x_output_name = "output_test"
-scenario_dir = output_dir * "output_test" # Change if youre creating a different sienna scenario
+r2x_output_name = "output_test2"
+scenario_dir = output_dir * "output_test2" # Change if youre creating a different sienna scenario
 if !isdir(scenario_dir)
     mkdir(scenario_dir)
 end
@@ -29,9 +31,9 @@ end
 ## Load and Save System From Parse R2X Data
 logger = configure_logging(console_level=Logging.Info)
 base_power = 1.0
-descriptors = "Projects/NVE/sienna_runs/user_descriptors/"* r2x_output_name *".yaml"
-generator_mapping = "Projects/NVE/sienna_runs/generator_mapping.yaml"
-timeseries_metadata_file = "Projects/NVE/" * r2x_output_name * "/timeseries_pointers.json"
+descriptors = "sienna_runs/user_descriptors/"* r2x_output_name *".yaml"
+generator_mapping = "sienna_runs/generator_mapping.yaml"
+timeseries_metadata_file = "" * r2x_output_name * "/timeseries_pointers.json"
 data = PowerSystemTableData(
     data_dir * r2x_output_name,
     base_power,
@@ -125,9 +127,16 @@ for row in eachrow(pw_data)
 
     fuel_curve = FuelCurve(
         value_curve = new_vc, 
-        fuel_cost = generator_op_cost.variable.fuel_cost
-    )    
-    @show new_generator_cost = ThermalGenerationCost(variable = fuel_curve, fixed = 0, start_up = generator_op_cost.start_up, shut_down = generator_op_cost.shut_down)
+        fuel_cost = generator_op_cost.variable.fuel_cost,
+        vom_cost = generator_op_cost.variable.vom_cost
+        )
+
+    new_generator_cost = ThermalGenerationCost(
+        variable = fuel_curve, 
+        fixed = 0, 
+        start_up = generator_op_cost.start_up, 
+        shut_down = generator_op_cost.shut_down
+        )
     set_operation_cost!(generator, new_generator_cost)
 end
 

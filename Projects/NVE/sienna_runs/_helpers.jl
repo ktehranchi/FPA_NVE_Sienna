@@ -3,8 +3,12 @@ function modify_data(data::PowerSystemTableData)
     df_gen = data.category_to_df[PowerSystems.InputCategoryModule.InputCategory.GENERATOR]
     df_gen[!, :fuel] = replace(df_gen[!, :fuel], "HYDROGEN" => "OTHER")
     df_gen[!, :fuel] = replace(df_gen[!, :fuel], "WASTE_HEAT" => "OTHER")
-    df_gen[!, :fixed] = df_gen[!, :variable_cost]
-    df_gen[!, :vom_price] = df_gen[!, :fixed_cost]
+    # df_gen[!, :fixed_cost] = df_gen[!, :variable_cost]
+    # df_gen[!, :fixed_cost] = replace(df_gen[!, :fixed_cost], "NA" => 0.0)
+
+    # df_gen[!, :variable_cost] = df_gen[!, :fixed_cost]
+    # df_gen[!, :variable_cost] = replace(df_gen[!, :variable_cost], "NA" => 0.0)
+
 
     data.category_to_df[PowerSystems.InputCategoryModule.InputCategory.GENERATOR] = df_gen
 

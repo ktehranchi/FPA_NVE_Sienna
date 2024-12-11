@@ -64,7 +64,7 @@ def __():
 
 @app.cell
 def __(Path):
-    sienna_results_folder = Path('run_output/output_test')
+    sienna_results_folder = Path('run_output/output_test2')
     plexos_results_path = Path('PLEXOS ST Results NVE 7_19_24  No AS 2030-2.xlsx')
     return plexos_results_path, sienna_results_folder
 
@@ -203,12 +203,6 @@ def __(
 
 
 @app.cell
-def __(df_sienna_gen):
-    df_sienna_gen[['Southern Purchases (NVP)','Northern Purchases (Sierra)']].plot()
-    return
-
-
-@app.cell
 def __(df_plexos_gen_by_fuel, df_sienna_dispatch_by_fuel):
     # Prepare for plotting
     plexos = df_plexos_gen_by_fuel.loc[df_sienna_dispatch_by_fuel.index].copy()
@@ -333,30 +327,48 @@ def __(df_plexos_generation, df_sienna_gen):
 
 
 @app.cell
-def __(df_plexos_generation, pd, sienna_results_folder):
+def __(pd, sienna_results_folder):
     df_sienna_renewable_parameters = pd.read_csv(sienna_results_folder / 'renewable_parameters.csv')
     df_sienna_renewable_parameters.set_index('DateTime', inplace=True)
     df_sienna_renewable_parameters.index = pd.to_datetime(df_sienna_renewable_parameters.index)
-    df_plexos_renew_match = df_plexos_generation.loc[df_sienna_renewable_parameters.index, df_sienna_renewable_parameters.columns]
-    (df_sienna_renewable_parameters - df_plexos_renew_match)
-
-    # Calculate the differences
-    df_difference = df_sienna_renewable_parameters - df_plexos_renew_match
-    return (
-        df_difference,
-        df_plexos_renew_match,
-        df_sienna_renewable_parameters,
-    )
+    df_sienna_renewable_parameters
+    return (df_sienna_renewable_parameters,)
 
 
 @app.cell
-def __(df_plexos_match, df_sienna_gen):
-    (df_sienna_gen - df_plexos_match)
+def __(df_sienna_renewable_parameters, pd):
+    df_conv = pd.read_csv('/Users/kamrantehranchi/Local_Documents/FPA_Sienna/Projects/NVE/output_test2/Data/RenewableDispatch_max_active_power__2030.csv')
+    df_conv.set_index('DateTime', inplace=True)
+    df_conv.index = pd.to_datetime(df_conv.index)
+    df_conv= df_conv.loc[df_sienna_renewable_parameters.index, df_conv.columns.isin(df_sienna_renewable_parameters.columns)]
+    (df_conv - df_sienna_renewable_parameters).abs().sum().sort_values(ascending= False)
+
+    return (df_conv,)
+
+
+@app.cell
+def __(df_plexos_generation, df_sienna_renewable_parameters):
+    df_plexos_renew_match = df_plexos_generation.loc[df_sienna_renewable_parameters.index, df_sienna_renewable_parameters.columns]
+    df_plexos_renew_match
+    return (df_plexos_renew_match,)
+
+
+@app.cell
+def __(df_plexos_renew_match, df_sienna_renewable_parameters):
+    df_difference = df_sienna_renewable_parameters - df_plexos_renew_match
+    df_difference
+    return (df_difference,)
+
+
+@app.cell
+def __(df_difference):
+    df_difference.loc[:, df_difference.sum(axis =0).abs() > 0.01].sum(axis=0).abs().sort_values(ascending=False)
     return
 
 
 @app.cell
-def __():
+def __(df_difference):
+    df_difference.loc[:, df_difference.sum(axis =0).abs() > 0.01]
     return
 
 
