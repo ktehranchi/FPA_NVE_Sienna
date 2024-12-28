@@ -10,6 +10,7 @@ generator:
 - {custom_name: start_up, name: startup_cost}
 - {custom_name: rating, name: output_point_1}
 - {custom_name: prime_mover_type, name: unit_type}
+- {custom_name: vom_price, name: variable_cost}
 load: []
 reserves: []
 simulation_objects: []
