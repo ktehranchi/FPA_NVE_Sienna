@@ -17,3 +17,9 @@ jl_*/
 NVE_7_19_24/
 NVE_9_16_24/
 __pycache__/
+Projects/Learning_Tutorials/
+Projects/src
+
+# Specific Files to ignore
+Projects/NVE/sienna_runs/nve_plexos2sienna_FPA_v3_old.jl
+Projects/NVE/sienna_runs/nve_plexos2sienna_FPA_v1.jl
