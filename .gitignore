@@ -1,24 +1,13 @@
 # File Types to ignore
-*.json
-*.h5
-*.log
-*.DS_Store
-*.bin
-*.sha256
-*.xlsx
-*.csv
-jl_*/
-*.xml
-*.png 
-*.db
+
 
 # Folders to ignore
-NVE_7_19_24/
-NVE_9_16_24/
 __pycache__/
 Projects/Learning_Tutorials/
-Projects/src
-
+Projects/NVE/sienna_runs/run_output/
+Projects/NVE/sienna_runs/.vscode/
+Projects/.vscode/
+.vscode/
 # Specific Files to ignore
-Projects/NVE/sienna_runs/nve_plexos2sienna_FPA_v3_old.jl
-Projects/NVE/sienna_runs/nve_plexos2sienna_FPA_v1.jl
+# Projects/NVE/sienna_runs/nve_plexos2sienna_FPA_v3_old.jl
+
