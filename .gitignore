@@ -13,7 +13,6 @@ jl_*/
 *.db
 
 # Folders to ignore
-*output/
 NVE_7_19_24/
 NVE_9_16_24/
 __pycache__/
