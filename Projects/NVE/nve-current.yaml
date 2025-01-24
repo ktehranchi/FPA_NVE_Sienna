@@ -1,8 +1,8 @@
-model: 2030 w. NVE IRP Expansion
+model: 2030 RA Corrected Open Position No TX PUBLIC
 
 fmap:
   xml_file:
-      fname: PLEXOS_DB_Nevada.xml
+      fname: PLEXOS_DB_Nevada (10.000 R02).xml
 
 # Mapping of PLEXOS Generators to Sienna Fuels and PM Types
 # {plexos_object: {fuel: sienna_fuel, pm_type: sienna_primemover_type}}
@@ -52,15 +52,16 @@ plexos_device_map:
     _NVE IRP Expansion_NVP_PV (Hybrid):
       fuel: SOLAR
       type: PV
-    # Tuning Adjustment:
-    # NVE.Owned.DR/DSM.PV: 
-    # NVE.Owned.DR/DSM.ACLM: 
-    # PPA.Contracted.DR/DSM.PV:
-    # _LT_Expansion_Open Positions:
+#    Tuning Adjustment:
+#      fuel: OTHER
+#      type: OT
+    _LT_Valmy MR Cost Resource:
+      fuel: OTHER
+      type: OT
 
 # Plexos Fuel Type Mapping
 # {plexos_fuel: {fuel: sienna_fuel, pm_type: sienna_pm_type}}
-plexos_fuel_map: 
+plexos_fuel_map:
     Landfill/Biogas:
       fuel: WOOD_WASTE
       type: GT
@@ -98,10 +99,16 @@ plexos_fuel_map:
 # Infers Fuel Type and PrimeMover
 # {inference_string: {fuel: sienna_fuel, pm_type: sienna_pm_type}}
 device_name_inference_map:
-    wind: 
+    wind:
       fuel: SOLAR
       type: WT
     solar:
+      fuel: SOLAR
+      type: PV
+    _pv:
+      fuel: SOLAR
+      type: PV
+    dsm.pv:
       fuel: SOLAR
       type: PV
     upv:
