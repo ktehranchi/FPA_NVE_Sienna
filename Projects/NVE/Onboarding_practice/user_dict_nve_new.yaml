@@ -1,0 +1,76 @@
+model: 2030 w. NVE IRP Expansion
+
+fmap:
+  xml_file:
+      fname: PLEXOS_DB_Nevada.xml
+
+
+# Mapping of PLEXOS Generators to Sienna Fuels and PM Types
+# {plexos_object: {fuel: sienna_fuel, pm_type: sienna_primemover_type}}
+plexos_device_map:
+    Lone Mountain: 
+      fuel: GAS
+      type: GT
+    North Valley Eavor Loop: 
+      fuel: GAS
+      type: GT
+    Faulkner 1 (NGP Blue Mountain):
+      fuel: GAS
+      type: GT
+    Pinto:
+      fuel: GAS
+      type: GT
+    _NVE IRP Expansion_SPPC_PV (Standalone):
+      fuel: SOLAR
+      type: PV
+    Galena 1:
+      fuel: GEOTHERMAL
+      type: GT
+    Turquoise Nevada:
+      fuel: SOLAR
+      type: PV
+    _LT_Expansion_UPV (10001 - 30000):
+      fuel: SOLAR
+      type: PV
+    Hoover Dam (NV):
+      fuel: HYDRO
+      type: HY
+    North Valley 2:
+      fuel: GAS
+      type: GT
+    Gerlach:
+      fuel: GAS
+      type: GT
+    New Lahontan Truckee Carson Plant:
+      fuel: HYDRO
+      type: HY
+    _NVE IRP Expansion_NVP_PV (Standalone):
+      fuel: SOLAR
+      type: PV
+    _NVE IRP Expansion_SPPC_PV (Hybrid):
+      fuel: SOLAR
+      type: PV
+    _NVE IRP Expansion_NVP_PV (Hybrid):
+      fuel: SOLAR
+      type: PV
+
+
+# Plexos Fuel Type Mapping
+# {plexos_fuel: {fuel: sienna_fuel, pm_type: sienna_pm_type}}
+plexos_fuel_map: 
+
+# Infers Fuel Type and PrimeMover
+# {inference_string: {fuel: sienna_fuel, pm_type: sienna_pm_type}}
+device_name_inference_map:
+
+
+# Don't mind these error messeges:
+# WARNING: Could not find record_name = _NVE IRP Expansion_SPPC_Geothermal or property_name = Rating Factor in fpath = NVE_7_19_24/shapes/geothermal/Geothermal E3 12x24.csv. Check data file.
+# WARNING: Could not find record_name = _NVE IRP Expansion_NVP_Geothermal or property_name = Rating Factor in fpath = NVE_7_19_24/shapes/geothermal/Geothermal E3 12x24.csv. Check data file.
+# WARNING: Could not find record_name = _LT_Expansion_Geothermal or property_name = Rating Factor in fpath = NVE_7_19_24/shapes/geothermal/Geothermal E3 12x24.csv. Check data file.
+# WARNING: Fuel mapping not found for _LT_Expansion_Open Positions with fuel_type=None
+# WARNING: Fuel mapping not found for NVE.Owned.DR/DSM.ACLM with fuel_type=None
+# WARNING: Fuel mapping not found for NVE.Owned.DR/DSM.PV with fuel_type=None
+# WARNING: Fuel mapping not found for PPA.Contracted.DR/DSM.PV with fuel_type=None
+# WARNING: Fuel mapping not found for NVE.Owned.DR/DSM.BESS-2 with fuel_type=None
+# WARNING: Fuel mapping not found for Tuning Adjustment with fuel_type=None

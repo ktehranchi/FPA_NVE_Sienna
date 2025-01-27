@@ -22,8 +22,8 @@ include("sienna_runs/_helpers.jl")
 data_dir = "" #"Projects/NVE/" # r2x output
 output_dir =  data_dir * "sienna_runs/run_output/" # Sienna outputs
 
-r2x_output_name = "output_test2"
-scenario_dir = output_dir * "output_test2" # Change if youre creating a different sienna scenario
+r2x_output_name = "output_stable_dec24"
+scenario_dir = output_dir * "output_stable_dec24" # Change if youre creating a different sienna scenario
 if !isdir(scenario_dir)
     mkdir(scenario_dir)
 end
@@ -32,7 +32,7 @@ end
 logger = configure_logging(console_level=Logging.Info)
 base_power = 1.0
 descriptors = "sienna_runs/user_descriptors/"* r2x_output_name *".yaml"
-generator_mapping = "sienna_runs/generator_mapping.yaml"
+generator_mapping = data_dir *"sienna_runs/generator_mapping.yaml"
 timeseries_metadata_file = "" * r2x_output_name * "/timeseries_pointers.json"
 data = PowerSystemTableData(
     data_dir * r2x_output_name,
