@@ -133,9 +133,9 @@ function modify_system!(sys::System, pw_data::DataFrame, paths::Dict)
     #constrain_market_imports(sys, paths[:r2x_dir])
 
     # Set market purchases availability
-    set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), false)
-    set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
-    set_available!(get_component(RenewableDispatch, sys, "Sierra Solar II"), false)
+    # set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), false)
+    # set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
+    #set_available!(get_component(RenewableDispatch, sys, "Sierra Solar II"), false) # COD: 4/1/2030
 
     # Set hydro availability
     for hydro in get_components(HydroDispatch, sys)
@@ -202,6 +202,8 @@ function ThermalStandard_missing_ts!(sys,paths::Dict{Symbol, String})
 
         # Add the time series to the system
         add_time_series!(sys, active_device, ts)
+
+        @show "Added fuel price time series to $device_name"
     end
 end
 

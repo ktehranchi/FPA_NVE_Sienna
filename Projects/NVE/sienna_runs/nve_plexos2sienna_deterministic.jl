@@ -63,15 +63,24 @@ modify_system!(sys, pw_data, paths)
 # assign fuel_price timeseries to dual fuel Thermal standard objects (R2X defaulted to hydrogen fuel price)
 active_unit = get_component(ThermalStandard, sys, "Valmy CT 3")
 show_time_series(active_unit)
-active_unit.operation_cost
-
-# create and assign the timeseries for natural gas fuel prices
-ThermalStandard_missing_ts!(sys,paths)
-
-# check to make sure missing timeseries were created successfully
-show_time_series(active_unit)
 get_time_series_array(SingleTimeSeries, active_unit, "fuel_price")
 active_unit.operation_cost
+
+# check to see if there are any missing timeseries for fuel_price
+for g in collect(get_components(ThermalStandard, sys))
+    if "fuel_price" ∉ get_name.(get_time_series_keys(g))
+        @show g.name
+        @show g.operation_cost.variable.fuel_cost
+    end
+end
+
+# create and assign the timeseries for natural gas fuel prices
+# ThermalStandard_missing_ts!(sys,paths)
+
+# check to make sure missing timeseries were created successfully
+#show_time_series(active_unit)
+#get_time_series_array(SingleTimeSeries, active_unit, "fuel_price")
+#active_unit.operation_cost
 
 # remaining units should be oddballs (e.g., geothermal, waste heat, and biomass); assuming fixed fuel prices 
 for g in collect(get_components(ThermalStandard, sys))
@@ -85,7 +94,7 @@ end
 # Reassign prime mover type for ThermalStandard generators and set initial conditions
 ############################################################
 # read in datafile
-df_pm = CSV.read(joinpath(paths[:data_dir],"nve_prime_mover_mapping.csv"), DataFrame)
+df_pm = CSV.read(joinpath(paths[:data_dir],"nve_prime_mover_mapping.csv"), DataFrame);
 
 # loop through all ThermalStandard generators
 for thermal_gen in get_components(ThermalStandard, sys)
@@ -159,9 +168,9 @@ get_time_series_array(SingleTimeSeries, active_unit, "fuel_price"; ignore_scalin
 
 #retrieve RenewableDispatch objects with timeseries (rating factor, max_active_power)
 renew_ts = collect(get_components(x -> has_time_series(x), RenewableDispatch, sys));
-active_re_unit = get_component(RenewableDispatch, sys, "Idaho Wind")
-active_re_unit = get_component(RenewableDispatch, sys, "Spring Valley Wind")
-active_re_unit = get_component(RenewableDispatch, sys, "ACE Searchlight Solar")
+active_re_unit = get_component(RenewableDispatch, sys, "_PCM Generic Expansion_SPPC_Wind (ID)")
+#active_re_unit = get_component(RenewableDispatch, sys, "Spring Valley Wind")
+#active_re_unit = get_component(RenewableDispatch, sys, "ACE Searchlight Solar")
 show_time_series(active_re_unit) 
 get_time_series_keys(active_re_unit)
 get_time_series_array(SingleTimeSeries, active_re_unit, "Rating Factor")
