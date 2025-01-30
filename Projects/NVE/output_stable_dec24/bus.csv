@@ -1,6 +1,5 @@
 bus_id,name,area,zone,base_voltage,bus_type
 1,Nevada Power,NA,Nevada Power,230.0,PV
-2,Sierra,NA,Sierra,230.0,PV
 3,Northern Purchase Market (Sierra),NA,Northern Purchases (Sierra),230.0,PV
-4,Southern Purchase Market (NVP),NA,Southern Purchases (NVP),230.0,PV
-5,OATT Reserves for LT,NA,OATT Reserves for LT,230.0,PV
+4,Sierra,NA,Sierra,230.0,PV
+2,Southern Purchase Market (NVP),NA,Southern Purchases (NVP),230.0,PV
