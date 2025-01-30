@@ -25,7 +25,7 @@ using TimeSeries
 ###########################
 # Specify the output name and scenario name dynamically
 r2x_output_name = "output_stable_dec24" # name of the r2x scenario
-scenario_name = "output_stable_dec24"  #  name of the sienna scenario
+scenario_name = "output_stable_dec24"  # name of the sienna scenario
 
 # Call the function to initialize paths and inputs
 include(joinpath(@__DIR__, "NVE_non_weather.jl"))
@@ -170,7 +170,7 @@ get_time_series_array(SingleTimeSeries, active_unit, "fuel_price"; ignore_scalin
 renew_ts = collect(get_components(x -> has_time_series(x), RenewableDispatch, sys));
 active_re_unit = get_component(RenewableDispatch, sys, "_PCM Generic Expansion_SPPC_Wind (ID)")
 #active_re_unit = get_component(RenewableDispatch, sys, "Spring Valley Wind")
-#active_re_unit = get_component(RenewableDispatch, sys, "ACE Searchlight Solar")
+active_re_unit = get_component(RenewableDispatch, sys, "ACE Searchlight Solar")
 show_time_series(active_re_unit) 
 get_time_series_keys(active_re_unit)
 get_time_series_array(SingleTimeSeries, active_re_unit, "Rating Factor")
