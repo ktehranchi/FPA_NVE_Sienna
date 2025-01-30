@@ -1,4 +1,4 @@
 name,connection_points_from,connection_points_to,r,x,primary_shunt,rate,rating_up,rating_down,tap,is_transformer,ext
-ON Line (NVP to Sierra),1,2,NA,NA,NA,9999.0,9999.0,-9999.0,1.0,False,"{'object_id': 237, 'Wheeling Charge': 0.0, 'Wheeling Charge Back': 0.0}"
-Northern Import-Export (Sierra),3,2,NA,NA,NA,644.0,644.0,0.0,1.0,False,{'object_id': 236}
+Northern Import-Export (Sierra),3,5,NA,NA,NA,644.0,644.0,0.0,1.0,False,{'object_id': 236}
+ON Line (NVP to Sierra),1,5,NA,NA,NA,9999.0,9999.0,-9999.0,1.0,False,"{'object_id': 237, 'Wheeling Charge': 0.0, 'Wheeling Charge Back': 0.0}"
 Southern Import-Export (NVP),4,1,NA,NA,NA,5577.0,5577.0,0.0,1.0,False,{'object_id': 238}
