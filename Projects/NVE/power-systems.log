@@ -1,169 +1,168 @@
-┌ Info: 2025-01-30T13:58:33.526 [9248:1]: Parsing csv files in Data ...
+┌ Info: 2025-01-31T12:40:47.120 [9992:1]: Parsing csv files in Data ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:125
-┌ Info: 2025-01-30T13:58:33.561 [9248:1]: Parsing csv data in HydroDispatch_Max Energy Month_._2030.csv ...
+┌ Info: 2025-01-31T12:40:47.120 [9992:1]: Parsing csv data in HydroDispatch_Max Energy Month_._2030.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:129
-┌ Info: 2025-01-30T13:58:34.846 [9248:1]: Parsing csv data in HydroDispatch_Min Energy Hour_._2030.csv ...
+┌ Info: 2025-01-31T12:40:47.124 [9992:1]: Parsing csv data in HydroDispatch_Min Energy Hour_._2030.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:129
-┌ Info: 2025-01-30T13:58:34.874 [9248:1]: Parsing csv data in HydroDispatch_max_active_power_._2030.csv ...
+┌ Info: 2025-01-31T12:40:47.127 [9992:1]: Parsing csv data in HydroDispatch_max_active_power_._2030.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:129
-┌ Info: 2025-01-30T13:58:34.893 [9248:1]: Parsing csv data in PowerLoad_max_active_power_._2030.csv ...
+┌ Info: 2025-01-31T12:40:47.131 [9992:1]: Parsing csv data in PowerLoad_max_active_power_._2030.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:129
-┌ Info: 2025-01-30T13:58:34.911 [9248:1]: Parsing csv data in RenewableDispatch_Rating Factor_._2030.csv ...
+┌ Info: 2025-01-31T12:40:47.135 [9992:1]: Parsing csv data in RenewableDispatch_Rating Factor_._2030.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:129
-┌ Info: 2025-01-30T13:58:34.973 [9248:1]: Parsing csv data in RenewableDispatch_max_active_power_._2030.csv ...
+┌ Info: 2025-01-31T12:40:47.161 [9992:1]: Parsing csv data in RenewableDispatch_max_active_power_._2030.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:129
-┌ Info: 2025-01-30T13:58:35 [9248:1]: Parsing csv data in ThermalStandard_Rating Factor_._2030.csv ...
+┌ Info: 2025-01-31T12:40:47.189 [9992:1]: Parsing csv data in ThermalStandard_Rating Factor_._2030.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:129
-┌ Info: 2025-01-30T13:58:35.006 [9248:1]: Parsing csv data in ThermalStandard_fuel_price_._2030.csv ...
+┌ Info: 2025-01-31T12:40:47.201 [9992:1]: Parsing csv data in ThermalStandard_fuel_price_._2030.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:129
-┌ Info: 2025-01-30T13:58:35.042 [9248:1]: Parsing csv data in ThermalStandard_max_active_power_._2030.csv ...
+┌ Info: 2025-01-31T12:40:47.236 [9992:1]: Parsing csv data in ThermalStandard_max_active_power_._2030.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:129
-┌ Info: 2025-01-30T13:58:35.106 [9248:1]: Successfully parsed Data
+┌ Info: 2025-01-31T12:40:47.297 [9992:1]: Successfully parsed Data
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:139
-┌ Info: 2025-01-30T13:58:35.106 [9248:1]: Parsing csv data in branch.csv ...
+┌ Info: 2025-01-31T12:40:47.298 [9992:1]: Parsing csv data in branch.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:143
-┌ Info: 2025-01-30T13:58:35.540 [9248:1]: Successfully parsed branch.csv
+┌ Info: 2025-01-31T12:40:47.299 [9992:1]: Successfully parsed branch.csv
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:148
-┌ Info: 2025-01-30T13:58:35.540 [9248:1]: Parsing csv data in bus.csv ...
+┌ Info: 2025-01-31T12:40:47.299 [9992:1]: Parsing csv data in bus.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:143
-┌ Info: 2025-01-30T13:58:35.716 [9248:1]: Successfully parsed bus.csv
+┌ Info: 2025-01-31T12:40:47.300 [9992:1]: Successfully parsed bus.csv
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:148
-┌ Info: 2025-01-30T13:58:35.716 [9248:1]: Parsing csv data in dc_branch.csv ...
+┌ Info: 2025-01-31T12:40:47.300 [9992:1]: Parsing csv data in dc_branch.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:143
-┌ Info: 2025-01-30T13:58:35.776 [9248:1]: Successfully parsed dc_branch.csv
+┌ Info: 2025-01-31T12:40:47.301 [9992:1]: Successfully parsed dc_branch.csv
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:148
-┌ Info: 2025-01-30T13:58:35.776 [9248:1]: Parsing csv data in gen.csv ...
+┌ Info: 2025-01-31T12:40:47.301 [9992:1]: Parsing csv data in gen.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:143
-┌ Info: 2025-01-30T13:58:36.116 [9248:1]: Successfully parsed gen.csv
+┌ Info: 2025-01-31T12:40:47.314 [9992:1]: Successfully parsed gen.csv
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:148
-┌ Info: 2025-01-30T13:58:36.116 [9248:1]: Parsing csv data in generator_PWL_output.csv ...
+┌ Info: 2025-01-31T12:40:47.314 [9992:1]: Parsing csv data in generator_PWL_output.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:143
-┌ Info: 2025-01-30T13:58:36.127 [9248:1]: Successfully parsed generator_PWL_output.csv
+┌ Info: 2025-01-31T12:40:47.315 [9992:1]: Successfully parsed generator_PWL_output.csv
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:148
-┌ Info: 2025-01-30T13:58:36.128 [9248:1]: Parsing csv data in load.csv ...
+┌ Info: 2025-01-31T12:40:47.315 [9992:1]: Parsing csv data in load.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:143
-┌ Info: 2025-01-30T13:58:36.158 [9248:1]: Successfully parsed load.csv
+┌ Info: 2025-01-31T12:40:47.315 [9992:1]: Successfully parsed load.csv
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:148
-┌ Info: 2025-01-30T13:58:36.158 [9248:1]: Parsing csv data in missing_fuel_timeseries.csv ...
+┌ Info: 2025-01-31T12:40:47.317 [9992:1]: Parsing csv data in missing_fuel_timeseries.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:143
-┌ Info: 2025-01-30T13:58:36.196 [9248:1]: Successfully parsed missing_fuel_timeseries.csv
+┌ Info: 2025-01-31T12:40:47.327 [9992:1]: Successfully parsed missing_fuel_timeseries.csv
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:148
-┌ Info: 2025-01-30T13:58:36.196 [9248:1]: Parsing csv data in plexos_imports.csv ...
+┌ Info: 2025-01-31T12:40:47.332 [9992:1]: Parsing csv data in plexos_imports.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:143
-┌ Info: 2025-01-30T13:58:36.249 [9248:1]: Successfully parsed plexos_imports.csv
+┌ Info: 2025-01-31T12:40:47.334 [9992:1]: Successfully parsed plexos_imports.csv
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:148
-┌ Info: 2025-01-30T13:58:36.249 [9248:1]: Parsing csv data in reserves.csv ...
+┌ Info: 2025-01-31T12:40:47.334 [9992:1]: Parsing csv data in reserves.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:143
-┌ Info: 2025-01-30T13:58:36.286 [9248:1]: Successfully parsed reserves.csv
+┌ Info: 2025-01-31T12:40:47.337 [9992:1]: Successfully parsed reserves.csv
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:148
-┌ Info: 2025-01-30T13:58:36.286 [9248:1]: Parsing csv data in storage.csv ...
+┌ Info: 2025-01-31T12:40:47.337 [9992:1]: Parsing csv data in storage.csv ...
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:143
-┌ Info: 2025-01-30T13:58:36.347 [9248:1]: Successfully parsed storage.csv
+┌ Info: 2025-01-31T12:40:47.339 [9992:1]: Successfully parsed storage.csv
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:148
-┌ Info: 2025-01-30T13:58:40.843 [9248:1]: Unit System changed to UnitSystem.DEVICE_BASE = 1
+┌ Info: 2025-01-31T12:40:47.359 [9992:1]: Unit System changed to UnitSystem.DEVICE_BASE = 1
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\base.jl:538
-┌ Warning: 2025-01-30T13:58:40.880 [9248:1]: Missing Data : no 'zone' information for buses, cannot create loads based on zones
+┌ Warning: 2025-01-31T12:40:47.360 [9992:1]: Missing Data : no 'zone' information for buses, cannot create loads based on zones
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:636
-┌ Warning: 2025-01-30T13:58:42.286 [9248:1]: Missing PowerSystems.InputCategoryModule.InputCategory.DC_BRANCH = 3 data.
+┌ Warning: 2025-01-31T12:40:47.361 [9992:1]: Missing PowerSystems.InputCategoryModule.InputCategory.DC_BRANCH = 3 data.
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:212
-┌ Warning: 2025-01-30T13:58:44.035 [9248:1]: User-defined column name initial_storage_capacity_level is not in dataframe.
+┌ Warning: 2025-01-31T12:40:47.363 [9992:1]: User-defined column name initial_storage_capacity_level is not in dataframe.
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:1556
-┌ Warning: 2025-01-30T13:58:44.268 [9248:1]: User-defined column name min_rated_capacity is not in dataframe.
+┌ Warning: 2025-01-31T12:40:47.364 [9992:1]: User-defined column name min_rated_capacity is not in dataframe.
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:1556
-┌ Warning: 2025-01-30T13:58:44.268 [9248:1]: User-defined column name prime_mover_type is not in dataframe.
+┌ Warning: 2025-01-31T12:40:47.366 [9992:1]: User-defined column name prime_mover_type is not in dataframe.
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:1556
-┌ Warning: 2025-01-30T13:58:45.036 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.368 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:46.340 [9248:1]: No shutdown_cost defined for Apex Landfill Facility, setting to 0.0
+┌ Warning: 2025-01-31T12:40:47.369 [9992:1]: No shutdown_cost defined for Apex Landfill Facility, setting to 0.0
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:1049
-┌ Warning: 2025-01-30T13:58:46.760 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.371 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.632 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.372 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.681 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.375 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.682 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.376 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.683 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.376 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.703 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.389 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.704 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.390 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.705 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.391 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.707 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.392 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.709 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.394 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.711 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.396 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.712 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.397 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.714 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.398 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.717 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.399 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.720 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.402 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:47.723 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.404 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.626 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.412 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.636 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.416 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.636 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.416 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.639 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.417 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.643 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.420 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.645 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.422 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.647 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.424 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.648 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.424 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.653 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.438 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.656 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.441 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.657 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.442 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.657 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.443 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.657 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.444 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.662 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.445 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.663 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.446 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.666 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.447 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.666 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.451 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.676 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.454 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.676 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.457 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Warning: 2025-01-30T13:58:48.676 [9248:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
+┌ Warning: 2025-01-31T12:40:47.457 [9992:1]: Heat rate parsing not valid for RenewableGen replacing with zero cost
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:909
-┌ Info: 2025-01-30T13:58:50.219 [9248:1]: Adding contributing components for NVE Spin and Reg (LT) by component name
+┌ Info: 2025-01-31T12:40:47.459 [9992:1]: Adding contributing components for NVE Spin and Reg (LT) by component name
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:715
-┌ Info: 2025-01-30T13:58:50.955 [9248:1]: Adding contributing components for Nevada Power Non-Spin by component name
+┌ Info: 2025-01-31T12:40:47.460 [9992:1]: Adding contributing components for Nevada Power Non-Spin by component name
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:715
-┌ Info: 2025-01-30T13:58:50.983 [9248:1]: Adding contributing components for Nevada Power Regulation by component name
+┌ Info: 2025-01-31T12:40:47.460 [9992:1]: Adding contributing components for Nevada Power Regulation by component name
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:715
-┌ Info: 2025-01-30T13:58:50.984 [9248:1]: Adding contributing components for Nevada Power Spin by component name
+┌ Info: 2025-01-31T12:40:47.460 [9992:1]: Adding contributing components for Nevada Power Spin by component name
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:715
-┌ Info: 2025-01-30T13:58:50.984 [9248:1]: Adding contributing components for Sierra Non-Spin by component name
+┌ Info: 2025-01-31T12:40:47.461 [9992:1]: Adding contributing components for Sierra Non-Spin by component name
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:715
-┌ Info: 2025-01-30T13:58:50.985 [9248:1]: Adding contributing components for Sierra Regulation by component name
+┌ Info: 2025-01-31T12:40:47.461 [9992:1]: Adding contributing components for Sierra Regulation by component name
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:715
-┌ Info: 2025-01-30T13:58:50.986 [9248:1]: Adding contributing components for Sierra Spin by component name
+┌ Info: 2025-01-31T12:40:47.462 [9992:1]: Adding contributing components for Sierra Spin by component name
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\parsers\power_system_table_data.jl:715
-┌ Error: 2025-01-30T13:58:59.060 [9248:1]: Model doesn't contain a slack bus
+┌ Error: 2025-01-31T12:40:47.867 [9992:1]: Model doesn't contain a slack bus
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\utils\IO\system_checks.jl:27
-┌ Info: 2025-01-30T13:59:01.304 [9248:1]: Unit System changed to UnitSystem.NATURAL_UNITS = 2
+┌ Info: 2025-01-31T12:40:47.869 [9992:1]: Unit System changed to UnitSystem.NATURAL_UNITS = 2
 └ @ PowerSystems C:\Users\james\.julia\packages\PowerSystems\GVNT0\src\base.jl:538
-538

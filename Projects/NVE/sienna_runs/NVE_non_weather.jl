@@ -135,6 +135,10 @@ function modify_system!(sys::System, pw_data::DataFrame, paths::Dict)
     # Set market purchases availability
     # set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), false)
     # set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
+    set_available!(get_component(ThermalStandard, sys, "Tuning Adjustment"), false)
+    set_available!(get_component(RenewableDispatch, sys, "NVE.Owned.DR/DSM.PV"), false)
+    set_available!(get_component(RenewableDispatch, sys, "PPA.Contracted.DR/DSM.PV"), false)   
+
     #set_available!(get_component(RenewableDispatch, sys, "Sierra Solar II"), false) # COD: 4/1/2030
 
     # Set hydro availability
@@ -335,7 +339,7 @@ function build_and_execute_simulation(template_uc, sys::System, paths::Dict; dec
     # Define Simulation
     sim = Simulation(
         name = "test-sim",
-        steps = 2,  # Steps in your simulation
+        steps = 3,  # Steps in your simulation
         models = sim_model,
         sequence = sim_sequence,
         simulation_folder = mktempdir(paths[:sim_files_dir], cleanup = true),

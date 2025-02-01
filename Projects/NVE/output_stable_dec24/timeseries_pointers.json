@@ -1,2142 +1,2142 @@
 [
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Switch Station 1 (Playa Solar 1)",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "_PCM Generic Expansion_SPPC_Wind (ID)",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Arrow Canyon Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Eagle Shadow Mountain Solar Farm",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Copper Mountain Solar 5",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Sierra Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Nellis Solar Array II",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Switch Station 2 (Playa Solar 2)",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Techren Solar III",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Dry Lake East Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "_PCM Generic Expansion_SPPC_PV",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Boulder Solar II",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Libra Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Spring Valley Wind",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "RV Apex Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "DPV_Nevada Power",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Boulder Solar III",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Fish Springs Ranch Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Silver State Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Turquoise Nevada",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "_PCM Generic Expansion_NVP_PV",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Ft. Churchill Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "ACE Searchlight Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Boulder Solar I",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Techren Solar I",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Techren Solar 2",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Dry Lake Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "FRV Spectrum Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Mountain View Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Gemini Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Battle Mountain Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Techren Solar V",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Techren Solar IV",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "DPV_Sierra",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Dodge Flat Solar",
-        "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Switch Station 1 (Playa Solar 1)",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "_PCM Generic Expansion_SPPC_Wind (ID)",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": 952,
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Arrow Canyon Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Eagle Shadow Mountain Solar Farm",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Copper Mountain Solar 5",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Sierra Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Nellis Solar Array II",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Switch Station 2 (Playa Solar 2)",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Techren Solar III",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Dry Lake East Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "_PCM Generic Expansion_SPPC_PV",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Boulder Solar II",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Libra Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Spring Valley Wind",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": 151.8,
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "RV Apex Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "DPV_Nevada Power",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Boulder Solar III",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Fish Springs Ranch Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Silver State Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Turquoise Nevada",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "_PCM Generic Expansion_NVP_PV",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Ft. Churchill Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "ACE Searchlight Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Boulder Solar I",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Techren Solar I",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Techren Solar 2",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Dry Lake Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "FRV Spectrum Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Mountain View Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Gemini Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Battle Mountain Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Techren Solar V",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Techren Solar IV",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "DPV_Sierra",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "RenewableDispatch",
-        "component_name": "Dodge Flat Solar",
-        "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Apex Landfill Facility",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 13",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Valmy 2",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Ormat Western Geothermal",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Gerlach",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 12",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Liberty (Cal Peco)",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Walt Higgings CC_B",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Walt Higgings CC_A",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Silverhawk 4",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Harry Allen CC_B",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 16",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "North Valley Eavor Loop",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Lone Mountain",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 7, 8, 9_B",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Chuck Lenzi 1_B",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark Mt. 4",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 17",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Chuck Lenzi 1_A",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Lockwood Renewable Energy Facility",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Pinto",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Valmy CT 4",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Desert Peak 2 Geothermal Power",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Sun Peak 3",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Silverhawk CC_B",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 19",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Ft. Churchill 2",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Harry Allen 4",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Chuck Lenzi 2_A",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "LV Gen 2_B",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Tracy 3",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Tracy 8, 9, 10_B",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "McGinness Hills Geothermal",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 4",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Burdette Geothermal Power Plant",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Harry Allen CC_A",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 14",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "LV Gen 3_A",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "LV Gen 3_B",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 20",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "LV Gen 1",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Goodsprings",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 5, 6, 10_A",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 11",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "North Valley 2",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Ft. Churchill 1",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Tuscarora Geothermal",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Galena 1",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Tracy 8, 9, 10_A",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 15",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Silverhawk 3",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 22",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Tracy 4&5 CC",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Harry Allen 3",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Sun Peak 5",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "North Valley Geothermal",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Silverhawk CC_A",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark Mt. 3",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 21",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 5, 6, 10_B",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Chuck Lenzi 2_B",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "LV Gen 2_A",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 18",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Sun Peak 4",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Galena 3 Geothermal Power Plant",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 7, 8, 9_A",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Jersey Valley Geothermal",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "USG San Emidio Geothermal",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Beowawe Geothermal Power Plant",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Valmy CT 3",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Valmy 1",
-        "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 13",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Valmy 2",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 12",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Liberty (Cal Peco)",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Walt Higgings CC_B",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Walt Higgings CC_A",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Silverhawk 4",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Harry Allen CC_B",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 16",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 7, 8, 9_B",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Chuck Lenzi 1_B",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark Mt. 4",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 17",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Chuck Lenzi 1_A",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Valmy CT 4",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Sun Peak 3",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Silverhawk CC_B",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 19",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Ft. Churchill 2",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Harry Allen 4",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Chuck Lenzi 2_A",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "LV Gen 2_B",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Tracy 3",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Tracy 8, 9, 10_B",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 4",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Harry Allen CC_A",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 14",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "LV Gen 3_A",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "LV Gen 3_B",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 20",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "LV Gen 1",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 5, 6, 10_A",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 11",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Ft. Churchill 1",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Tracy 8, 9, 10_A",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 15",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Silverhawk 3",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 22",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Tracy 4&5 CC",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Harry Allen 3",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Sun Peak 5",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Silverhawk CC_A",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark Mt. 3",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 21",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 5, 6, 10_B",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Chuck Lenzi 2_B",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "LV Gen 2_A",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 18",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Sun Peak 4",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Clark 7, 8, 9_A",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Valmy CT 3",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Valmy 1",
-        "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
-        "normalization_factor": 1.0,
-        "resolution": 3600,
-        "name": "fuel_price",
-        "scaling_factor_multiplier_module": null,
-        "scaling_factor_multiplier": null
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Ormat Western Geothermal",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Gerlach",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "North Valley Eavor Loop",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Lone Mountain",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Pinto",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Desert Peak 2 Geothermal Power",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "McGinness Hills Geothermal",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Burdette Geothermal Power Plant",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "North Valley 2",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Tuscarora Geothermal",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Galena 1",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "North Valley Geothermal",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Galena 3 Geothermal Power Plant",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Jersey Valley Geothermal",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "USG San Emidio Geothermal",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "ThermalStandard",
-        "component_name": "Beowawe Geothermal Power Plant",
-        "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Rating Factor",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "HydroDispatch",
-        "component_name": "Hoover Dam (NV)",
-        "data_file": "Data/HydroDispatch_Max Energy Month_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Max Energy Month",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "HydroDispatch",
-        "component_name": "Hoover Dam (NV)",
-        "data_file": "Data/HydroDispatch_Min Energy Hour_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "Min Energy Hour",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "HydroDispatch",
-        "component_name": "Hoover Dam (NV)",
-        "data_file": "Data/HydroDispatch_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "PowerLoad",
-        "component_name": "Sierra",
-        "data_file": "Data/PowerLoad_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    },
-    {
-        "category": "PowerLoad",
-        "component_name": "Nevada Power",
-        "data_file": "Data/PowerLoad_max_active_power_._2030.csv",
-        "normalization_factor": "Max",
-        "resolution": 3600,
-        "name": "max_active_power",
-        "scaling_factor_multiplier_module": "PowerSystems",
-        "scaling_factor_multiplier": "get_max_active_power"
-    }
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Switch Station 1 (Playa Solar 1)",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "_PCM Generic Expansion_SPPC_Wind (ID)",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Arrow Canyon Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Eagle Shadow Mountain Solar Farm",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Copper Mountain Solar 5",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Sierra Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Nellis Solar Array II",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Switch Station 2 (Playa Solar 2)",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Techren Solar III",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Dry Lake East Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "_PCM Generic Expansion_SPPC_PV",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Boulder Solar II",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Libra Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Spring Valley Wind",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "RV Apex Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "DPV_Nevada Power",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Boulder Solar III",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Fish Springs Ranch Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Silver State Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Turquoise Nevada",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "_PCM Generic Expansion_NVP_PV",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Ft. Churchill Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "ACE Searchlight Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Boulder Solar I",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Techren Solar I",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Techren Solar 2",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Dry Lake Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "FRV Spectrum Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Mountain View Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Gemini Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Battle Mountain Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Techren Solar V",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Techren Solar IV",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "DPV_Sierra",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Dodge Flat Solar",
+    "data_file": "Data/RenewableDispatch_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Switch Station 1 (Playa Solar 1)",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "_PCM Generic Expansion_SPPC_Wind (ID)",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": 952.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Arrow Canyon Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Eagle Shadow Mountain Solar Farm",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Copper Mountain Solar 5",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Sierra Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Nellis Solar Array II",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Switch Station 2 (Playa Solar 2)",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Techren Solar III",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Dry Lake East Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "_PCM Generic Expansion_SPPC_PV",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Boulder Solar II",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Libra Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Spring Valley Wind",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": 151.8,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "RV Apex Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "DPV_Nevada Power",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Boulder Solar III",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Fish Springs Ranch Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Silver State Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Turquoise Nevada",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "_PCM Generic Expansion_NVP_PV",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Ft. Churchill Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "ACE Searchlight Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Boulder Solar I",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Techren Solar I",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Techren Solar 2",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Dry Lake Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "FRV Spectrum Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Mountain View Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Gemini Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Battle Mountain Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Techren Solar V",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Techren Solar IV",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "DPV_Sierra",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "RenewableDispatch",
+    "component_name": "Dodge Flat Solar",
+    "data_file": "Data/RenewableDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Apex Landfill Facility",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 13",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Valmy 2",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Ormat Western Geothermal",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 20.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Gerlach",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 15.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 12",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Liberty (Cal Peco)",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Walt Higgings CC_B",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Walt Higgings CC_A",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Silverhawk 4",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Harry Allen CC_B",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 16",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "North Valley Eavor Loop",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 20.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Lone Mountain",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 15.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 7, 8, 9_B",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Chuck Lenzi 1_B",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark Mt. 4",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 17",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Chuck Lenzi 1_A",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Lockwood Renewable Energy Facility",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Pinto",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 15.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Valmy CT 4",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Desert Peak 2 Geothermal Power",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 10.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Sun Peak 3",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Silverhawk CC_B",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 19",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Ft. Churchill 2",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Harry Allen 4",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Chuck Lenzi 2_A",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "LV Gen 2_B",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Tracy 3",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Tracy 8, 9, 10_B",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "McGinness Hills Geothermal",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 96.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 4",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Burdette Geothermal Power Plant",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 15.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Harry Allen CC_A",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 14",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "LV Gen 3_A",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "LV Gen 3_B",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 20",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "LV Gen 1",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Goodsprings",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 5, 6, 10_A",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 11",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "North Valley 2",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 15.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Ft. Churchill 1",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Tuscarora Geothermal",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 32.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Galena 1",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 15.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Tracy 8, 9, 10_A",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 15",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Silverhawk 3",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 22",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Tracy 4&5 CC",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Harry Allen 3",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Sun Peak 5",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "North Valley Geothermal",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 25.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Silverhawk CC_A",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark Mt. 3",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 21",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 5, 6, 10_B",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Chuck Lenzi 2_B",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "LV Gen 2_A",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 18",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Sun Peak 4",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Galena 3 Geothermal Power Plant",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 15.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 7, 8, 9_A",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Jersey Valley Geothermal",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 22.5,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "USG San Emidio Geothermal",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 11.75,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Beowawe Geothermal Power Plant",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": 20.0,
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Valmy CT 3",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Valmy 1",
+    "data_file": "Data/ThermalStandard_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 13",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Valmy 2",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 12",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Liberty (Cal Peco)",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Walt Higgings CC_B",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Walt Higgings CC_A",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Silverhawk 4",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Harry Allen CC_B",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 16",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 7, 8, 9_B",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Chuck Lenzi 1_B",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark Mt. 4",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 17",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Chuck Lenzi 1_A",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Valmy CT 4",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Sun Peak 3",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Silverhawk CC_B",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 19",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Ft. Churchill 2",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Harry Allen 4",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Chuck Lenzi 2_A",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "LV Gen 2_B",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Tracy 3",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Tracy 8, 9, 10_B",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 4",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Harry Allen CC_A",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 14",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "LV Gen 3_A",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "LV Gen 3_B",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 20",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "LV Gen 1",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 5, 6, 10_A",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 11",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Ft. Churchill 1",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Tracy 8, 9, 10_A",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 15",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Silverhawk 3",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 22",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Tracy 4&5 CC",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Harry Allen 3",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Sun Peak 5",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Silverhawk CC_A",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark Mt. 3",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 21",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 5, 6, 10_B",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Chuck Lenzi 2_B",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "LV Gen 2_A",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 18",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Sun Peak 4",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Clark 7, 8, 9_A",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Valmy CT 3",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Valmy 1",
+    "data_file": "Data/ThermalStandard_fuel_price_._2030.csv",
+    "normalization_factor": 1.0,
+    "resolution": 3600,
+    "name": "fuel_price",
+    "scaling_factor_multiplier_module": null,
+    "scaling_factor_multiplier": null
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Ormat Western Geothermal",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Gerlach",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "North Valley Eavor Loop",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Lone Mountain",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Pinto",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Desert Peak 2 Geothermal Power",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "McGinness Hills Geothermal",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Burdette Geothermal Power Plant",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "North Valley 2",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Tuscarora Geothermal",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Galena 1",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "North Valley Geothermal",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Galena 3 Geothermal Power Plant",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Jersey Valley Geothermal",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "USG San Emidio Geothermal",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "ThermalStandard",
+    "component_name": "Beowawe Geothermal Power Plant",
+    "data_file": "Data/ThermalStandard_Rating Factor_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Rating Factor",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "HydroDispatch",
+    "component_name": "Hoover Dam (NV)",
+    "data_file": "Data/HydroDispatch_Max Energy Month_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Max Energy Month",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "HydroDispatch",
+    "component_name": "Hoover Dam (NV)",
+    "data_file": "Data/HydroDispatch_Min Energy Hour_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "Min Energy Hour",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "HydroDispatch",
+    "component_name": "Hoover Dam (NV)",
+    "data_file": "Data/HydroDispatch_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "PowerLoad",
+    "component_name": "Sierra",
+    "data_file": "Data/PowerLoad_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  },
+  {
+    "category": "PowerLoad",
+    "component_name": "Nevada Power",
+    "data_file": "Data/PowerLoad_max_active_power_._2030.csv",
+    "normalization_factor": "Max",
+    "resolution": 3600,
+    "name": "max_active_power",
+    "scaling_factor_multiplier_module": "PowerSystems",
+    "scaling_factor_multiplier": "get_max_active_power"
+  }
 ]
