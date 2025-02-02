@@ -60,6 +60,9 @@ set_units_base_system!(sys, "NATURAL_UNITS")
 # create area interchanges, define initial SOC, set generator services, define availability, add VOM to production costs, set reference bus)
 modify_system!(sys, pw_data, paths)
 
+###########################
+# Missing time series for fuel_prices (?)
+###########################
 # assign fuel_price timeseries to dual fuel Thermal standard objects (R2X defaulted to hydrogen fuel price)
 active_unit = get_component(ThermalStandard, sys, "Valmy CT 3")
 show_time_series(active_unit)
@@ -82,13 +85,29 @@ end
 #get_time_series_array(SingleTimeSeries, active_unit, "fuel_price")
 #active_unit.operation_cost
 
-# remaining units should be oddballs (e.g., geothermal, waste heat, and biomass); assuming fixed fuel prices 
+#= # remaining units should be oddballs (e.g., geothermal, waste heat, and biomass); assuming fixed fuel prices 
 for g in collect(get_components(ThermalStandard, sys))
     if "fuel_price" ∉ get_name.(get_time_series_keys(g))
         @show g.name
         #@show g.operation_cost.variable.fuel_cost
     end
-end
+end =#
+
+###########################
+# Convert DPV units from RenewableDispatch to RenewableNonDispatch
+###########################
+convert_BTM_units!(sys, paths)
+
+###########################
+# Define production costs for TA resource and add in DR Units
+###########################
+Tuning_Adjustment_Costs!(sys)
+Demand_Response_CleanUp!(sys)
+
+###########################
+# Fix Hydro Dispatch Profile for Hoover
+###########################
+fix_Hydro_Dispatch!(sys)
 
 ############################################################
 # Reassign prime mover type for ThermalStandard generators and set initial conditions

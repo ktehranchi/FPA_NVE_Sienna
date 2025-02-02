@@ -135,16 +135,7 @@ function modify_system!(sys::System, pw_data::DataFrame, paths::Dict)
     # Set market purchases availability
     # set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), false)
     # set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
-    set_available!(get_component(ThermalStandard, sys, "Tuning Adjustment"), false)
-    set_available!(get_component(RenewableDispatch, sys, "NVE.Owned.DR/DSM.PV"), false)
-    set_available!(get_component(RenewableDispatch, sys, "PPA.Contracted.DR/DSM.PV"), false)   
-
     #set_available!(get_component(RenewableDispatch, sys, "Sierra Solar II"), false) # COD: 4/1/2030
-
-    # Set hydro availability
-    for hydro in get_components(HydroDispatch, sys)
-        set_available!(hydro, false)
-    end
 
     # Modify generator heat rates
     for row in eachrow(pw_data)
@@ -179,7 +170,235 @@ function modify_system!(sys::System, pw_data::DataFrame, paths::Dict)
     end
 
     # Set the reference (slack) bus
-    set_bustype!(get_component(ACBus, sys, "Nevada Power"), "REF")
+    set_bustype!(get_component(ACBus, sys, "Nevada Power"), "REF");
+end
+
+function Tuning_Adjustment_Costs!(sys::System)
+    # review Tuning Adjustment operational cost
+    active_unit = get_component(ThermalStandard, sys, "Tuning Adjustment");
+    get_operation_cost(active_unit);
+    
+    # set availability 
+    # set_available!(get_component(ThermalStandard, sys, "Tuning Adjustment"), false)
+
+    # define $2000/MWh cost CostCurve (w/ no VOM)
+    TA_CC = CostCurve(LinearCurve(2000),UnitSystem.NATURAL_UNITS,LinearCurve(0));
+    # define Operational Cost via ThermalGenerationCost template
+    op_cost = ThermalGenerationCost(; variable = TA_CC, fixed = 0, start_up = 0, shut_down = 0,);
+    # assign the operational cost to the Tuning Adjustment unit
+    set_operation_cost!(get_component(ThermalStandard, sys, "Tuning Adjustment"), op_cost);
+    # check your work
+    get_operation_cost(active_unit);
+end
+
+function Demand_Response_CleanUp!(sys::System)
+
+    # deactivate original DR units (R2X picks these up as curtailable resources bc of the "*PV" wildcard)
+    set_available!(get_component(RenewableDispatch, sys, "NVE.Owned.DR/DSM.PV"), false)
+    set_available!(get_component(RenewableDispatch, sys, "PPA.Contracted.DR/DSM.PV"), false)
+
+    # define $3000/MWh cost CostCurve (w/ no VOM); clears after tuning adjustment per benchmark system
+    DR_CC = CostCurve(LinearCurve(3000),UnitSystem.NATURAL_UNITS,LinearCurve(0))
+
+    # instantiate new DR units
+    dr_names = ["NVE_Owned_DR_DSM_ACLM", "NVE_Owned_DR_DSM_BESS-2", "NVE_Owned_DR_DSM_PV", "PPA_Contracted_DR_DSM_PV"]
+    dr_buses = ["Nevada Power", "Nevada Power", "Nevada Power", "Nevada Power"]
+    dr_ratings = [283, 4, 278, 4] # MW
+
+    # collection for DR units we create
+    dr_units = Dict()
+
+    # Loop through the resources and create each ThermalStandard unit
+    for (i, name) in enumerate(dr_names)
+        dr_units[name] = ThermalStandard(
+            name = name,
+            available = true,
+            status = true, 
+            bus = get_component(ACBus, sys, dr_buses[i]),
+            active_power = 0.0, # Per-unitized by device base_power
+            reactive_power = 0.0, # Per-unitized by device base_power
+            rating = dr_ratings[i], # Per-unitized by device base_power
+            active_power_limits = (min = 0.0, max = dr_ratings[i]), # Per-unitized by device base_power
+            reactive_power_limits = nothing, # Per-unitized by device base_power
+            ramp_limits = nothing, # we arent enforcing ramp limits per incumbent setup
+            operation_cost = ThermalGenerationCost(; variable = DR_CC, fixed = 0, start_up = 0, shut_down = 0,),
+            base_power = 1,
+            time_limits = nothing, #we arent enforcing MDT/MUT per incumbent setup 
+            must_run = false,
+            prime_mover_type = PrimeMovers.OT, # Other
+            fuel = ThermalFuels.OTHER,
+        )
+    end
+
+    # spot check a unit
+    dr_units["NVE_Owned_DR_DSM_ACLM"]
+
+    # add the units to the system
+    for (name, unit) in dr_units
+        add_component!(sys, unit)
+        # println("Added ThermalStandard unit: $name")
+    end
+    
+    # check your work
+    active_DR_unit = get_component(ThermalStandard, sys, "NVE_Owned_DR_DSM_ACLM")
+    # active_DR_unit = get_component(ThermalStandard, sys, "NVE_Owned_DR_DSM_BESS-2")
+    get_operation_cost(active_DR_unit)
+end
+
+function convert_BTM_units!(sys::System, paths::Dict)
+
+#Q: Ask Jose why chaging the type in the gen.csv file doesnt work
+
+#Deactive initial BTM solar units bc R2X picks them up as curtailable resources)
+set_available!(get_component(RenewableDispatch, sys, "DPV_Sierra"), false)
+set_available!(get_component(RenewableDispatch, sys, "DPV_Nevada Power"), false)
+
+# instantiate DPV_Nevada Power BTM
+DPV_Nevada_Power_ND = RenewableNonDispatch(;
+name = "DPV_Nevada Power ND",
+available = true,
+bus = get_component(ACBus, sys, "Nevada Power"),
+active_power = 0.0, # Per-unitized by device base_power
+reactive_power = 0.0, # Per-unitized by device base_power
+rating = 1372.6, # Per-unitized by device base_power
+prime_mover_type = PrimeMovers.PVe,
+power_factor = 1.0,
+base_power = 1, 
+);
+
+# instantiate DPV_Sierra BTM
+DPV_Sierra_ND = RenewableNonDispatch(;
+name = "DPV_Sierra ND",
+available = true,
+bus = get_component(ACBus, sys, "Sierra"),
+active_power = 0.0, # Per-unitized by device base_power
+reactive_power = 0.0, # Per-unitized by device base_power
+rating = 98.5, # Per-unitized by device base_power
+prime_mover_type = PrimeMovers.PVe,
+power_factor = 1.0,
+base_power = 1, 
+);
+
+# add BTM solar resources (rev) to the system 
+add_components!(sys, [DPV_Nevada_Power_ND, DPV_Sierra_ND])
+
+# define and assign time series to the revised BTM solar units
+input_RF_csv = joinpath(paths[:r2x_dir],"Data", "RenewableDispatch_Rating Factor_._2030.csv")
+input_map_csv = joinpath(paths[:r2x_dir],"Data", "RenewableDispatch_max_active_power_._2030.csv")
+df_RF = CSV.read(input_RF_csv, DataFrame)
+df_map = CSV.read(input_map_csv, DataFrame)
+
+# Extract and store time series for each DPV resource
+
+# define DateTime 
+tstamps = df_RF.DateTime  # Use DateTime column directly
+
+#DPV_Nevada Power (rev)
+# create PowerSystems.jl timeseries for Rating Factor 
+ts_rf = SingleTimeSeries(;
+    name = "Rating Factor",
+    data = TimeArray(tstamps, df_RF[!, "DPV_Nevada Power"]./maximum(df_RF[!, "DPV_Nevada Power"])), #scaling by max value
+    scaling_factor_multiplier = get_max_active_power,
+    )
+
+# create PowerSystems.jl timeseries for max_active_power 
+ts_map = SingleTimeSeries(;
+    name = "max_active_power",
+    data = TimeArray(tstamps, df_map[!, "DPV_Nevada Power"])./get_max_active_power(DPV_Nevada_Power_ND),
+    scaling_factor_multiplier = get_max_active_power, #scaling by max value
+    )
+
+# add both timeseries to each BTM object 
+add_time_series!(sys, DPV_Nevada_Power_ND, ts_rf);
+add_time_series!(sys, DPV_Nevada_Power_ND, ts_map);
+
+# remove_time_series!(sys,SingleTimeSeries, DPV_Nevada_Power_ND, "Rating Factor")
+# remove_time_series!(sys,SingleTimeSeries, DPV_Nevada_Power_ND, "max_active_power")
+
+#= # check your work
+active_unit = get_component(RenewableDispatch, sys, "DPV_Nevada Power")
+active_BTM_unit = get_component(RenewableNonDispatch, sys, "DPV_Nevada Power ND")
+get_time_series_array(SingleTimeSeries, active_unit, "Rating Factor"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_BTM_unit, "Rating Factor"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_unit,  "Rating Factor"; ignore_scaling_factors = false)
+get_time_series_array(SingleTimeSeries, active_BTM_unit,  "Rating Factor"; ignore_scaling_factors = false)
+
+get_time_series_array(SingleTimeSeries, active_unit, "max_active_power"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_BTM_unit, "max_active_power"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_unit,  "max_active_power"; ignore_scaling_factors = false)
+get_time_series_array(SingleTimeSeries, active_BTM_unit,  "max_active_power"; ignore_scaling_factors = false) =#
+
+#DPV_Sierra (rev)
+# create PowerSystems.jl timeseries for Rating Factor 
+ts_rf = SingleTimeSeries(;
+    name = "Rating Factor",
+    data = TimeArray(tstamps, df_RF[!, "DPV_Sierra"]./maximum(df_RF[!, "DPV_Sierra"])), #scaling by max value
+    scaling_factor_multiplier = get_max_active_power,
+    )
+
+# create PowerSystems.jl timeseries for max_active_power 
+ts_map = SingleTimeSeries(;
+    name = "max_active_power",
+    data = TimeArray(tstamps, df_map[!, "DPV_Sierra"])./get_max_active_power(DPV_Sierra_ND),
+    scaling_factor_multiplier = get_max_active_power, #scaling by max value
+    )
+
+# add both timeseries to each BTM object 
+add_time_series!(sys, DPV_Sierra_ND, ts_rf);
+add_time_series!(sys, DPV_Sierra_ND, ts_map);
+
+# remove_time_series!(sys,SingleTimeSeries, DPV_Nevada_Power_ND, "Rating Factor")
+# remove_time_series!(sys,SingleTimeSeries, DPV_Nevada_Power_ND, "max_active_power")
+
+#= # check your work
+active_unit = get_component(RenewableDispatch, sys, "DPV_Sierra")
+active_BTM_unit = get_component(RenewableNonDispatch, sys, "DPV_Sierra ND")
+get_time_series_array(SingleTimeSeries, active_unit, "Rating Factor"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_BTM_unit, "Rating Factor"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_unit,  "Rating Factor"; ignore_scaling_factors = false)
+get_time_series_array(SingleTimeSeries, active_BTM_unit,  "Rating Factor"; ignore_scaling_factors = false)
+
+get_time_series_array(SingleTimeSeries, active_unit, "max_active_power"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_BTM_unit, "max_active_power"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_unit,  "max_active_power"; ignore_scaling_factors = false)
+get_time_series_array(SingleTimeSeries, active_BTM_unit,  "max_active_power"; ignore_scaling_factors = false) =#
+end
+
+function fix_Hydro_Dispatch!(sys::System)
+    # review Tuning Adjustment operational cost
+    active_hydro_unit = active_unit = get_component(HydroDispatch, sys,"Hoover Dam (NV)")
+
+    # see what time series is already in the system
+    show_time_series(active_hydro_unit)
+
+    # remove the existing time series
+    remove_time_series!(sys,SingleTimeSeries, active_hydro_unit, "max_active_power")
+    remove_time_series!(sys,SingleTimeSeries, active_hydro_unit, "Max Energy Month")
+    remove_time_series!(sys,SingleTimeSeries, active_hydro_unit, "Min Energy Hour")
+
+    #pull in fixed dispatch profile from benchmark deterministic run_output
+    hydro_input_csv = joinpath(paths[:r2x_dir],"Data", "hydro_ts_deterministic.csv")
+    df_hydro = CSV.read(hydro_input_csv, DataFrame)
+
+    # define PowerSystems.jl time series
+    ## DateTime
+    tstamps = df_hydro.DateTime  # Use DateTime column directly
+
+    ## Instantiate Fixed Hydro Dispatch Profile SingleTimeSeries 
+    sts_fixed_hydro = SingleTimeSeries(;
+        name = "max_active_power",
+        data = TimeArray(tstamps, df_hydro[!, "Hoover Dam (NV)"])./get_max_active_power(active_hydro_unit), #normalize by nameplate capacity
+        scaling_factor_multiplier = get_max_active_power, #scaling by max active power
+    )
+
+    ## now add the time series to the HydroDispatch object
+    add_time_series!(sys, active_hydro_unit, sts_fixed_hydro);
+
+    # check your work
+    show_time_series(active_hydro_unit)
+    get_time_series_array(SingleTimeSeries, active_hydro_unit, "max_active_power"; ignore_scaling_factors = true)
+    get_time_series_array(SingleTimeSeries, active_hydro_unit, "max_active_power"; ignore_scaling_factors = false)
+
 end
 
 function ThermalStandard_missing_ts!(sys,paths::Dict{Symbol, String})
@@ -272,6 +491,11 @@ function define_device_model_weather_deterministic(template_uc)
 
     # define the renewable dispatch model
     set_device_model!(template_uc, RenewableDispatch, RenewableFullDispatch)
+
+    # define the renewable non-dispatch model
+    set_device_model!(template_uc, RenewableNonDispatch, FixedOutput)
+
+
 end
 
 function define_device_model_weather_stochastic(template_uc; load_timeseries_name, renewable_timeseries_name)
@@ -323,7 +547,7 @@ function build_and_execute_simulation(template_uc, sys::System, paths::Dict; dec
         rebuild_model = false,
         store_variable_names = true,
         calculate_conflict = true,
-        export_optimization_model = true, # this exports the LP
+        export_optimization_model = false, # this exports the LP (location is...)
     )
 
     # Create Simulation Models
@@ -363,18 +587,26 @@ function query_write_export_results(sim::Simulation, path_scenario::String, uc_d
     sim_results = SimulationResults(sim)
     results = get_decision_problem_results(sim_results, uc_decision_name) # UC stage result metadata
 
-    # Input Parameters
+    # Input TimeSeries Parameters
     load_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__PowerLoad")
-    renewable_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableDispatch")
-    thermal_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__ThermalStandard")    
+    thermal_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__ThermalStandard")
+    renewDispatch_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableDispatch")
+    renewNonDispatch_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableNonDispatch")
+    hydro_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__HydroDispatch") 
     
-    # Output Variables
+    # Output Realized Generation Values
     thermal_active_power = read_realized_variable(results, "ActivePowerVariable__ThermalStandard")
-    renewable_active_power = read_realized_variable(results, "ActivePowerVariable__RenewableDispatch")
-    gen_active_power = hcat(thermal_active_power, select(renewable_active_power, Not(1)))
-    tx_flow = read_realized_variable(results, "FlowActivePowerVariable__AreaInterchange")
+    renewDispatch_active_power = read_realized_variable(results, "ActivePowerVariable__RenewableDispatch")
+    # renewNonDispatch_active_power = read_realized_variable(results, "ActivePowerVariable__RenewableNonDispatch") Q: why isnt this available in results; bc no dispatch?
+    hydro_active_power = read_realized_variable(results, "ActivePowerVariable__HydroDispatch")
     storage_charge = read_realized_variable(results, "ActivePowerInVariable__EnergyReservoirStorage")
     storage_discharge = read_realized_variable(results, "ActivePowerOutVariable__EnergyReservoirStorage")
+
+    # combine all FTM generators 
+    gen_active_power = hcat(thermal_active_power, select(renewDispatch_active_power, Not(1)), select(hydro_active_power, Not(1)))
+    
+    # Output Realized TX flows
+    tx_flow = read_realized_variable(results, "FlowActivePowerVariable__AreaInterchange")
     
     # Output Expressions
     power_balance = read_realized_expression(results, "ActivePowerBalance__Area")
@@ -382,19 +614,23 @@ function query_write_export_results(sim::Simulation, path_scenario::String, uc_d
     # Get Production Costs
     pc_thermal = read_realized_expression(results, "ProductionCostExpression__ThermalStandard")
     pc_renewable = read_realized_expression(results, "ProductionCostExpression__RenewableDispatch")
-    # pc_hydro = read_realized_expression(results, "ProductionCostExpression__HydroDispatch")
-    all_pc = hcat(pc_thermal,select(pc_renewable, Not(1)))
-    # all_pc = hcat(pc_thermal,select(pc_renewable, Not(1)), select(pc_hydro, Not(1)))
+    pc_hydro = read_realized_expression(results, "ProductionCostExpression__HydroDispatch")
+    #all_pc = hcat(pc_thermal,select(pc_renewable, Not(1)))
+    all_pc = hcat(pc_thermal,select(pc_renewable, Not(1)), select(pc_hydro, Not(1)))
 
     ###########################
     # Export Results
     ###########################
     # Define output paths and write dataframes to CSV
-    CSV.write(joinpath(path_scenario, "load_active_power.csv"), load_parameter) # Input values
-    CSV.write(joinpath(path_scenario, "renewable_parameters.csv"), renewable_parameter) # Input values
-    CSV.write(joinpath(path_scenario, "thermal_parameters.csv"), thermal_parameter) # Input values
-    CSV.write(joinpath(path_scenario, "renewable_active_power.csv"), renewable_active_power)
-    CSV.write(joinpath(path_scenario, "generator_active_power.csv"), gen_active_power)
+    CSV.write(joinpath(path_scenario, "load_active_power.csv"), load_parameter) # Input time series values
+    CSV.write(joinpath(path_scenario, "FTM_renewable_parameters.csv"), renewDispatch_parameter) # Input time series values
+    CSV.write(joinpath(path_scenario, "thermal_parameters.csv"), thermal_parameter) # Input time series values
+    CSV.write(joinpath(path_scenario, "hydro_parameter.csv"), hydro_parameter) # Input time series values
+    CSV.write(joinpath(path_scenario, "BTM_active_power.csv"), renewNonDispatch_parameter) # Input time series values
+
+    CSV.write(joinpath(path_scenario, "FTM_renewable_active_power.csv"), renewDispatch_active_power)
+    CSV.write(joinpath(path_scenario, "thermal_active_power.csv"), thermal_active_power)
+    CSV.write(joinpath(path_scenario, "FTM_generator_active_power.csv"), gen_active_power)
     CSV.write(joinpath(path_scenario, "tx_flow.csv"), tx_flow)
     CSV.write(joinpath(path_scenario, "storage_charge.csv"), storage_charge)
     CSV.write(joinpath(path_scenario, "storage_discharge.csv"), storage_discharge)
@@ -402,10 +638,10 @@ function query_write_export_results(sim::Simulation, path_scenario::String, uc_d
     CSV.write(joinpath(path_scenario, "production_costs.csv"), all_pc)
 
     # Export generation by fuel type
-    all_gen_data = PowerAnalytics.get_generation_data(results)
+#=     all_gen_data = PowerAnalytics.get_generation_data(results) # do we need to define timeseries for all inputs for this to work?
     cat = PowerAnalytics.make_fuel_dictionary(sys)
     fuel = PowerAnalytics.categorize_data(all_gen_data.data, cat; curtailment = true, slacks = true)
     fuel_agg = PowerAnalytics.combine_categories(fuel)
-    CSV.write(joinpath(path_scenario, "generation_by_fuel.csv"), fuel_agg)
+    CSV.write(joinpath(path_scenario, "generation_by_fuel.csv"), fuel_agg) =#
 end
 
