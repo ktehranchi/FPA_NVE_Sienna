@@ -89,7 +89,7 @@ function build_system_from_r2x(paths::Dict{Symbol, String}, r2x_output_name::Str
     modify_data(data)
 
     # Create the system
-    sys = System(data, time_series_in_memory= true) #Q: what is time_series_in_memory?
+    sys = System(data, time_series_in_memory= true) #Q: using from memory (smaller systems; faster result) of hardrive sys what is time_series_in_memory?
 
     # Define the path to the PWL output CSV
     pw_file = joinpath(paths[:r2x_dir], "generator_PWL_output.csv")
@@ -135,7 +135,8 @@ function modify_system!(sys::System, pw_data::DataFrame, paths::Dict)
     # Set market purchases availability
     # set_available!(get_component(ThermalStandard, sys, "Southern Purchases (NVP)"), false)
     # set_available!(get_component(ThermalStandard, sys, "Northern Purchases (Sierra)"), false)
-    #set_available!(get_component(RenewableDispatch, sys, "Sierra Solar II"), false) # COD: 4/1/2030
+    # set_available!(get_component(RenewableDispatch, sys, "Sierra Solar II"), false) # not active in PLEXOS system
+    # set_available!(get_component(EnergyReservoirStorage, sys, "Sierra Solar II BESS"), false) # not active in PLEXOS system
 
     # Modify generator heat rates
     for row in eachrow(pw_data)
@@ -168,6 +169,26 @@ function modify_system!(sys::System, pw_data::DataFrame, paths::Dict)
             )
         set_operation_cost!(generator, new_generator_cost)
     end
+
+    #reassign ThermalStandard units that get flagged as NG
+    geothermal_units = ["Gerlach", "Lone Mountain", "North Valley 2", "North Valley Eavor Loop", "Pinto"]
+    for unit in geothermal_units
+        #check to see if fuel type is geothermal
+        active_geo = get_component(ThermalStandard, sys, unit)
+        if get_fuel(active_geo) == ThermalFuels.GEOTHERMAL
+            # do nothing
+        else
+            set_fuel!(active_geo, ThermalFuels.GEOTHERMAL)
+            #set the fuel cost to 0
+            set_fuel_cost!(sys, active_geo, 0.0)
+        end
+    end
+
+#=     for unit in get_components(ThermalStandard, sys)
+        if get_fuel(unit) == ThermalFuels.GEOTHERMAL
+            println("Geothermal Unit: ", get_name(unit))
+        end
+    end =#
 
     # Set the reference (slack) bus
     set_bustype!(get_component(ACBus, sys, "Nevada Power"), "REF");
@@ -540,13 +561,13 @@ function build_and_execute_simulation(template_uc, sys::System, paths::Dict; dec
         sys;
         name = decision_name,
         optimizer = optimizer_with_attributes(Gurobi.Optimizer, "MIPGap" => 1e-2),
-        system_to_file = false, # write the json and hf to file
-        initialize_model = true, # what does this do?
-        optimizer_solve_log_print = true,
-        direct_mode_optimizer = true,
-        rebuild_model = false,
+        system_to_file = false, # write the json and hf files
+        initialize_model = true, # Q: what does this do?
+        optimizer_solve_log_print = true, #solver output 
+        direct_mode_optimizer = true, # performance thing; default is true; set it false if you have specific need
+        #rebuild_model = false, # never have to use this, R&D thing 
         store_variable_names = true,
-        calculate_conflict = true,
+        calculate_conflict = true, #infeasibility (gurobi only)
         export_optimization_model = false, # this exports the LP (location is...)
     )
 

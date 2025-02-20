@@ -148,7 +148,9 @@ arcs = collect(get_components(Arc, sys));
 areas = collect(get_components(Area, sys));
 area_interchanges = collect(get_components(AreaInterchange, sys));
 gens_thermal = collect(get_components(ThermalStandard, sys));
-gens_renew = collect(get_components(RenewableDispatch, sys));
+gens_ftm_renew = collect(get_components(RenewableDispatch, sys));
+gens_btm_renew = collect(get_components(RenewableNonDispatch, sys));
+gen_hydro = collect(get_components(HydroDispatch, sys));
 # solar_renew = [gen for gen in gens_renew if get_prime_mover_type(gen) == PrimeMovers.PVe];
 # wind_renew = [gen for gen in gens_renew if get_prime_mover_type(gen) == PrimeMovers.WT];
 # Initialize empty collections for solar and wind generators
@@ -156,7 +158,7 @@ solar_renew = []
 wind_renew = []
 
 # Loop through the renewable generators and classify them
-for gen in gens_renew
+for gen in gens_ftm_renew
     if get_prime_mover_type(gen) == PrimeMovers.PVe
         push!(solar_renew, gen)  # Add to solar_renew
     elseif get_prime_mover_type(gen) == PrimeMovers.WT
@@ -167,6 +169,55 @@ end
 batteries = collect(get_components(EnergyReservoirStorage, sys));
 reserves_spinning = collect(get_components(VariableReserve{ReserveUp}, sys));
 reserves_non_spinning = collect(get_components(VariableReserveNonSpinning, sys));
+
+# Retrieve all generator-type components in one go
+all_generators = collect(get_components(Generator, sys))
+all_storage = collect(get_components(Storage, sys))
+
+# Define collections to iterate over
+unit_collections = Dict(
+    "GenUnits" => all_generators,
+    "StorageUnits" => all_storage
+)
+
+############################################################
+##  Retrieve NamePlate Capacity of System
+############################################################
+# Initialize an empty DataFrame
+df = DataFrame(Resource = String[], MW_capacity = Float64[])
+
+# for each generator collection, loop through each unit w/in that collection
+for (category, gen_collection) in unit_collections
+    if category == "StorageUnits" #batteries
+        for unit in gen_collection
+            if get_available(unit)  # Check if the unit is active
+                name = get_name(unit)  # Get the generator's name
+                capacity = get_output_active_power_limits(unit).max  # Get the max active discharge power (MW)
+        
+                # Append to DataFrame
+                push!(df, (name, capacity))
+            else
+            # do nothing
+            end
+        end
+    else # all other generator types 
+        for unit in gen_collection
+            if get_available(unit)  # Check if the unit is active
+
+                name = get_name(unit)  # Get the generator's name
+                capacity = get_max_active_power(unit)  # Get the max active power (MW)
+
+                # Append to DataFrame
+                push!(df, (name, capacity))
+            else
+                #do nothing
+            end
+        end
+    end # if loop
+end
+
+#write df to csv
+CSV.write(joinpath(paths[:data_dir], "nve_nameplate_capacity.csv"), df);
 
 ############################################################
 ##  Timeseries

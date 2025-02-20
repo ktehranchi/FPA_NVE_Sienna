@@ -25,7 +25,7 @@ using TimeSeries
 ###########################
 # Specify the output name and scenario name dynamically
 r2x_output_name = "output_stable_dec24" # name of the r2x scenario
-scenario_name = "output_stable_dec24"  #  name of the sienna scenario
+scenario_name = "output_stable_dec24"  # name of the sienna scenario
 
 # Call the function to initialize paths and inputs
 include(joinpath(@__DIR__, "NVE_non_weather.jl"))
@@ -54,31 +54,60 @@ set_units_base_system!(sys, "NATURAL_UNITS")
 # create area interchanges, define initial SOC, set generator services, define availability, add VOM to production costs, set reference bus)
 modify_system!(sys, pw_data, paths)
 
+###########################
+# Missing time series for fuel_prices (?)
+###########################
 # assign fuel_price timeseries to dual fuel Thermal standard objects (R2X defaulted to hydrogen fuel price)
 active_unit = get_component(ThermalStandard, sys, "Valmy CT 3")
-show_time_series(active_unit)
-active_unit.operation_cost
-
-# create and assign the timeseries for natural gas fuel prices
-ThermalStandard_missing_ts!(sys,paths)
-
-# check to make sure missing timeseries were created successfully
 show_time_series(active_unit)
 get_time_series_array(SingleTimeSeries, active_unit, "fuel_price")
 active_unit.operation_cost
 
-# remaining units should be oddballs (e.g., geothermal, waste heat, and biomass); assuming fixed fuel prices 
+# check to see if there are any missing timeseries for fuel_price
+for g in collect(get_components(ThermalStandard, sys))
+    if "fuel_price" ∉ get_name.(get_time_series_keys(g))
+        @show g.name
+        @show g.operation_cost.variable.fuel_cost
+    end
+end
+
+# create and assign the timeseries for natural gas fuel prices
+# ThermalStandard_missing_ts!(sys,paths)
+
+# check to make sure missing timeseries were created successfully
+#show_time_series(active_unit)
+#get_time_series_array(SingleTimeSeries, active_unit, "fuel_price")
+#active_unit.operation_cost
+
+#= # remaining units should be oddballs (e.g., geothermal, waste heat, and biomass); assuming fixed fuel prices 
 for g in collect(get_components(ThermalStandard, sys))
     if "fuel_price" ∉ get_name.(get_time_series_keys(g))
         @show g.name
         #@show g.operation_cost.variable.fuel_cost
     end
-end
+end =#
+
+###########################
+# Convert DPV units from RenewableDispatch to RenewableNonDispatch
+###########################
+convert_BTM_units!(sys, paths)
+
+###########################
+# Define production costs for TA resource and add in DR Units
+###########################
+Tuning_Adjustment_Costs!(sys)
+Demand_Response_CleanUp!(sys)
+
+###########################
+# Fix Hydro Dispatch Profile for Hoover
+###########################
+fix_Hydro_Dispatch!(sys)
+
 ############################################################
 # Reassign prime mover type for ThermalStandard generators and set initial conditions
 ############################################################
 # read in datafile
-df_pm = CSV.read(joinpath(paths[:data_dir],"nve_prime_mover_mapping.csv"), DataFrame)
+df_pm = CSV.read(joinpath(paths[:data_dir],"nve_prime_mover_mapping.csv"), DataFrame);
 
 # loop through all ThermalStandard generators
 for thermal_gen in get_components(ThermalStandard, sys)
@@ -113,7 +142,9 @@ arcs = collect(get_components(Arc, sys));
 areas = collect(get_components(Area, sys));
 area_interchanges = collect(get_components(AreaInterchange, sys));
 gens_thermal = collect(get_components(ThermalStandard, sys));
-gens_renew = collect(get_components(RenewableDispatch, sys));
+gens_ftm_renew = collect(get_components(RenewableDispatch, sys));
+gens_btm_renew = collect(get_components(RenewableNonDispatch, sys));
+gen_hydro = collect(get_components(HydroDispatch, sys));
 # solar_renew = [gen for gen in gens_renew if get_prime_mover_type(gen) == PrimeMovers.PVe];
 # wind_renew = [gen for gen in gens_renew if get_prime_mover_type(gen) == PrimeMovers.WT];
 # Initialize empty collections for solar and wind generators
@@ -121,7 +152,7 @@ solar_renew = []
 wind_renew = []
 
 # Loop through the renewable generators and classify them
-for gen in gens_renew
+for gen in gens_ftm_renew
     if get_prime_mover_type(gen) == PrimeMovers.PVe
         push!(solar_renew, gen)  # Add to solar_renew
     elseif get_prime_mover_type(gen) == PrimeMovers.WT
@@ -132,6 +163,54 @@ end
 batteries = collect(get_components(EnergyReservoirStorage, sys));
 reserves_spinning = collect(get_components(VariableReserve{ReserveUp}, sys));
 reserves_non_spinning = collect(get_components(VariableReserveNonSpinning, sys));
+
+# Retrieve all generator-type components in one go
+all_generators = collect(get_components(Generator, sys))
+all_storage = collect(get_components(Storage, sys))
+
+# Define collections to iterate over
+unit_collections = Dict(
+    "GenUnits" => all_generators,
+    "StorageUnits" => all_storage)
+
+############################################################
+##  Retrieve NamePlate Capacity of System
+############################################################
+#= # Initialize an empty DataFrame
+df = DataFrame(Resource = String[], MW_capacity = Float64[])
+
+# for each generator collection, loop through each unit w/in that collection
+for (category, gen_collection) in unit_collections
+    if category == "StorageUnits" #batteries
+        for unit in gen_collection
+            if get_available(unit)  # Check if the unit is active
+                name = get_name(unit)  # Get the generator's name
+                capacity = get_output_active_power_limits(unit).max  # Get the max active discharge power (MW)
+        
+                # Append to DataFrame
+                push!(df, (name, capacity))
+            else
+            # do nothing
+            end
+        end
+    else # all other generator types 
+        for unit in gen_collection
+            if get_available(unit)  # Check if the unit is active
+
+                name = get_name(unit)  # Get the generator's name
+                capacity = get_max_active_power(unit)  # Get the max active power (MW)
+
+                # Append to DataFrame
+                push!(df, (name, capacity))
+            else
+                #do nothing
+            end
+        end
+    end # if loop
+end
+
+#write df to csv
+CSV.write(joinpath(paths[:data_dir], "nve_nameplate_capacity.csv"), df); =#
 
 ############################################################
 ##  Timeseries
