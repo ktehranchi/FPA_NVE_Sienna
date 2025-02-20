@@ -26,6 +26,9 @@ function initialize_paths_and_inputs(r2x_output_name::String, scenario_name::Str
     wind_dir = joinpath(data_dir, "LOLP_inputs", "wind")
     load_dir = joinpath(data_dir, "LOLP_inputs", "load")
 
+    #Outage statistics
+    LOLP_inputs = joinpath(data_dir, "LOLP_inputs")
+
     # Ensure that simulation_files exists
     if !ispath(sim_files_dir)
         mkpath(sim_files_dir)
@@ -59,6 +62,7 @@ function initialize_paths_and_inputs(r2x_output_name::String, scenario_name::Str
         :solar_dir => solar_dir,
         :wind_dir => wind_dir,
         :load_dir => load_dir,
+        :LOLP_inputs => LOLP_inputs,
         :descriptors_dir => descriptors_dir
     )
 end

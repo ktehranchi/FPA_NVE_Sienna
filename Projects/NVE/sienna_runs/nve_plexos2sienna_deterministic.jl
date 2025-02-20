@@ -19,6 +19,7 @@ using DataFrames
 using Plots
 using CSV
 using TimeSeries
+using SiennaPRASInterface
 
 ###########################
 # Define Your Paths
@@ -28,7 +29,7 @@ r2x_output_name = "output_stable_dec24" # name of the r2x scenario
 scenario_name = "output_stable_dec24"  #  name of the sienna scenario
 
 # Call the function to initialize paths and inputs
-include(joinpath(@__DIR__, "NVE_non_weather.jl"))
+include(joinpath(@__DIR__, "sienna_runs/NVE_non_weather.jl"))
 paths = initialize_paths_and_inputs(r2x_output_name, scenario_name)
 
 ###########################
@@ -86,7 +87,7 @@ end
 ############################################################
 # read in datafile
 df_pm = CSV.read(joinpath(paths[:data_dir],"nve_prime_mover_mapping.csv"), DataFrame)
-
+df_outage_stats = CSV.read(joinpath(paths[:LOLP_inputs],"outage_statistics.csv"), DataFrame)
 # loop through all ThermalStandard generators
 for thermal_gen in get_components(ThermalStandard, sys)
     obj_name = get_name(thermal_gen)  # Retrieve the name of the object
@@ -101,6 +102,21 @@ for thermal_gen in get_components(ThermalStandard, sys)
     else
         println("No match found for $(obj_name)")  # Debug print for unmatched objects
     end
+
+    # Set the outage statistics
+    outage_stats = df_outage_stats[df_outage_stats.Item .== obj_name, :]
+    # check if outage_stats is empty
+    if size(outage_stats, 1) == 0
+        println("No outage statistics found for $(obj_name)")
+        continue
+    end
+
+    transition_data = GeometricDistributionForcedOutage(;
+        mean_time_to_recovery=outage_stats.MTTR[1],  # Units of hours
+        outage_transition_probability=outage_stats.outage_transition_probability[1],  # Probability for outage per hour
+    )    
+    add_supplemental_attribute!(sys, thermal_gen, transition_data)
+
 end
 
 #= #set all ThermalStandard generators that are CTs to zero
@@ -210,6 +226,11 @@ get_time_series_array(SingleTimeSeries, active_unit, "fuel_price"; ignore_scalin
 get_time_series_array(SingleTimeSeries, active_unit, "fuel_price"; ignore_scaling_factors = false) # this should be equal to the previous cmd 
 get_time_series_array(DeterministicSingleTimeSeries, active_unit, "fuel_price")
 active_unit.operation_cost # note: you should not see a fixed price under fuel_cost anymore; this should be a pointer to the timeseries
+
+method = SequentialMonteCarlo(samples=10000, seed=1)
+shortfalls, = assess(sys, PowerSystems.Area, method, Shortfall())
+eue = EUE(shortfalls)
+
 
 #################################
 # Define Device, Branch, an Network Models

@@ -19,6 +19,7 @@ using DataFrames
 using Plots
 using CSV
 using TimeSeries
+using SiennaPRASInterface
 
 ###########################
 # Define Your Paths
@@ -28,7 +29,7 @@ r2x_output_name = "output_stable_dec24" # name of the r2x scenario
 scenario_name = "output_stable_dec24"  #  name of the sienna scenario
 
 # Call the function to initialize paths and inputs
-include(joinpath(@__DIR__, "NVE_non_weather.jl"))
+include(joinpath(@__DIR__, "sienna_runs/NVE_non_weather.jl"))
 paths = initialize_paths_and_inputs(r2x_output_name, scenario_name)
 
 ###########################
@@ -79,6 +80,7 @@ end
 ############################################################
 # read in datafile
 df_pm = CSV.read(joinpath(paths[:data_dir],"nve_prime_mover_mapping.csv"), DataFrame)
+df_outage_stats = CSV.read(joinpath(paths[:LOLP_inputs],"outage_statistics.csv"), DataFrame)
 
 # loop through all ThermalStandard generators
 for thermal_gen in get_components(ThermalStandard, sys)
@@ -94,6 +96,21 @@ for thermal_gen in get_components(ThermalStandard, sys)
     else
         println("No match found for $(obj_name)")  # Debug print for unmatched objects
     end
+
+    # Set the outage statistics
+    outage_stats = df_outage_stats[df_outage_stats.Item .== obj_name, :]
+    # check if outage_stats is empty
+    if size(outage_stats, 1) == 0
+        println("No outage statistics found for $(obj_name)")
+        continue
+    end
+
+    transition_data = GeometricDistributionForcedOutage(;
+        mean_time_to_recovery=outage_stats.MTTR[1],  # Units of hours
+        outage_transition_probability=outage_stats.outage_transition_probability[1],  # Probability for outage per hour
+    )    
+    add_supplemental_attribute!(sys, thermal_gen, transition_data)
+
 end
 
 #= #set all ThermalStandard generators that are CTs to zero
@@ -368,4 +385,75 @@ for wy in weather_years
     # now write the files
     query_write_export_results(sim, file_path, uc_decision_name)
 end
+
+
+
+###########################################################################################
+# For Loop to Iterate Over Each Weather Year for our Monte Carlo RA LOLP Simulation 
+###########################################################################################
+# Define the range of weather years
+weather_years = 1998:2002 # testing for only a few yrs for now
+
+# Dictionary to store results for each weather year
+# weather_year_results = Dict{Int, Tuple{Simulation, DecisionModel}}()
+
+# Iterate over each weather year
+for wy in weather_years    
+    
+    # Generate strings for the current year
+    year_str = string(wy)
+
+    #define unique identifies for timeseries pointers and decision model names 
+    uc_decision_name = "DA_WY_$year_str"  # e.g., "DA_WY_1998"
+    ts_RD_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Y1998"
+    ts_PL_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Y1998"
+
+    #################################
+    # Define Device, Branch, an Network Models
+    #################################
+    # Create an empty model reference
+    template_uc = ProblemTemplate()
+
+    # Define thermal, hydro, and storage device models (non-weather-dependent)
+    define_device_model_non_weather(template_uc)
+
+    # Define load and renewable dispatch models (weather-dependent)
+    define_device_model_weather_stochastic(template_uc; load_timeseries_name=ts_PL_name, renewable_timeseries_name=ts_RD_name)
+
+
+    # Update renewable weather year timeseries
+    # Define custom RenewableDispatch model for MC runs
+    renewable_model = DeviceModel(
+        RenewableDispatch,
+        RenewableFullDispatch;
+        time_series_names = Dict(ActivePowerTimeSeriesParameter => renewable_timeseries_name)
+    )
+    # Assign custom RenewableDispatch model to template
+    set_device_model!(template_uc, renewable_model)
+
+    ###########################
+    # Run SiennaPRASInterface 
+    ###########################
+    method = SequentialMonteCarlo(samples=10000, seed=1)
+    shortfalls, = assess(sys, PowerSystems.Area, method, Shortfall())
+    eue = EUE(shortfalls)
+
+    # Print a message to indicate that the simulation is complete
+    println("SiennaPRASInterface simulation completed for: $uc_decision_name.")
+
+    ###########################
+    # Export the Results
+    ###########################
+    # define file paths to store (processed) results for the active weather yr
+    file_path = joinpath(paths[:scenario_dir_s], "results_WY_$year_str")
+    
+    # check if folder directory exists; if not, create it
+    if !ispath(file_path)
+        mkpath(file_path)
+    else
+    end
+    # now write the files
+    # query_write_export_results(sim, file_path, uc_decision_name)
+end
+
 
