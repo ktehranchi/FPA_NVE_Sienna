@@ -1,0 +1,12 @@
+membership_id,parent_object_id,parent_object_name,parent_class_name,child_class_name,category,object_id,name,property_name,property_unit,property_value,band,date_from,date_to,memo,scenario_category,scenario,action,data_file_tag,variable_tag,timeslice_tag,timeslice,timeslice_value,data_text,year_from,year_to,variable_name,variable,variable_default,data_file
+166,1,System,System,Fuel,-,167,Coal,Price,$/~,2.0,1,,,,,,,Fuel Price Forecast,,,,,,,,,,,datafiles\Fuel Prices\Nevada Fuel Price Forecast.csv
+166,1,System,System,Fuel,-,167,Coal,Price,$/~,2.0,1,,,,,,,Fuel Price Forecast,,,,,,,,,,,datafiles\Fuel Prices\Nevada Fuel Price Forecast.csv
+167,1,System,System,Fuel,-,168,Diesel,Price,$/~,15.0,1,,,,,,,Fuel Price Forecast,,,,,,,,,,,datafiles\Fuel Prices\Nevada Fuel Price Forecast.csv
+167,1,System,System,Fuel,-,168,Diesel,Price,$/~,15.0,1,,,,,,,Fuel Price Forecast,,,,,,,,,,,datafiles\Fuel Prices\Nevada Fuel Price Forecast.csv
+168,1,System,System,Fuel,-,169,Landfill/Biogas,Price,$/~,1.0,1,,,,,,,,,,,,,,,,,,
+169,1,System,System,Fuel,-,170,Nat. Gas,Price,$/~,3.0,1,,,,,,,Fuel Price Forecast,,,,,,,,,,,datafiles\Fuel Prices\Nevada Fuel Price Forecast.csv
+169,1,System,System,Fuel,-,170,Nat. Gas,Price,$/~,3.0,1,,,,,,,Fuel Price Forecast,,,,,,,,,,,datafiles\Fuel Prices\Nevada Fuel Price Forecast.csv
+170,1,System,System,Fuel,-,171,Nat. Gas (Imports),Price,$/~,3.0,1,,,,,,,Fuel Price Forecast,,,,,,,,,,,datafiles\Fuel Prices\Nevada Fuel Price Forecast.csv
+170,1,System,System,Fuel,-,171,Nat. Gas (Imports),Price,$/~,3.0,1,,,,,,,Fuel Price Forecast,,,,,,,,,,,datafiles\Fuel Prices\Nevada Fuel Price Forecast.csv
+171,1,System,System,Fuel,-,172,Waste Heat,Price,$/~,1.0,1,,,,,,,,,,,,,,,,,,
+3879,1,System,System,Fuel,-,1074,Hydrogen,Price,$/~,30.0,1,,,,,,,,,,,,,,,,,,

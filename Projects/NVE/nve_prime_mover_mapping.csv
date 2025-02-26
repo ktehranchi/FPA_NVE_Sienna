@@ -1,0 +1,132 @@
+resource,category,prime_mover_type
+Chuck Lenzi 1_A,NG CC,CC
+Chuck Lenzi 1_B,NG CC,CC
+Chuck Lenzi 2_A,NG CC,CC
+Chuck Lenzi 2_B,NG CC,CC
+"Clark 5, 6, 10_A",NG CC,CC
+"Clark 5, 6, 10_B",NG CC,CC
+"Clark 7, 8, 9_A",NG CC,CC
+"Clark 7, 8, 9_B",NG CC,CC
+Harry Allen CC_A,NG CC,CC
+Harry Allen CC_B,NG CC,CC
+LV Gen 1,NG CC,CC
+LV Gen 2_A,NG CC,CC
+LV Gen 2_B,NG CC,CC
+LV Gen 3_A,NG CC,CC
+LV Gen 3_B,NG CC,CC
+Silverhawk CC_A,NG CC,CC
+Silverhawk CC_B,NG CC,CC
+Tracy 4&5 CC,NG CC,CC
+"Tracy 8, 9, 10_A",NG CC,CC
+"Tracy 8, 9, 10_B",NG CC,CC
+Walt Higgings CC_A,NG CC,CC
+Walt Higgings CC_B,NG CC,CC
+Clark 11,NG CT,GT
+Clark 12,NG CT,GT
+Clark 13,NG CT,GT
+Clark 14,NG CT,GT
+Clark 15,NG CT,GT
+Clark 16,NG CT,GT
+Clark 17,NG CT,GT
+Clark 18,NG CT,GT
+Clark 19,NG CT,GT
+Clark 20,NG CT,GT
+Clark 21,NG CT,GT
+Clark 22,NG CT,GT
+Clark 4,NG CT,GT
+Clark Mt. 3,NG CT,GT
+Clark Mt. 4,NG CT,GT
+Harry Allen 3,NG CT,GT
+Harry Allen 4,NG CT,GT
+Silverhawk 3,NG CT,GT
+Silverhawk 4,NG CT,GT
+Sun Peak 3,NG CT,GT
+Sun Peak 4,NG CT,GT
+Sun Peak 5,NG CT,GT
+Valmy CT 3,NG CT,GT
+Valmy CT 4,NG CT,GT
+Ft. Churchill 1,NG ST,ST
+Ft. Churchill 2,NG ST,ST
+Tracy 3,NG ST,ST
+Valmy 1,Coal ST,ST
+Valmy 2,Coal ST,ST
+Liberty (Cal Peco),Oil IC,IC
+Beowawe Geothermal Power Plant,Geothermal,ST
+Burdette Geothermal Power Plant,Geothermal,ST
+Desert Peak 2 Geothermal Power,Geothermal,ST
+Galena 1,Geothermal,ST
+Galena 3 Geothermal Power Plant,Geothermal,ST
+Gerlach,Geothermal,ST
+Jersey Valley Geothermal,Geothermal,ST
+Lone Mountain,Geothermal,ST
+McGinness Hills Geothermal,Geothermal,ST
+North Valley 2,Geothermal,ST
+North Valley Eavor Loop,Geothermal,ST
+North Valley Geothermal,Geothermal,ST
+Ormat Western Geothermal,Geothermal,ST
+Pinto,Geothermal,ST
+Tuscarora Geothermal,Geothermal,ST
+USG San Emidio Geothermal,Geothermal,ST
+Hoover Dam (NV),Hydro,HA
+Apex Landfill Facility,Landfill/Biogas,ST
+Lockwood Renewable Energy Facility,Landfill/Biogas,ST
+_PCM Generic Expansion_NVP_PV,UPV - Standalone,Pve
+_PCM Generic Expansion_SPPC_PV,UPV - Standalone,Pve
+ACE Searchlight Solar,UPV - Standalone,Pve
+Boulder Solar I,UPV - Standalone,Pve
+Boulder Solar II,UPV - Standalone,Pve
+Copper Mountain Solar 5,UPV - Standalone,Pve
+Eagle Shadow Mountain Solar Farm,UPV - Standalone,Pve
+FRV Spectrum Solar,UPV - Standalone,Pve
+Mountain View Solar,UPV - Standalone,Pve
+Nellis Solar Array II,UPV - Standalone,Pve
+RV Apex Solar,UPV - Standalone,Pve
+Silver State Solar,UPV - Standalone,Pve
+Switch Station 1 (Playa Solar 1),UPV - Standalone,Pve
+Switch Station 2 (Playa Solar 2),UPV - Standalone,Pve
+Techren Solar 2,UPV - Standalone,Pve
+Techren Solar I,UPV - Standalone,Pve
+Techren Solar III,UPV - Standalone,Pve
+Techren Solar IV,UPV - Standalone,Pve
+Techren Solar V,UPV - Standalone,Pve
+Turquoise Nevada,UPV - Standalone,Pve
+Arrow Canyon Solar,UPV - Hybrid,Pve
+Battle Mountain Solar,UPV - Hybrid,Pve
+Boulder Solar III,UPV - Hybrid,Pve
+Dodge Flat Solar,UPV - Hybrid,Pve
+Dry Lake East Solar,UPV - Hybrid,Pve
+Dry Lake Solar,UPV - Hybrid,Pve
+Fish Springs Ranch Solar,UPV - Hybrid,Pve
+Gemini Solar,UPV - Hybrid,Pve
+Libra Solar,UPV - Hybrid,Pve
+Sierra Solar,UPV - Hybrid,Pve
+Ft. Churchill Solar,Concentrated Solar,ST
+DPV_Nevada Power,DPV,Pve
+DPV_Sierra,DPV,Pve
+_PCM Generic Expansion_SPPC_Wind (ID),LBW,WT
+Spring Valley Wind,LBW,WT
+Goodsprings,Other,ST
+Tuning Adjustment,Market Purchases,OT
+NVE.Owned.DR/DSM.ACLM,LT Only DR Resources,OT
+NVE.Owned.DR/DSM.BESS-2,LT Only DR Resources,OT
+NVE.Owned.DR/DSM.PV,LT Only DR Resources,OT
+PPA.Contracted.DR/DSM.PV,LT Only DR Resources,OT
+_PCM Generic Expansion_NVP_BESS,Standalone,BA
+_PCM Generic Expansion_SPPC_BESS,Standalone,BA
+Reid Gardner BESS,Standalone,BA
+Arrow Canyon Solar BESS,Hybrid,BA
+Battle Mountain Solar BESS,Hybrid,BA
+Boulder Solar III BESS,Hybrid,BA
+Dodge Flat Solar BESS,Hybrid,BA
+Dry Lake East Solar BESS,Hybrid,BA
+Dry Lake Solar BESS,Hybrid,BA
+Fish Springs Ranch Solar BESS,Hybrid,BA
+Gemini Solar BESS,Hybrid,BA
+Libra Solar BESS,Hybrid,BA
+Sierra Solar BESS,Hybrid,BA
+_NVE IRP Expansion_SPPC_PV (Standalone),UPV - Standalone,Pve
+Idaho Wind,LBW,WT
+_NVE IRP Expansion_SPPC_BESS (Standalone),Standalone,BA
+Northern Purchases (Sierra),Markets,OT
+Southern Purchases (NVP),Markets,OT
+Tuning Adjustment,Markets,OT
