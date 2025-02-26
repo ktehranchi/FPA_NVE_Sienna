@@ -4,7 +4,7 @@
 
 # call packages
 using Pkg
-using Revise
+# using Revise
 using PowerSystems
 using PowerSimulations
 using PowerSystemCaseBuilder
@@ -19,6 +19,7 @@ using DataFrames
 using Plots
 using CSV
 using TimeSeries
+using SiennaPRASInterface
 
 ###########################
 # Define Your Paths
@@ -32,7 +33,7 @@ include(joinpath(@__DIR__, "NVE_non_weather.jl"))
 paths = initialize_paths_and_inputs(r2x_output_name, scenario_name)
 
 ###########################
-# Call the helpers function 
+# Call the helpers function
 ###########################
 # call _helpers.jl to load additional functions (modify_data, create_area_interchanges, attach_reserve_requirements, constrain_market_imports)
 # define file path
@@ -79,7 +80,7 @@ end
 #get_time_series_array(SingleTimeSeries, active_unit, "fuel_price")
 #active_unit.operation_cost
 
-#= # remaining units should be oddballs (e.g., geothermal, waste heat, and biomass); assuming fixed fuel prices 
+#= # remaining units should be oddballs (e.g., geothermal, waste heat, and biomass); assuming fixed fuel prices
 for g in collect(get_components(ThermalStandard, sys))
     if "fuel_price" ∉ get_name.(get_time_series_keys(g))
         @show g.name
@@ -108,6 +109,7 @@ fix_Hydro_Dispatch!(sys)
 ############################################################
 # read in datafile
 df_pm = CSV.read(joinpath(paths[:data_dir],"nve_prime_mover_mapping.csv"), DataFrame);
+df_outage_stats = CSV.read(joinpath(paths[:LOLP_inputs],"outage_statistics.csv"), DataFrame)
 
 # loop through all ThermalStandard generators
 for thermal_gen in get_components(ThermalStandard, sys)
@@ -123,6 +125,21 @@ for thermal_gen in get_components(ThermalStandard, sys)
     else
         println("No match found for $(obj_name)")  # Debug print for unmatched objects
     end
+
+    # Set the outage statistics
+    outage_stats = df_outage_stats[df_outage_stats.Item .== obj_name, :]
+    # check if outage_stats is empty
+    if size(outage_stats, 1) == 0
+        @warn "No outage statistics found for $(obj_name)"
+        continue
+    end
+
+    transition_data = GeometricDistributionForcedOutage(;
+        mean_time_to_recovery=outage_stats.MTTR[1],  # Units of hours
+        outage_transition_probability=outage_stats.outage_transition_probability[1],  # Probability for outage per hour
+    )
+    add_supplemental_attribute!(sys, thermal_gen, transition_data)
+
 end
 
 #= #set all ThermalStandard generators that are CTs to zero
@@ -186,14 +203,14 @@ for (category, gen_collection) in unit_collections
             if get_available(unit)  # Check if the unit is active
                 name = get_name(unit)  # Get the generator's name
                 capacity = get_output_active_power_limits(unit).max  # Get the max active discharge power (MW)
-        
+
                 # Append to DataFrame
                 push!(df, (name, capacity))
             else
             # do nothing
             end
         end
-    else # all other generator types 
+    else # all other generator types
         for unit in gen_collection
             if get_available(unit)  # Check if the unit is active
 
@@ -222,7 +239,7 @@ show_time_series(sys)
 thermal_ts = collect(get_components(x -> has_time_series(x), ThermalStandard, sys));
 active_unit = thermal_ts[1]
 active_unit = get_component(ThermalStandard, sys, "Valmy CT 3")
-show_time_series(active_unit) 
+show_time_series(active_unit)
 get_time_series_keys(active_unit)
 get_time_series_array(SingleTimeSeries, active_unit, "max_active_power"; ignore_scaling_factors = true)
 get_time_series_array(SingleTimeSeries, active_unit, "max_active_power"; ignore_scaling_factors = false)
@@ -234,7 +251,7 @@ renew_ts = collect(get_components(x -> has_time_series(x), RenewableDispatch, sy
 active_re_unit = get_component(RenewableDispatch, sys, "Idaho Wind")
 active_re_unit = get_component(RenewableDispatch, sys, "Spring Valley Wind")
 active_re_unit = get_component(RenewableDispatch, sys, "ACE Searchlight Solar")
-show_time_series(active_re_unit) 
+show_time_series(active_re_unit)
 get_time_series_keys(active_re_unit)
 get_time_series_array(SingleTimeSeries, active_re_unit, "Rating Factor")
 get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power"; ignore_scaling_factors = true)
@@ -244,14 +261,14 @@ get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power"; igno
 power_load_ts = collect(get_components(x -> has_time_series(x), PowerLoad, sys));
 active_load = power_load_ts[1]
 get_max_active_power(active_load)
-show_time_series(active_load) 
+show_time_series(active_load)
 get_time_series_keys(active_load)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = true)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = false)
 
 active_load = power_load_ts[2]
 get_max_active_power(active_load)
-show_time_series(active_load) 
+show_time_series(active_load)
 get_time_series_keys(active_load)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = true)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = false)
@@ -269,19 +286,19 @@ this reflects the same setup that was donen in PLEXOS
 # define LOLP-related functions
 include("NVE_weather.jl")
 
-# Solar 
+# Solar
 ###########################
-#define solar PowerSystems.jl time series 
+#define solar PowerSystems.jl time series
 solar_ts_container, df_solar_max = define_solar_time_series(paths[:solar_dir], sys);
 
-# let's review our work 
+# let's review our work
 df_solar = DataFrame(generator = map(x -> x[1], solar_ts_container),
                time_series = map(x -> x[2].name, solar_ts_container));
 
 # check to see if all objects are listed equal number of times
 combine(groupby(df_solar, :generator), nrow => :count)
 
-#now we will add our solar time series container to the system 
+#now we will add our solar time series container to the system
 add_solar_time_series_to_system!(sys,solar_ts_container)
 
 # now that we have the PowerSystems.jl timeseries added to the system, let's check your work
@@ -297,21 +314,21 @@ get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power_Y1998"
 ###########################
 wind_ts_container = define_wind_ts_container(paths[:wind_dir], sys);
 
-# let's review our work 
+# let's review our work
 df_wind = DataFrame(generator = map(x -> x[1], wind_ts_container),
                time_series = map(x -> x[2].name, wind_ts_container));
 
 # check to see if all objects are listed equal number of times
 combine(groupby(df_wind, :generator), nrow => :count)
 
-#now we will add our wind time series container to the system 
+#now we will add our wind time series container to the system
 add_wind_time_series_to_system!(sys,wind_ts_container)
 
 #spot check your work
-active_re_unit = get_component(RenewableDispatch, sys, "Idaho Wind")
-#active_re_unit = get_component(RenewableDispatch, sys, "Spring Valley Wind")
+# active_re_unit = get_component(RenewableDispatch, sys, "Idaho Wind")
+active_re_unit = get_component(RenewableDispatch, sys, "Spring Valley Wind")
 show_time_series(active_re_unit)
-get_max_active_power(active_re_unit) 
+get_max_active_power(active_re_unit)
 get_time_series_keys(active_re_unit)
 get_time_series_array(SingleTimeSeries, active_re_unit, "Rating Factor")
 get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power"; ignore_scaling_factors = true)
@@ -322,7 +339,7 @@ get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power_Y2014"
 #############
 # Demand
 #############
-#show PowerLoad objects w/ timeseries 
+#show PowerLoad objects w/ timeseries
 show_components(sys, PowerLoad, Dict("has_time_series" => x -> has_time_series(x)))
 
 #show time series for each PowerLoad object
@@ -332,7 +349,7 @@ show_time_series(loads[2]) #default name "max_active_power"
 # create / upload powersystems.jl timeseries for regional areas of Nevada Power and Sierra regions
 load_ts_container = upload_split_load_forecasts(paths[:load_dir], loads);
 
-# check your work 
+# check your work
 df_load = DataFrame(generator = map(x -> x[1], load_ts_container),
                time_series = map(x -> x[2].name, load_ts_container));
 
@@ -345,7 +362,7 @@ add_load_time_series_to_system!(sys, load_ts_container)
 #spot check your work
 active_load = get_component(PowerLoad, sys, "Nevada Power")
 show_time_series(active_load)
-get_max_active_power(active_load) 
+get_max_active_power(active_load)
 get_time_series_keys(active_load)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = true)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = false)
@@ -354,7 +371,7 @@ get_time_series_array(SingleTimeSeries, active_load, "max_active_power_Y1998"; i
 
 active_load = get_component(PowerLoad, sys, "Sierra")
 show_time_series(active_load)
-get_max_active_power(active_load) 
+get_max_active_power(active_load)
 get_time_series_keys(active_load)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = true)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = false)
@@ -381,14 +398,14 @@ update_thermal_fuel_price_timeseries!(sys)
 
 # check your work (ThermalStandard)
 show_time_series(active_unit)
-get_time_series(SingleTimeSeries, active_unit, "fuel_price") 
-get_time_series_array(SingleTimeSeries, active_unit, "fuel_price"; ignore_scaling_factors = true) 
-get_time_series_array(SingleTimeSeries, active_unit, "fuel_price"; ignore_scaling_factors = false) # this should be equal to the previous cmd 
+get_time_series(SingleTimeSeries, active_unit, "fuel_price")
+get_time_series_array(SingleTimeSeries, active_unit, "fuel_price"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_unit, "fuel_price"; ignore_scaling_factors = false) # this should be equal to the previous cmd
 get_time_series_array(DeterministicSingleTimeSeries, active_unit, "fuel_price")
 active_unit.operation_cost # note: you should not see a fixed price under fuel_cost anymore; this should be a pointer to the timeseries
 
 ###########################################################################################
-# For Loop to Iterate Over Each Weather Year for our Monte Carlo RA LOLP Simulation 
+# For Loop to Iterate Over Each Weather Year for our Monte Carlo RA LOLP Simulation
 ###########################################################################################
 # Define the range of weather years
 weather_years = 1998:2002 # testing for only a few yrs for now
@@ -397,12 +414,12 @@ weather_years = 1998:2002 # testing for only a few yrs for now
 # weather_year_results = Dict{Int, Tuple{Simulation, DecisionModel}}()
 
 # Iterate over each weather year
-for wy in weather_years    
-    
+for wy in weather_years
+
     # Generate strings for the current year
     year_str = string(wy)
 
-    #define unique identifies for timeseries pointers and decision model names 
+    #define unique identifies for timeseries pointers and decision model names
     uc_decision_name = "DA_WY_$year_str"  # e.g., "DA_WY_1998"
     ts_RD_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Y1998"
     ts_PL_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Y1998"
@@ -438,7 +455,7 @@ for wy in weather_years
     ###########################
     # define file paths to store (processed) results for the active weather yr
     file_path = joinpath(paths[:scenario_dir_s], "results_WY_$year_str")
-    
+
     # check if folder directory exists; if not, create it
     if !ispath(file_path)
         mkpath(file_path)
@@ -448,3 +465,54 @@ for wy in weather_years
     query_write_export_results(sim, file_path, uc_decision_name)
 end
 
+
+
+###########################################################################################
+# For Loop to Iterate Over Each Weather Year for our Monte Carlo RA LOLP Simulation using SiennaPRASInterface
+###########################################################################################
+# Define the range of weather years
+weather_years = 1998:2002 # testing for only a few yrs for now
+
+# Dictionary to store results for each weather year
+# weather_year_results = Dict{Int, Tuple{Simulation, DecisionModel}}()
+shortfall_results = []
+eue_results = []
+# Iterate over each weather year
+for wy in weather_years
+
+    # Generate strings for the current year
+    year_str = string(wy)
+
+    #define unique identifies for timeseries pointers and decision model names
+    uc_decision_name = "DA_WY_$year_str"  # e.g., "DA_WY_1998"
+    ts_RD_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Y1998"
+    ts_PL_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Y1998"
+
+    ###########################
+    # Run SiennaPRASInterface
+    ###########################
+    problem_template = RATemplate(
+        PowerSystems.Area,
+        [
+            DeviceRAModel(
+                PowerSystems.ThermalGen,
+                GeneratorPRAS(max_active_power=ts_RD_name),
+            ),
+            DeviceRAModel(
+                PowerSystems.RenewableGen,
+                GeneratorPRAS(max_active_power=ts_RD_name),
+            ),
+        ],
+    )
+    # Make a PRAS System from PSY-4.X System
+    pras_sys = generate_pras_system(sys, problem_template)
+
+    method = SequentialMonteCarlo(samples=1000, seed=1)
+    shortfalls = assess(pras_sys, method, Shortfall())
+    eue = EUE(shortfalls[1])
+    push!(shortfall_results, shortfalls)
+    push!(eue_results, eue)
+
+
+    println("SiennaPRASInterface simulation completed for: WY $wy.")
+end

@@ -17,7 +17,7 @@ function initialize_paths_and_inputs(r2x_output_name::String, scenario_name::Str
     output_dir = joinpath(root_dir, "Projects", "NVE", "sienna_runs", "run_output") # Sienna processed outputs and simulation files
     sim_files_dir = joinpath(output_dir, "simulation_files") # Sienna outputs
 
-    # Directory for output results 
+    # Directory for output results
     scenario_dir_deterministic = joinpath(output_dir, scenario_name,"deterministic") # Scenario name passed as argument
     scenario_dir_stochastics = joinpath(output_dir, scenario_name,"stochastics") # Scenario name passed as argument
 
@@ -25,6 +25,7 @@ function initialize_paths_and_inputs(r2x_output_name::String, scenario_name::Str
     solar_dir = joinpath(data_dir, "LOLP_inputs", "solar")
     wind_dir = joinpath(data_dir, "LOLP_inputs", "wind")
     load_dir = joinpath(data_dir, "LOLP_inputs", "load")
+    LOLP_inputs = joinpath(data_dir, "LOLP_inputs")
 
     # Ensure that simulation_files exists
     if !ispath(sim_files_dir)
@@ -59,6 +60,7 @@ function initialize_paths_and_inputs(r2x_output_name::String, scenario_name::Str
         :solar_dir => solar_dir,
         :wind_dir => wind_dir,
         :load_dir => load_dir,
+        :LOLP_inputs => LOLP_inputs,
         :descriptors_dir => descriptors_dir
     )
 end
@@ -114,10 +116,10 @@ function modify_system!(sys::System, pw_data::DataFrame, paths::Dict)
     # Set generator services (i.e., assign memberships)
     for gen in get_components(ThermalStandard, sys)
         if !occursin("Purchases", get_name(gen))
-            #concat the two vectors of services 
+            #concat the two vectors of services
             eligible_services = vcat(
                 collect(get_components(VariableReserve{ReserveUp}, sys)),
-                # disabling non-spinning reserves Q: what is going on here 
+                # disabling non-spinning reserves Q: what is going on here
                 # collect(get_components(VariableReserveNonSpinning, sys))
                 )
             set_services!(gen, eligible_services)
@@ -143,7 +145,7 @@ function modify_system!(sys::System, pw_data::DataFrame, paths::Dict)
         generator_name = row.name
         generator = get_component(ThermalStandard, sys, generator_name)
         generator_op_cost = get_operation_cost(generator)
-    
+
         new_vc = PiecewisePointCurve(
             [
                 (row.output_point_0 , row.heat_rate_avg_0),
@@ -154,17 +156,17 @@ function modify_system!(sys::System, pw_data::DataFrame, paths::Dict)
                 (row.output_point_5 , row.heat_rate_incr_5),
             ]
         )
-    
+
         fuel_curve = FuelCurve(
-            value_curve = new_vc, 
+            value_curve = new_vc,
             fuel_cost = generator_op_cost.variable.fuel_cost,
             vom_cost = generator_op_cost.variable.vom_cost
             )
-    
+
         new_generator_cost = ThermalGenerationCost(
-            variable = fuel_curve, 
-            fixed = 0, 
-            start_up = generator_op_cost.start_up, 
+            variable = fuel_curve,
+            fixed = 0,
+            start_up = generator_op_cost.start_up,
             shut_down = generator_op_cost.shut_down
             )
         set_operation_cost!(generator, new_generator_cost)
@@ -198,8 +200,8 @@ function Tuning_Adjustment_Costs!(sys::System)
     # review Tuning Adjustment operational cost
     active_unit = get_component(ThermalStandard, sys, "Tuning Adjustment");
     get_operation_cost(active_unit);
-    
-    # set availability 
+
+    # set availability
     # set_available!(get_component(ThermalStandard, sys, "Tuning Adjustment"), false)
 
     # define $2000/MWh cost CostCurve (w/ no VOM)
@@ -234,7 +236,7 @@ function Demand_Response_CleanUp!(sys::System)
         dr_units[name] = ThermalStandard(
             name = name,
             available = true,
-            status = true, 
+            status = true,
             bus = get_component(ACBus, sys, dr_buses[i]),
             active_power = 0.0, # Per-unitized by device base_power
             reactive_power = 0.0, # Per-unitized by device base_power
@@ -244,7 +246,7 @@ function Demand_Response_CleanUp!(sys::System)
             ramp_limits = nothing, # we arent enforcing ramp limits per incumbent setup
             operation_cost = ThermalGenerationCost(; variable = DR_CC, fixed = 0, start_up = 0, shut_down = 0,),
             base_power = 1,
-            time_limits = nothing, #we arent enforcing MDT/MUT per incumbent setup 
+            time_limits = nothing, #we arent enforcing MDT/MUT per incumbent setup
             must_run = false,
             prime_mover_type = PrimeMovers.OT, # Other
             fuel = ThermalFuels.OTHER,
@@ -259,7 +261,7 @@ function Demand_Response_CleanUp!(sys::System)
         add_component!(sys, unit)
         # println("Added ThermalStandard unit: $name")
     end
-    
+
     # check your work
     active_DR_unit = get_component(ThermalStandard, sys, "NVE_Owned_DR_DSM_ACLM")
     # active_DR_unit = get_component(ThermalStandard, sys, "NVE_Owned_DR_DSM_BESS-2")
@@ -284,7 +286,7 @@ reactive_power = 0.0, # Per-unitized by device base_power
 rating = 1372.6, # Per-unitized by device base_power
 prime_mover_type = PrimeMovers.PVe,
 power_factor = 1.0,
-base_power = 1, 
+base_power = 1,
 );
 
 # instantiate DPV_Sierra BTM
@@ -297,10 +299,10 @@ reactive_power = 0.0, # Per-unitized by device base_power
 rating = 98.5, # Per-unitized by device base_power
 prime_mover_type = PrimeMovers.PVe,
 power_factor = 1.0,
-base_power = 1, 
+base_power = 1,
 );
 
-# add BTM solar resources (rev) to the system 
+# add BTM solar resources (rev) to the system
 add_components!(sys, [DPV_Nevada_Power_ND, DPV_Sierra_ND])
 
 # define and assign time series to the revised BTM solar units
@@ -311,25 +313,25 @@ df_map = CSV.read(input_map_csv, DataFrame)
 
 # Extract and store time series for each DPV resource
 
-# define DateTime 
+# define DateTime
 tstamps = df_RF.DateTime  # Use DateTime column directly
 
 #DPV_Nevada Power (rev)
-# create PowerSystems.jl timeseries for Rating Factor 
+# create PowerSystems.jl timeseries for Rating Factor
 ts_rf = SingleTimeSeries(;
     name = "Rating Factor",
     data = TimeArray(tstamps, df_RF[!, "DPV_Nevada Power"]./maximum(df_RF[!, "DPV_Nevada Power"])), #scaling by max value
     scaling_factor_multiplier = get_max_active_power,
     )
 
-# create PowerSystems.jl timeseries for max_active_power 
+# create PowerSystems.jl timeseries for max_active_power
 ts_map = SingleTimeSeries(;
     name = "max_active_power",
     data = TimeArray(tstamps, df_map[!, "DPV_Nevada Power"])./get_max_active_power(DPV_Nevada_Power_ND),
     scaling_factor_multiplier = get_max_active_power, #scaling by max value
     )
 
-# add both timeseries to each BTM object 
+# add both timeseries to each BTM object
 add_time_series!(sys, DPV_Nevada_Power_ND, ts_rf);
 add_time_series!(sys, DPV_Nevada_Power_ND, ts_map);
 
@@ -350,21 +352,21 @@ get_time_series_array(SingleTimeSeries, active_unit,  "max_active_power"; ignore
 get_time_series_array(SingleTimeSeries, active_BTM_unit,  "max_active_power"; ignore_scaling_factors = false) =#
 
 #DPV_Sierra (rev)
-# create PowerSystems.jl timeseries for Rating Factor 
+# create PowerSystems.jl timeseries for Rating Factor
 ts_rf = SingleTimeSeries(;
     name = "Rating Factor",
     data = TimeArray(tstamps, df_RF[!, "DPV_Sierra"]./maximum(df_RF[!, "DPV_Sierra"])), #scaling by max value
     scaling_factor_multiplier = get_max_active_power,
     )
 
-# create PowerSystems.jl timeseries for max_active_power 
+# create PowerSystems.jl timeseries for max_active_power
 ts_map = SingleTimeSeries(;
     name = "max_active_power",
     data = TimeArray(tstamps, df_map[!, "DPV_Sierra"])./get_max_active_power(DPV_Sierra_ND),
     scaling_factor_multiplier = get_max_active_power, #scaling by max value
     )
 
-# add both timeseries to each BTM object 
+# add both timeseries to each BTM object
 add_time_series!(sys, DPV_Sierra_ND, ts_rf);
 add_time_series!(sys, DPV_Sierra_ND, ts_map);
 
@@ -405,7 +407,7 @@ function fix_Hydro_Dispatch!(sys::System)
     ## DateTime
     tstamps = df_hydro.DateTime  # Use DateTime column directly
 
-    ## Instantiate Fixed Hydro Dispatch Profile SingleTimeSeries 
+    ## Instantiate Fixed Hydro Dispatch Profile SingleTimeSeries
     sts_fixed_hydro = SingleTimeSeries(;
         name = "max_active_power",
         data = TimeArray(tstamps, df_hydro[!, "Hoover Dam (NV)"])./get_max_active_power(active_hydro_unit), #normalize by nameplate capacity
@@ -441,7 +443,7 @@ function ThermalStandard_missing_ts!(sys,paths::Dict{Symbol, String})
         # create the time series
         ts = SingleTimeSeries(
             name = "fuel_price",
-            data = TimeArray(df[!,"DateTime"],df[!,device_name]), #create a TimeArray object 
+            data = TimeArray(df[!,"DateTime"],df[!,device_name]), #create a TimeArray object
         )
 
         # Add the time series to the system
@@ -456,7 +458,7 @@ function update_thermal_fuel_price_timeseries!(sys)
     gen = get_component(ThermalStandard, sys, "Chuck Lenzi 1_A")
     ts_test = get_time_series(DeterministicSingleTimeSeries, gen, "fuel_price")
     get_time_series_array(DeterministicSingleTimeSeries, gen, "fuel_price")
-    
+
     # retrieve forecast horizon and interval
     horizon = get_horizon(ts_test)
     interval = get_interval(ts_test)
@@ -475,8 +477,8 @@ function update_thermal_fuel_price_timeseries!(sys)
             remove_time_series!(sys, SingleTimeSeries, g, "fuel_price")
             set_fuel_cost!(sys, g, new_ts)
         end
-    end 
-    # add back in the forecasts for all objects (e.g., ThermalStandard, RenewableDispatch, etc.)   
+    end
+    # add back in the forecasts for all objects (e.g., ThermalStandard, RenewableDispatch, etc.)
     transform_single_time_series!(sys, horizon, interval)
 end
 
@@ -546,12 +548,12 @@ end
 
 function define_network_model(template_uc)
     # define our area balance power model to produce our zonal topology (Sienna default is copperplate)
-    
+
     area_interchange = NetworkModel(
         AreaBalancePowerModel, #creates power balance constraints for each area
         use_slacks=false, #disable slack variables; i.e. prevent line flow exceedance
     )
-    #assign the area_interchange object from above as our network model 
+    #assign the area_interchange object from above as our network model
     set_network_model!(template_uc, area_interchange)
 end
 
@@ -563,9 +565,9 @@ function build_and_execute_simulation(template_uc, sys::System, paths::Dict; dec
         optimizer = optimizer_with_attributes(Gurobi.Optimizer, "MIPGap" => 1e-2),
         system_to_file = false, # write the json and hf files
         initialize_model = true, # Q: what does this do?
-        optimizer_solve_log_print = true, #solver output 
+        optimizer_solve_log_print = true, #solver output
         direct_mode_optimizer = true, # performance thing; default is true; set it false if you have specific need
-        #rebuild_model = false, # never have to use this, R&D thing 
+        #rebuild_model = false, # never have to use this, R&D thing
         store_variable_names = true,
         calculate_conflict = true, #infeasibility (gurobi only)
         export_optimization_model = false, # this exports the LP (location is...)
@@ -613,8 +615,8 @@ function query_write_export_results(sim::Simulation, path_scenario::String, uc_d
     thermal_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__ThermalStandard")
     renewDispatch_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableDispatch")
     renewNonDispatch_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableNonDispatch")
-    hydro_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__HydroDispatch") 
-    
+    hydro_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__HydroDispatch")
+
     # Output Realized Generation Values
     thermal_active_power = read_realized_variable(results, "ActivePowerVariable__ThermalStandard")
     renewDispatch_active_power = read_realized_variable(results, "ActivePowerVariable__RenewableDispatch")
@@ -623,15 +625,15 @@ function query_write_export_results(sim::Simulation, path_scenario::String, uc_d
     storage_charge = read_realized_variable(results, "ActivePowerInVariable__EnergyReservoirStorage")
     storage_discharge = read_realized_variable(results, "ActivePowerOutVariable__EnergyReservoirStorage")
 
-    # combine all FTM generators 
+    # combine all FTM generators
     gen_active_power = hcat(thermal_active_power, select(renewDispatch_active_power, Not(1)), select(hydro_active_power, Not(1)))
-    
+
     # Output Realized TX flows
     tx_flow = read_realized_variable(results, "FlowActivePowerVariable__AreaInterchange")
-    
+
     # Output Expressions
     power_balance = read_realized_expression(results, "ActivePowerBalance__Area")
-    
+
     # Get Production Costs
     pc_thermal = read_realized_expression(results, "ProductionCostExpression__ThermalStandard")
     pc_renewable = read_realized_expression(results, "ProductionCostExpression__RenewableDispatch")
@@ -665,4 +667,3 @@ function query_write_export_results(sim::Simulation, path_scenario::String, uc_d
     fuel_agg = PowerAnalytics.combine_categories(fuel)
     CSV.write(joinpath(path_scenario, "generation_by_fuel.csv"), fuel_agg) =#
 end
-
