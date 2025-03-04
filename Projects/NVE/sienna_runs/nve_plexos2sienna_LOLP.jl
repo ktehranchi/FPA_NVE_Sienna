@@ -471,12 +471,20 @@ end
 # For Loop to Iterate Over Each Weather Year for our Monte Carlo RA LOLP Simulation using SiennaPRASInterface
 ###########################################################################################
 # Define the range of weather years
-weather_years = 1998:2002 # testing for only a few yrs for now
-
+weather_years = 1998:2022 # testing for only a few yrs for now
 # Dictionary to store results for each weather year
 # weather_year_results = Dict{Int, Tuple{Simulation, DecisionModel}}()
 shortfall_results = []
-eue_results = []
+
+# Hot-Fix Function to update max_active_power time series for loads
+function update_max_active_power_ts!(sys, load_name, ts_name)
+    active_load = get_component(PowerLoad, sys, load_name)
+    ts = get_time_series_array(SingleTimeSeries, active_load, ts_name; ignore_scaling_factors = true)
+    ts_d = SingleTimeSeries(name = "max_active_power", data = ts)
+    remove_time_series!(sys, SingleTimeSeries, active_load, "max_active_power")
+    add_time_series!(sys, active_load, ts_d)
+end
+
 # Iterate over each weather year
 for wy in weather_years
 
@@ -487,6 +495,10 @@ for wy in weather_years
     uc_decision_name = "DA_WY_$year_str"  # e.g., "DA_WY_1998"
     ts_RD_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Y1998"
     ts_PL_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Y1998"
+
+    # Update both load areas
+    update_max_active_power_ts!(sys, "Sierra", ts_RD_name)
+    update_max_active_power_ts!(sys, "Nevada Power", ts_RD_name)
 
     ###########################
     # Run SiennaPRASInterface
@@ -504,15 +516,44 @@ for wy in weather_years
             ),
         ],
     )
-    # Make a PRAS System from PSY-4.X System
     pras_sys = generate_pras_system(sys, problem_template)
 
-    method = SequentialMonteCarlo(samples=1000, seed=1)
+    method = SequentialMonteCarlo(samples=5000, seed=1)
     shortfalls = assess(pras_sys, method, Shortfall())
-    eue = EUE(shortfalls[1])
     push!(shortfall_results, shortfalls)
-    push!(eue_results, eue)
-
-
     println("SiennaPRASInterface simulation completed for: WY $wy.")
 end
+
+
+# Process and export shortfall results to CSV files
+
+# Create a DataFrame to store summary statistics for all weather years
+summary_df = DataFrame(weather_year = Int[], eue = Float64[], std_error = Float64[])
+
+# Process each weather year's results
+for (idx, wy) in enumerate(weather_years)
+    # Calculate EUE (Expected Unserved Energy) for this weather year
+    eue_value = EUE(shortfall_results[idx][1])
+    eue = eue_value.eue.estimate
+    std_error = eue_value.eue.standarderror
+
+    # Add to summary DataFrame
+    push!(summary_df, (wy, eue, std_error))
+
+    # Export individual shortfall mean data for this weather year
+    shortfall_mean = shortfall_results[idx][1].shortfall_mean
+
+    # Convert shortfall mean to DataFrame for easier CSV export
+    # Fix: Add :auto as second argument to DataFrame constructor
+    shortfall_df = DataFrame(shortfall_mean, :auto)
+
+    # Export to CSV
+    shortfall_csv_path = joinpath(paths[:scenario_dir_s], "shortfall_mean_WY_$(wy).csv")
+    CSV.write(shortfall_csv_path, shortfall_df)
+    println("Exported shortfall mean data for WY $(wy) to: $(shortfall_csv_path)")
+end
+
+# Export the summary statistics to CSV
+summary_csv_path = joinpath(paths[:scenario_dir_s], "shortfall_summary.csv")
+CSV.write(summary_csv_path, summary_df)
+println("Exported shortfall summary statistics to: $(summary_csv_path)")

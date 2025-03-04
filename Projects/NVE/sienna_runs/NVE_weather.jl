@@ -102,22 +102,22 @@ function define_solar_time_series(solar_dir::String, sys::System)
         # Collect all time series for the active device by looping through all weather years
         for (wy, data) in solar_ts_dict
             # println("processing weather year: ", wy)
-            
+
             #testing / debugging
             # wy = "Y1998"
             # data = solar_ts_dict[wy]
 
             if selected_name in names(data)  # Check if the selected name exists in the DataFrame
-                
+
                 # pull max value of current unit for current wy
-                local_max = maximum(data[!, Symbol(selected_name)]) 
-                
+                local_max = maximum(data[!, Symbol(selected_name)])
+
                 if local_max > max_value
                     # println("new max value; updating df")
                     max_value = local_max
                     max_year = wy
                 end
-            else                
+            else
                 # log a warning if something is wrong
                 @warn "Selected name $selected_name not found in data for year $year."
             end
@@ -135,10 +135,10 @@ function define_solar_time_series(solar_dir::String, sys::System)
     ts_container = Vector{Tuple{String, SingleTimeSeries}}()  # Container for all time series of all solar devices
 
     for device in solar_resources #loop through solar resources
-        
+
         #testing /debugging
         #device = collect(solar_resources)[1]
-        
+
         # Retrieve device name
         device_name = get_name(device)
 
@@ -173,11 +173,11 @@ function define_solar_time_series(solar_dir::String, sys::System)
         # Collect all time series for the active device by looping through all weather years
         for (wy, data) in solar_ts_dict
             # println("processing weather year: ", wy)
-            
+
             #testing / debugging
             #wy = "Y1998"
             #data = solar_ts_dict[wy]
-            
+
             # Generate a unique time series name
             ts_name = "max_active_power_$(wy)"  # Unique name for each time series
 
@@ -483,7 +483,7 @@ function upload_split_load_forecasts(load_dir::String, loads::Vector{PowerLoad})
     # Read in the stochastic load file (sierra)
     sierra_power_file_name = "Stochastic_Loads_CY2030_WY1998-2022_Sierra.csv"
     file_path_sierra = joinpath(load_dir, sierra_power_file_name)
-    df_sierra = CSV.read(file_path_sierra, DataFrame) 
+    df_sierra = CSV.read(file_path_sierra, DataFrame)
     df_sierra = filter(row -> !(row.Month == 2 && row.Day == 29), df_sierra) # Filter out leap day (February 29)
 
     #################
@@ -512,10 +512,10 @@ function upload_split_load_forecasts(load_dir::String, loads::Vector{PowerLoad})
     ts_container = Vector{Tuple{String, SingleTimeSeries}}()
 
     for load_object in loads
-        
+
         # testing / troubleshooting
         # load_object = loads[1]
-        
+
         # get device name
         device_name = get_name(load_object)
 
@@ -526,11 +526,11 @@ function upload_split_load_forecasts(load_dir::String, loads::Vector{PowerLoad})
         relevant_ts = filter(k -> startswith(k, device_name), keys(load_ts_dict))
 
         for forecast_label in relevant_ts
-            
-            # testing / troubleshooting 
+
+            # testing / troubleshooting
             # forecast_label = first(relevant_ts)
 
-            year_component = split(forecast_label)[end]  #split the string and take just the year component 
+            year_component = split(forecast_label)[end]  #split the string and take just the year component
             ts_name = "max_active_power_$(year_component)"
             normalized_data = load_ts_dict[forecast_label][:, :Load] ./ max_load
 
@@ -543,7 +543,7 @@ function upload_split_load_forecasts(load_dir::String, loads::Vector{PowerLoad})
             push!(ts_container, (device_name, ts))
         end
     end
-    
+
     #################
     # Step 4: Return Results
     #################
@@ -558,10 +558,9 @@ function add_load_time_series_to_system!(sys::System, load_fx_timeseries::Vector
         if active_device !== nothing
             # Add the time series to the system
             add_time_series!(sys, active_device, time_series)
-            # println("Added time series: ", time_series.name, " to device: ", device_name)
+            println("Added time series: ", time_series.name, " to device: ", device_name)
         else
             @warn "Device $device_name not found in the system. Time series $(time_series.name) not added."
         end
     end
 end
-
