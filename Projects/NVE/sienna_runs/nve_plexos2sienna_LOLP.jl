@@ -475,6 +475,7 @@ weather_years = 1998:2022 # testing for only a few yrs for now
 # Dictionary to store results for each weather year
 # weather_year_results = Dict{Int, Tuple{Simulation, DecisionModel}}()
 shortfall_results = []
+shortfall_stats_array = []
 
 # Hot-Fix Function to update max_active_power time series for loads
 function update_max_active_power_ts!(sys, load_name, ts_name)
@@ -518,42 +519,70 @@ for wy in weather_years
     )
     pras_sys = generate_pras_system(sys, problem_template)
 
-    method = SequentialMonteCarlo(samples=5000, seed=1)
-    shortfalls = assess(pras_sys, method, Shortfall())
+    method = SequentialMonteCarlo(samples=20, seed=1)
+    shortfalls, shortfall_stats = assess(pras_sys, method, ShortfallSamples(), Shortfall())
     push!(shortfall_results, shortfalls)
+    push!(shortfall_stats_array, shortfall_stats)
     println("SiennaPRASInterface simulation completed for: WY $wy.")
 end
 
 
-# Process and export shortfall results to CSV files
-
 # Create a DataFrame to store summary statistics for all weather years
 summary_df = DataFrame(weather_year = Int[], eue = Float64[], std_error = Float64[])
+hourly_ens = DataFrame(hour = 1:8760)
 
 # Process each weather year's results
 for (idx, wy) in enumerate(weather_years)
     # Calculate EUE (Expected Unserved Energy) for this weather year
-    eue_value = EUE(shortfall_results[idx][1])
+    eue_value = EUE(shortfall_stats_array[idx])
     eue = eue_value.eue.estimate
     std_error = eue_value.eue.standarderror
-
-    # Add to summary DataFrame
     push!(summary_df, (wy, eue, std_error))
 
-    # Export individual shortfall mean data for this weather year
-    shortfall_mean = shortfall_results[idx][1].shortfall_mean
+    # Sum along the first dimension
+    summed_shortfall = dropdims(sum(shortfall_results[idx].shortfall, dims=1), dims=1) # 8760 by nsamples array
 
-    # Convert shortfall mean to DataFrame for easier CSV export
-    # Fix: Add :auto as second argument to DataFrame constructor
-    shortfall_df = DataFrame(shortfall_mean, :auto)
+    # Create a new DataFrame for this weather year's data
+    year_df = DataFrame(summed_shortfall, :auto)
 
-    # Export to CSV
-    shortfall_csv_path = joinpath(paths[:scenario_dir_s], "shortfall_mean_WY_$(wy).csv")
-    CSV.write(shortfall_csv_path, shortfall_df)
-    println("Exported shortfall mean data for WY $(wy) to: $(shortfall_csv_path)")
+    # Rename columns with weather year prefix
+    colnames = [Symbol("$(wy)_x$i") for i in 1:size(summed_shortfall, 2)]
+    DataFrames.rename!(year_df, colnames)
+
+    # Horizontally concatenate with the main DataFrame
+    hourly_ens = hcat(hourly_ens, year_df)
 end
 
-# Export the summary statistics to CSV
+
+# Resample the hourly ens by 24 hour chunks, counting the number of samples with shortfall more efficiently
+daily_shortfall_hrs_df = DataFrame(hour = 1:365)
+day_indicators = repeat(1:365, inner=24)
+hour_with_day = DataFrame(day = day_indicators[1:8760])
+combined_df = hcat(hour_with_day, select(hourly_ens, Not(:hour)))
+
+# Group by day and count shortfalls for each column
+daily_shortfalls = combine(
+    groupby(combined_df, :day),
+    [col => (x -> sum(x .> 0)) => col for col in names(combined_df) if col != "day"]
+)
+
+# Group by day and count shortfalls for each column
+daily_shortfalls_int = combine(
+    groupby(combined_df, :day),
+    [col => (x -> Int(any(x .> 0))) => col for col in names(combined_df) if col != "day"]
+)
+
+#export the daily shortfall data
+daily_shortfall_csv_path = joinpath(paths[:scenario_dir_s], "daily_shortfall_hours.csv")
+CSV.write(daily_shortfall_csv_path, daily_shortfalls)
+
+daily_shortfall_csv_path = joinpath(paths[:scenario_dir_s], "daily_shortfall_hours_indicator.csv")
+CSV.write(daily_shortfall_csv_path, daily_shortfalls_int)
+
+# Write the combined DataFrame to CSV
+all_samples_csv_path = joinpath(paths[:scenario_dir_s], "all_shortfall_samples.csv")
+CSV.write(all_samples_csv_path, hourly_ens)
+
 summary_csv_path = joinpath(paths[:scenario_dir_s], "shortfall_summary.csv")
 CSV.write(summary_csv_path, summary_df)
 println("Exported shortfall summary statistics to: $(summary_csv_path)")
