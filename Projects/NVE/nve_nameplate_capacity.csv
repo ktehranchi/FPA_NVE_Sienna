@@ -10,6 +10,8 @@ Sierra Solar BESS,400.0
 Gemini Solar BESS,380.0
 Dry Lake Solar BESS,100.0
 Boulder Solar III BESS,127.9
+DPV_Nevada Power ND,1372.6
+DPV_Sierra ND,98.5
 Clark 17,57.0
 PPA_Contracted_DR_DSM_PV,4.0
 Clark Mt. 3,72.0
@@ -120,5 +122,3 @@ _PCM Generic Expansion_SPPC_PV,486.08000000000004
 Copper Mountain Solar 5,250.0
 _PCM Generic Expansion_SPPC_Wind (ID),952.0
 Hoover Dam (NV),121.0
-DPV_Nevada Power ND,1372.6
-DPV_Sierra ND,98.5

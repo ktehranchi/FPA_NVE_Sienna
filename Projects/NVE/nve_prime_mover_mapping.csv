@@ -130,3 +130,7 @@ _NVE IRP Expansion_SPPC_BESS (Standalone),Standalone,BA
 Northern Purchases (Sierra),Markets,OT
 Southern Purchases (NVP),Markets,OT
 Tuning Adjustment,Markets,OT
+NVE_Owned_DR_DSM_ACLM,LT Only DR Resources,OT
+NVE_Owned_DR_DSM_BESS-2,LT Only DR Resources,OT
+NVE_Owned_DR_DSM_PV,LT Only DR Resources,OT
+PPA_Contracted_DR_DSM_PV,LT Only DR Resources,OT

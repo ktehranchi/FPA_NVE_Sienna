@@ -1,4 +1,4 @@
-function define_solar_time_series(solar_dir::String, sys::System)
+function define_FTM_solar_time_series(solar_dir::String, sys::System)
     #################
     # Step 0: Check units base
     #################
@@ -6,10 +6,10 @@ function define_solar_time_series(solar_dir::String, sys::System)
     set_units_base_system!(sys, "NATURAL_UNITS")
 
     #################
-    # Step 1: Read Solar Data
+    # Step 1: Read In Solar Data
     #################
     # Create a dictionary to store the data, organizing it by year
-    solar_ts_dict = Dict{String, DataFrame}()
+    ftm_solar_ts_dict = Dict{String, DataFrame}()
 
     # process all .csv files in the specified directory
     for file in readdir(solar_dir)
@@ -25,15 +25,16 @@ function define_solar_time_series(solar_dir::String, sys::System)
             df = filter(row -> !(row.Month == 2 && row.Day == 29), df)
 
             # Store the filtered DataFrame in the dictionary
-            solar_ts_dict[wy] = df
+            ftm_solar_ts_dict[wy] = df
         end
     end
 
     ##########################
-    # Step 2: Solar Resources
+    # Step 2: Pull Up RenewableDispatch Solar Resources
     ##########################
-    # Filter RenewableDispatch for solar (this returns an iterable object)
-    solar_resources = get_components(x -> get_prime_mover_type(x) == PrimeMovers.PVe, RenewableGen, sys)
+    # Filter solar RenewableDispatch resources from system (this returns an iterable object)
+    #solar_resources = get_components(x -> get_prime_mover_type(x) == PrimeMovers.PVe, RenewableGen, sys)
+    FTM_solar_resources = get_components(x -> x isa RenewableDispatch && get_prime_mover_type(x) == PrimeMovers.PVe, RenewableGen, sys)
 
     # Define an 8760 vector based on a date interval object
     tstamps = collect(range(DateTime("2030-01-01T00:00:00"), DateTime("2030-12-31T23:00:00"), step = Dates.Hour(1)))
@@ -43,23 +44,24 @@ function define_solar_time_series(solar_dir::String, sys::System)
         "Dry Lake East Solar" => "Dry Lake Solar",
         "_NVE IRP Expansion_SPPC_PV (Standalone)" => "NV Generic Solar Hybrid",
         "_NVE IRP Expansion_NVP_PV (Hybrid)" => "NV Generic Solar Hybrid",
+        "_PCM Generic Expansion_NVP_PV" => "NV Generic Solar",
+        "_PCM Generic Expansion_SPPC_PV" => "NV Generic Solar",
         "Libra Solar" => "NV Generic Solar",
-        "Sierra Solar" => "NV Generic Solar"
+        "Sierra Solar" => "NV Generic Solar Hybrid"        
     )
 
     ###########################
-    # Step 3: Process Generators
+    # Step 3: Retrieve the list of generator names in the FTM CSV folder
     ###########################
-    # Define the list of generator names in the CSV folder
-    active_df = first(values(solar_ts_dict))  # grab the first DataFrame in dictionary to use as reference
-    solar_ts_dict_s = String[]  # Initialize an array to store names of active solar facilities defined in the csvs
+    active_df = first(values(ftm_solar_ts_dict))  # grab the first DataFrame in dictionary to use as reference
+    ftm_solar_ts_dict_s = String[]  # Initialize an array to store names of active solar facilities defined in the csvs
 
-    # Define solar_ts_dict_s by looping through all column names in the DataFrame
+    # Define ftm_solar_ts_dict_s by looping through all column names in the DataFrame
     for name in names(active_df)
         if name ∈ ["Month", "Day", "Period"]
             continue  # Skip these column names
         else
-            push!(solar_ts_dict_s, name)  # Append valid names
+            push!(ftm_solar_ts_dict_s, name)  # Append valid names
         end
     end
 
@@ -68,11 +70,11 @@ function define_solar_time_series(solar_dir::String, sys::System)
     ##############################
     # Initialize a DataFrame to store results
     df_max_solar = DataFrame(
-        solar_resource = String[],
+        FTM_solar_resource = String[],
         max_pu_value = Float64[],
         weather_yr = String[])
 
-    for device in solar_resources #loop through solar resources
+    for device in FTM_solar_resources #loop through FTM solar resources
         # Retrieve device name
         device_name = get_name(device)
 
@@ -84,23 +86,23 @@ function define_solar_time_series(solar_dir::String, sys::System)
         selected_name = nothing
 
         # Define the profile to assign to the device
-        if device_name in solar_ts_dict_s
+        if device_name in ftm_solar_ts_dict_s
             selected_name = device_name
         elseif haskey(solar_device_mapping, device_name)
             substituted_name = solar_device_mapping[device_name]
-            if substituted_name in solar_ts_dict_s
+            if substituted_name in ftm_solar_ts_dict_s
                 selected_name = substituted_name
             end
         end
 
-        # If still no match found, assign default time series and log a warning
+        # If still no match found after applying the manual mappings, assign default time series and log a warning
         if selected_name === nothing
             selected_name = "NV Generic Solar"
             @warn "No time series found for device $device_name. Using default time series: $selected_name."
         end
 
         # Collect all time series for the active device by looping through all weather years
-        for (wy, data) in solar_ts_dict
+        for (wy, data) in ftm_solar_ts_dict
             # println("processing weather year: ", wy)
 
             #testing / debugging
@@ -126,18 +128,18 @@ function define_solar_time_series(solar_dir::String, sys::System)
         push!(df_max_solar, (device_name, max_value, max_year))
     end # looping through solar resources
 
-    # df_max_solar
+    #df_max_solar
 
     ##############################
     # Step 5: create and store PowerSystems.jl timeseries
     ##############################
     # initialize container
-    ts_container = Vector{Tuple{String, SingleTimeSeries}}()  # Container for all time series of all solar devices
+    FTM_ts_container = Vector{Tuple{String, SingleTimeSeries}}()  # Container for all time series of all FTM solar devices
 
-    for device in solar_resources #loop through solar resources
+    for device in FTM_solar_resources #loop through solar resources
 
         #testing /debugging
-        #device = collect(solar_resources)[1]
+        #device = collect(FTM_solar_resources)[1]
 
         # Retrieve device name
         device_name = get_name(device)
@@ -146,11 +148,11 @@ function define_solar_time_series(solar_dir::String, sys::System)
         selected_name = nothing
 
         # Define the profile to assign to the device
-        if device_name in solar_ts_dict_s
+        if device_name in ftm_solar_ts_dict_s  #is the active device in the csvs
             selected_name = device_name
-        elseif haskey(solar_device_mapping, device_name)
+        elseif haskey(solar_device_mapping, device_name) #otherwise use the manually defined mapping
             substituted_name = solar_device_mapping[device_name]
-            if substituted_name in solar_ts_dict_s
+            if substituted_name in ftm_solar_ts_dict_s
                 selected_name = substituted_name
             end
         end
@@ -162,7 +164,7 @@ function define_solar_time_series(solar_dir::String, sys::System)
         end
 
         # define max annual hourly cf across all weather years (mininum of 1)
-        max_cf_all_wys = max(1,df_max_solar[df_max_solar.solar_resource .== device_name, :max_pu_value][1])
+        max_cf_all_wys = max(1,df_max_solar[df_max_solar.FTM_solar_resource .== device_name, :max_pu_value][1])
         # retrieve max_active_power (default weather year)
         max_ap = get_max_active_power(device)
         # calculate revised max_active_power
@@ -171,12 +173,12 @@ function define_solar_time_series(solar_dir::String, sys::System)
         #set_rating!(device, max_ap_rev)
 
         # Collect all time series for the active device by looping through all weather years
-        for (wy, data) in solar_ts_dict
+        for (wy, data) in ftm_solar_ts_dict
             # println("processing weather year: ", wy)
 
             #testing / debugging
             #wy = "Y1998"
-            #data = solar_ts_dict[wy]
+            #data = ftm_solar_ts_dict[wy]
 
             # Generate a unique time series name
             ts_name = "max_active_power_$(wy)"  # Unique name for each time series
@@ -186,24 +188,25 @@ function define_solar_time_series(solar_dir::String, sys::System)
 
             if selected_name in names(data)  # Check if the selected name exists in the DataFrame
                 # Create the time series by extracting data from the DataFrame
-                ts = SingleTimeSeries(
+                ts = SingleTimeSeries(;
                     name = ts_name,
                     data = TimeArray(tstamps, normalized_data), #create a TimeArray object w/ p.u. values
+                    scaling_factor_multiplier = get_max_active_power, #scaling factor multiplier (we need this for SiennaPRASInterface runs)
                 )
                 # Store the time series along with its device name
-                push!(ts_container, (device_name, ts))
+                push!(FTM_ts_container, (device_name, ts))
             else
                 # Log a warning if something is wrong
                 @warn "Selected name $selected_name not found in data for year $year."
             end
         end # looping through weather years
     end # looping through solar resources
-    return ts_container, df_max_solar
+    return FTM_ts_container, df_max_solar
 end
 
-function add_solar_time_series_to_system!(sys::System, s_ts_container::Vector{Tuple{String, SingleTimeSeries}})
+function add_FTM_solar_time_series_to_system!(sys::System, FTM_s_ts_container::Vector{Tuple{String, SingleTimeSeries}})
     # Loop through each solar RenewableDispatch object and add time series
-    for (device_name, time_series) in s_ts_container
+    for (device_name, time_series) in FTM_s_ts_container
         # Retrieve the active device by its name
         active_device = get_component(RenewableDispatch, sys, device_name)
 
@@ -216,6 +219,209 @@ function add_solar_time_series_to_system!(sys::System, s_ts_container::Vector{Tu
         end
     end
 end
+
+##################################################################################
+
+function define_BTM_solar_time_series(solar_dir::String, sys::System)
+    #################
+    # Step 0: Check units base
+    #################
+    get_units_base(sys)
+    set_units_base_system!(sys, "NATURAL_UNITS")
+
+    #################
+    # Step 1: Read In BTM solar data - which is in 30 min increments and convert to hourly
+    #################
+    # Create a dictionary to store the data, organizing it by year
+    btm_solar_ts_dict = Dict{String, DataFrame}()
+
+    # process all .csv files in the specified directory
+    for file in readdir(solar_dir)
+        if endswith(file, ".csv")
+            # Extract the year from the filename (e.g., "Y1998.csv" -> "Y1998")
+            wy = splitext(file)[1]
+
+            # Read the file into a DataFrame
+            file_path = joinpath(solar_dir, file)
+            df = CSV.read(file_path, DataFrame)
+
+            # Filter out leap day (February 29)
+            df = filter(row -> !(row.Month == 2 && row.Day == 29), df)
+
+            # Add Hour Ending (HE) column: maps Period 1–2 → HE 1, 3–4 → HE 2, ..., 47–48 → HE 24
+            df.HE = ceil.(Int, df.Period ./ 2)
+
+            # Group by Month, Day, and HE and compute the hourly average
+            df = combine(groupby(df, [:Month, :Day, :HE]), :DPV_NV => mean => :DPV_NV)
+
+            # rename the HE column to Period
+            DataFrames.rename!(df, :HE => :Period)
+
+            # Store the filtered DataFrame in the dictionary
+            btm_solar_ts_dict[wy] = df
+        end
+    end
+
+    ##########################
+    # Step 2: Pull Up RenewableNONDispatch Solar Resources
+    ##########################
+    # Filter for RenewableNon Dispatch for solar (this returns an iterable object)
+    btm_solar_resources = get_components(x -> x isa RenewableNonDispatch && get_prime_mover_type(x) == PrimeMovers.PVe, RenewableGen, sys)
+
+    # Define an 8760 vector based on a date interval object
+    tstamps = collect(range(DateTime("2030-01-01T00:00:00"), DateTime("2030-12-31T23:00:00"), step = Dates.Hour(1)))
+
+    ###########################
+    # Step 3: Retrieve the list of generator names in the btm CSV folder
+    ###########################
+    active_df = first(values(btm_solar_ts_dict))  # grab the first DataFrame in dictionary to use as reference
+    btm_solar_ts_dict_s = String[]  # Initialize an array to store names of active solar facilities defined in the csvs
+
+    # Define btm_solar_ts_dict_s by looping through all column names in the DataFrame
+    for name in names(active_df)
+        if name ∈ ["Month", "Day", "Period"]
+            continue  # Skip these column names
+        else
+            push!(btm_solar_ts_dict_s, name)  # Append valid names
+        end
+    end
+
+    ##############################
+    # Step 4: Record Annual Max Hourly CF value across all weather years
+    ##############################
+    # Initialize a DataFrame to store results
+    df_max_BTM_solar = DataFrame(
+        btm_solar_resource = String[],
+        max_pu_value = Float64[],
+        weather_yr = String[])
+
+    for device in btm_solar_resources #loop through btm solar resources
+        # Retrieve device name
+        device_name = get_name(device)
+
+        # initial placeholder values
+        max_value = -Inf
+        max_year = ""
+
+        # Reset loop variables
+        selected_name = nothing
+
+        # Define the profile to assign to the device
+        if device_name in btm_solar_ts_dict_s
+            selected_name = device_name
+        else
+            selected_name = "DPV_NV" #default name for btm solar resources
+        end
+
+        # Collect all time series for the active device by looping through all weather years
+        for (wy, data) in btm_solar_ts_dict
+            # println("processing weather year: ", wy)
+
+            #testing / debugging
+            # wy = "Y1998"
+            # data = solar_ts_dict[wy]
+
+            if selected_name in names(data)  # Check if the selected name exists in the DataFrame
+
+                # pull max value of current unit for current wy
+                local_max = maximum(data[!, Symbol(selected_name)])
+
+                if local_max > max_value
+                    # println("new max value; updating df")
+                    max_value = local_max
+                    max_year = wy
+                end
+            else
+                # log a warning if something is wrong
+                @warn "Selected name $selected_name not found in data for year $year."
+            end
+        end #looping through weather years
+        # Append the results to the DataFrame
+        push!(df_max_BTM_solar, (device_name, max_value, max_year))
+    end # looping through solar resources
+
+    #df_max_BTM_solar
+
+    ##############################
+    # Step 5: create and store PowerSystems.jl timeseries
+    ##############################
+    # initialize container
+    btm_ts_container = Vector{Tuple{String, SingleTimeSeries}}()  # Container for all time series of all solar devices
+
+    for device in btm_solar_resources #loop through solar resources
+
+        # Retrieve device name
+        device_name = get_name(device)
+
+        # Reset loop variables
+        selected_name = nothing
+
+        # Define the profile to assign to the device
+        if device_name in btm_solar_ts_dict_s  #is the active device in the csvs
+            selected_name = device_name
+        else
+            selected_name = "DPV_NV" # default name for BTM PV
+        end
+
+        # define max annual hourly cf across all weather years (mininum of 1)
+        max_cf_all_wys = max(1,df_max_BTM_solar[df_max_BTM_solar.btm_solar_resource .== device_name, :max_pu_value][1])
+        # retrieve max_active_power (default weather year)
+        max_ap = get_max_active_power(device)
+        # calculate revised max_active_power
+        #max_ap_rev = max_ap * max_cf_all_wys
+        # reassign rating (i.e., max_active_power) parameter
+        #set_rating!(device, max_ap_rev)
+
+        # Collect all time series for the active device by looping through all weather years
+        for (wy, data) in btm_solar_ts_dict
+            # println("processing weather year: ", wy)
+
+            #testing / debugging
+            #wy = "Y1998"
+            #data = btm_solar_ts_dict[wy]
+
+            # Generate a unique time series name
+            ts_name = "max_active_power_$(wy)"  # Unique name for each time series
+
+            # normalizing data to reflect revised max_active_power (i.e. rating)
+            normalized_data = data[!, selected_name] # raw data is provided in p.u. units
+
+            if selected_name in names(data)  # Check if the selected name exists in the DataFrame
+                # Create the time series by extracting data from the DataFrame
+                ts = SingleTimeSeries(;
+                    name = ts_name,
+                    data = TimeArray(tstamps, normalized_data),#create a TimeArray object w/ p.u. values
+                    scaling_factor_multiplier = get_max_active_power,#apply scaling_factor_multiplier (we need this for SiennaPRASInterface runs)
+                )
+                
+                # Store the time series along with its device name
+                push!(btm_ts_container, (device_name, ts))
+            else
+                # Log a warning if something is wrong
+                @warn "Selected name $selected_name not found in data for year $year."
+            end
+        end # looping through weather years
+    end # looping through solar resources
+    return btm_ts_container, df_max_BTM_solar
+end
+
+function add_BTM_solar_time_series_to_system!(sys::System, btm_s_ts_container::Vector{Tuple{String, SingleTimeSeries}})
+    # Loop through each solar RenewableDispatch object and add time series
+    for (device_name, time_series) in btm_s_ts_container
+        # Retrieve the active device by its name
+        active_device = get_component(RenewableNonDispatch, sys, device_name)
+
+        if active_device !== nothing
+            # Add the time series to the system
+            add_time_series!(sys, active_device, time_series)
+            # println("Added time series: ", time_series.name, " to device: ", device_name)
+        else
+            @warn "Device $device_name not found in the system. Time series $(time_series.name) not added."
+        end
+    end
+end
+
+#####################################################################################
 
 function define_wind_ts_container(wind_dir::String, sys::System)
     #################
@@ -299,6 +505,7 @@ function define_wind_ts_container(wind_dir::String, sys::System)
     # MANUAL UPDATE: Wind mapping for missing profiles
     wind_device_mapping = Dict(
         "Idaho Wind" => "Wind_Idaho", #Wind_Idaho is the name of the column in the weather yr
+        "_PCM Generic Expansion_SPPC_Wind (ID)" => "Wind_Idaho",
     )
 
     # Define the list of generator names in the CSV folder
@@ -351,9 +558,10 @@ function define_wind_ts_container(wind_dir::String, sys::System)
             if selected_name in names(data)  # Check if the selected column exists in the DataFrame
 
                 # Create the time series by extracting data from the DataFrame
-                ts = SingleTimeSeries(
+                ts = SingleTimeSeries(;
                     name = ts_name,
-                    data = TimeArray(tstamps, data[!, selected_name]),
+                    data = TimeArray(tstamps, data[!, selected_name]), #create a TimeArray object w/ p.u. values
+                    scaling_factor_multiplier = get_max_active_power, #apply scaling_factor_multiplier (we need this for SiennaPRASInterface runs)
                 )
 
                 # Store the time series along with its device name
@@ -534,9 +742,10 @@ function upload_split_load_forecasts(load_dir::String, loads::Vector{PowerLoad})
             ts_name = "max_active_power_$(year_component)"
             normalized_data = load_ts_dict[forecast_label][:, :Load] ./ max_load
 
-            ts = SingleTimeSeries(
+            ts = SingleTimeSeries(;
                 name = ts_name,
-                data = TimeArray(tstamps, normalized_data)
+                data = TimeArray(tstamps, normalized_data), # apply p.u. load forecast_label
+                scaling_factor_multiplier = get_max_active_power,
             )
 
             # Store the time series and device name in the combined container
@@ -563,4 +772,18 @@ function add_load_time_series_to_system!(sys::System, load_fx_timeseries::Vector
             @warn "Device $device_name not found in the system. Time series $(time_series.name) not added."
         end
     end
+end
+
+#Function to update max_active_power time series for loads for SiennaPRASInterface runs
+function update_max_active_power_ts!(sys, load_name, ts_name)
+    # Retrieve the active load by its name
+    active_load = get_component(PowerLoad, sys, load_name)
+    #retrieve time series data for weather year of interest
+    ts = get_time_series_array(SingleTimeSeries, active_load, ts_name; ignore_scaling_factors = true)
+    #create new time series object using same name as deterministic time series
+    ts_d = SingleTimeSeries(name = "max_active_power", data = ts)
+    # remove existing / old time series definition for max active power from the system 
+    remove_time_series!(sys, SingleTimeSeries, active_load, "max_active_power")
+    # add new time series with updated definition for max active power to the system
+    add_time_series!(sys, active_load, ts_d)
 end

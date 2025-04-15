@@ -4,7 +4,7 @@
 
 # call packages
 using Pkg
-# using Revise
+using Revise
 using PowerSystems
 using PowerSimulations
 using PowerSystemCaseBuilder
@@ -56,11 +56,12 @@ set_units_base_system!(sys, "NATURAL_UNITS")
 modify_system!(sys, pw_data, paths)
 
 ###########################
-# Missing time series for fuel_prices (?)
+# Missing time series for fuel_prices for ThermalStandard objects 
 ###########################
 # assign fuel_price timeseries to dual fuel Thermal standard objects (R2X defaulted to hydrogen fuel price)
 active_unit = get_component(ThermalStandard, sys, "Valmy CT 3")
 show_time_series(active_unit)
+get_time_series_array(SingleTimeSeries, active_unit, "max_active_power")
 get_time_series_array(SingleTimeSeries, active_unit, "fuel_price")
 active_unit.operation_cost
 
@@ -105,7 +106,7 @@ Demand_Response_CleanUp!(sys)
 fix_Hydro_Dispatch!(sys)
 
 ############################################################
-# Reassign prime mover type for ThermalStandard generators and set initial conditions
+# Reassign prime mover type for ThermalStandard generators
 ############################################################
 # read in datafile
 df_pm = CSV.read(joinpath(paths[:data_dir],"nve_prime_mover_mapping.csv"), DataFrame);
@@ -125,7 +126,35 @@ for thermal_gen in get_components(ThermalStandard, sys)
     else
         println("No match found for $(obj_name)")  # Debug print for unmatched objects
     end
+end
 
+############################################################
+# Assign Outage Statistics to Generators and Storage Devices
+############################################################
+#= # Initialize an empty DataFrame
+df_gen = DataFrame(Resource = String[])
+df_storage = DataFrame(Resource = String[])
+
+# Loop through all generators in the system and collect their names
+for generator in get_components(Generator, sys)
+    name = get_name(generator)
+    push!(df_gen, (name,))
+end
+
+for storage in get_components(Storage, sys)
+    name = get_name(storage)
+    push!(df_storage, (name,))
+end
+
+#combine the two dataframes
+df_supply_stack = vcat(df_gen, df_storage)
+
+# Write the DataFrame to a CSV file
+CSV.write("NVE_supply_stack.csv", df_supply_stack) =#
+
+for generator in get_components(Generator, sys)
+    # retrieve the object name 
+    obj_name = get_name(generator)
     # Set the outage statistics
     outage_stats = df_outage_stats[df_outage_stats.Item .== obj_name, :]
     # check if outage_stats is empty
@@ -134,13 +163,34 @@ for thermal_gen in get_components(ThermalStandard, sys)
         continue
     end
 
+    # define the outage transition data (i.e. MTTR and OTP)
     transition_data = GeometricDistributionForcedOutage(;
         mean_time_to_recovery=outage_stats.MTTR[1],  # Units of hours
-        outage_transition_probability=outage_stats.outage_transition_probability[1],  # Probability for outage per hour
-    )
-    add_supplemental_attribute!(sys, thermal_gen, transition_data)
+        outage_transition_probability=outage_stats.outage_transition_probability[1],)  # Probability for outage per hour
+    
+    # Add the supplemental attribute to the generator
+    add_supplemental_attribute!(sys, generator, transition_data)
+end 
 
-end
+for storage in get_components(Storage, sys)
+    # retrieve the object name 
+    obj_name = get_name(storage)
+    # Set the outage statistics
+    outage_stats = df_outage_stats[df_outage_stats.Item .== obj_name, :]
+    # check if outage_stats is empty
+    if size(outage_stats, 1) == 0
+        @warn "No outage statistics found for $(obj_name)"
+        continue
+    end
+
+    # define the outage transition data (i.e. MTTR and OTP)
+    transition_data = GeometricDistributionForcedOutage(;
+        mean_time_to_recovery=outage_stats.MTTR[1],  # Units of hours
+        outage_transition_probability=outage_stats.outage_transition_probability[1],)  # Probability for outage per hour
+    
+    # Add the supplemental attribute to the generator
+    add_supplemental_attribute!(sys, storage, transition_data)
+end 
 
 #= #set all ThermalStandard generators that are CTs to zero
 for thermal_gen in get_components(ThermalStandard, sys)
@@ -176,10 +226,14 @@ for gen in gens_ftm_renew
         push!(wind_renew, gen)  # Add to wind_renew
     end
 end
-
 batteries = collect(get_components(EnergyReservoirStorage, sys));
 reserves_spinning = collect(get_components(VariableReserve{ReserveUp}, sys));
 reserves_non_spinning = collect(get_components(VariableReserveNonSpinning, sys));
+
+#geothermal inspection
+active_unit = get_component(ThermalStandard, sys, "McGinness Hills Geothermal")
+show_time_series(active_unit)
+get_time_series_array(SingleTimeSeries, active_unit, "max_active_power")
 
 # Retrieve all generator-type components in one go
 all_generators = collect(get_components(Generator, sys))
@@ -189,45 +243,6 @@ all_storage = collect(get_components(Storage, sys))
 unit_collections = Dict(
     "GenUnits" => all_generators,
     "StorageUnits" => all_storage)
-
-############################################################
-##  Retrieve NamePlate Capacity of System
-############################################################
-#= # Initialize an empty DataFrame
-df = DataFrame(Resource = String[], MW_capacity = Float64[])
-
-# for each generator collection, loop through each unit w/in that collection
-for (category, gen_collection) in unit_collections
-    if category == "StorageUnits" #batteries
-        for unit in gen_collection
-            if get_available(unit)  # Check if the unit is active
-                name = get_name(unit)  # Get the generator's name
-                capacity = get_output_active_power_limits(unit).max  # Get the max active discharge power (MW)
-
-                # Append to DataFrame
-                push!(df, (name, capacity))
-            else
-            # do nothing
-            end
-        end
-    else # all other generator types
-        for unit in gen_collection
-            if get_available(unit)  # Check if the unit is active
-
-                name = get_name(unit)  # Get the generator's name
-                capacity = get_max_active_power(unit)  # Get the max active power (MW)
-
-                # Append to DataFrame
-                push!(df, (name, capacity))
-            else
-                #do nothing
-            end
-        end
-    end # if loop
-end
-
-#write df to csv
-CSV.write(joinpath(paths[:data_dir], "nve_nameplate_capacity.csv"), df); =#
 
 ############################################################
 ##  Timeseries
@@ -248,7 +263,7 @@ get_time_series_array(SingleTimeSeries, active_unit, "fuel_price"; ignore_scalin
 
 #retrieve RenewableDispatch objects with timeseries (rating factor, max_active_power)
 renew_ts = collect(get_components(x -> has_time_series(x), RenewableDispatch, sys));
-active_re_unit = get_component(RenewableDispatch, sys, "Idaho Wind")
+active_re_unit = get_component(RenewableDispatch, sys, "_PCM Generic Expansion_SPPC_PV")
 active_re_unit = get_component(RenewableDispatch, sys, "Spring Valley Wind")
 active_re_unit = get_component(RenewableDispatch, sys, "ACE Searchlight Solar")
 show_time_series(active_re_unit)
@@ -273,12 +288,12 @@ get_time_series_keys(active_load)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = true)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = false)
 
-"""
+#= """
 NOTE: deterministic load fx - which comes from WY 1998 and is represented by "max_active_power" is slightly different
 than what we will see with stochastic load fx, which is represented by "max_active_power_Y1998"
 
-this reflects the same setup that was donen in PLEXOS
-"""
+this reflects the same setup that was done in PLEXOS
+""" =#
 
 ###########################
 # Define Probabilistic TimeSeries
@@ -286,23 +301,47 @@ this reflects the same setup that was donen in PLEXOS
 # define LOLP-related functions
 include("NVE_weather.jl")
 
-# Solar
+# FTM Solar
 ###########################
 #define solar PowerSystems.jl time series
-solar_ts_container, df_solar_max = define_solar_time_series(paths[:solar_dir], sys);
+FTM_solar_ts_container, df_solar_max = define_FTM_solar_time_series(paths[:FTM_solar_dir], sys);
 
 # let's review our work
-df_solar = DataFrame(generator = map(x -> x[1], solar_ts_container),
-               time_series = map(x -> x[2].name, solar_ts_container));
+df_FTM_solar = DataFrame(generator = map(x -> x[1], FTM_solar_ts_container),
+               time_series = map(x -> x[2].name, FTM_solar_ts_container));
 
 # check to see if all objects are listed equal number of times
-combine(groupby(df_solar, :generator), nrow => :count)
+df_solar_check = combine(groupby(df_FTM_solar, :generator), nrow => :count);
 
 #now we will add our solar time series container to the system
-add_solar_time_series_to_system!(sys,solar_ts_container)
+add_FTM_solar_time_series_to_system!(sys,FTM_solar_ts_container);
 
 # now that we have the PowerSystems.jl timeseries added to the system, let's check your work
-active_re_unit = get_component(RenewableDispatch, sys, "ACE Searchlight Solar")
+active_re_unit = get_component(RenewableDispatch, sys, "_PCM Generic Expansion_SPPC_PV")
+show_time_series(active_re_unit)
+get_time_series_array(SingleTimeSeries, active_re_unit, "Rating Factor")
+get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power"; ignore_scaling_factors = false)
+get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power_Y1998"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power_Y1998"; ignore_scaling_factors = false)
+
+# BTM Solar
+###########################
+#define solar PowerSystems.jl time series
+BTM_solar_ts_container, df_BTM_solar_max = define_BTM_solar_time_series(paths[:BTM_solar_dir], sys);
+
+# let's review our work
+df_BTM_solar = DataFrame(generator = map(x -> x[1], BTM_solar_ts_container),
+               time_series = map(x -> x[2].name, BTM_solar_ts_container));
+
+# check to see if all objects are listed equal number of times
+combine(groupby(df_BTM_solar, :generator), nrow => :count);
+
+#now we will add our solar time series container to the system
+add_BTM_solar_time_series_to_system!(sys,BTM_solar_ts_container)
+
+# now that we have the PowerSystems.jl timeseries added to the system, let's check your work
+active_re_unit = get_component(RenewableNonDispatch, sys, "DPV_Nevada Power ND")
 show_time_series(active_re_unit)
 get_time_series_array(SingleTimeSeries, active_re_unit, "Rating Factor")
 get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power"; ignore_scaling_factors = true)
@@ -325,8 +364,8 @@ combine(groupby(df_wind, :generator), nrow => :count)
 add_wind_time_series_to_system!(sys,wind_ts_container)
 
 #spot check your work
-# active_re_unit = get_component(RenewableDispatch, sys, "Idaho Wind")
-active_re_unit = get_component(RenewableDispatch, sys, "Spring Valley Wind")
+# active_re_unit = get_component(RenewableDispatch, sys, "Spring Valley Wind")
+active_re_unit = get_component(RenewableDispatch, sys, "_PCM Generic Expansion_SPPC_Wind (ID)")
 show_time_series(active_re_unit)
 get_max_active_power(active_re_unit)
 get_time_series_keys(active_re_unit)
@@ -366,8 +405,8 @@ get_max_active_power(active_load)
 get_time_series_keys(active_load)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = true)
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = false)
-get_time_series_array(SingleTimeSeries, active_load, "max_active_power_Y1998"; ignore_scaling_factors = true)
-get_time_series_array(SingleTimeSeries, active_load, "max_active_power_Y1998"; ignore_scaling_factors = false)
+get_time_series_array(SingleTimeSeries, active_load, "max_active_power_Y1999"; ignore_scaling_factors = true)
+get_time_series_array(SingleTimeSeries, active_load, "max_active_power_Y1999"; ignore_scaling_factors = false)
 
 active_load = get_component(PowerLoad, sys, "Sierra")
 show_time_series(active_load)
@@ -379,10 +418,10 @@ get_time_series_array(SingleTimeSeries, active_load, "max_active_power_Y1998"; i
 get_time_series_array(SingleTimeSeries, active_load, "max_active_power_Y1998"; ignore_scaling_factors = false)
 
 #############
-# create deterministic single time series fxs for missing data; 48-hr horizon & 24-hr lookahead; i.e. 24 hour "realized intervals")
+# create timeseries fxs for missing data; 48-hr horizon & 24-hr lookahead; i.e. 24 hour "realized intervals")
 #############
 # after this command we will have DeterministicSingleTimeSeries objects for all missing time series serving as forecasts
-transform_single_time_series!(sys, Hour(48), Hour(24)) #Q: when is the appropriate time to call this function?
+transform_single_time_series!(sys, Hour(48), Hour(24)) 
 
 ###########################
 # Sienna Temporary Patches
@@ -405,10 +444,11 @@ get_time_series_array(DeterministicSingleTimeSeries, active_unit, "fuel_price")
 active_unit.operation_cost # note: you should not see a fixed price under fuel_cost anymore; this should be a pointer to the timeseries
 
 ###########################################################################################
-# For Loop to Iterate Over Each Weather Year for our Monte Carlo RA LOLP Simulation
+# For Loop to Iterate Over Each Weather Year for PCM in PowerSimualtions.jl WITHOUT FORCED OUTAGES
+# This objective of running this portion of code is to ensure that all the weather-related parameters are flowing through correctly
 ###########################################################################################
 # Define the range of weather years
-weather_years = 1998:2002 # testing for only a few yrs for now
+weather_years = 1998:1999; # testing for only a few yrs for now
 
 # Dictionary to store results for each weather year
 # weather_year_results = Dict{Int, Tuple{Simulation, DecisionModel}}()
@@ -433,7 +473,7 @@ for wy in weather_years
     # Define thermal, hydro, and storage device models (non-weather-dependent)
     define_device_model_non_weather(template_uc)
 
-    # Define load and renewable dispatch models (weather-dependent)
+    # Define load and renewable dispatch models - both FTm and BTM (weather-dependent)
     define_device_model_weather_stochastic(template_uc; load_timeseries_name=ts_PL_name, renewable_timeseries_name=ts_RD_name)
 
     # Define branch and network models
@@ -448,13 +488,13 @@ for wy in weather_years
     sim, UC_decision = build_and_execute_simulation(template_uc, sys, paths; decision_name=uc_decision_name);
 
     # Print a message to indicate that the simulation is complete
-    println("Simulation completed for: $uc_decision_name.")
+    println("Simulation completed for: $uc_decision_name")
 
     ###########################
     # Export the Results
     ###########################
     # define file paths to store (processed) results for the active weather yr
-    file_path = joinpath(paths[:scenario_dir_s], "results_WY_$year_str")
+    file_path = joinpath(paths[:scenario_dir_s], "results_WY_$year_str");
 
     # check if folder directory exists; if not, create it
     if !ispath(file_path)
@@ -462,14 +502,81 @@ for wy in weather_years
     else
     end
     # now write the files
-    query_write_export_results(sim, file_path, uc_decision_name)
+    query_write_export_results(sim, file_path, uc_decision_name);
 end
-
-
 
 ###########################################################################################
 # For Loop to Iterate Over Each Weather Year for our Monte Carlo RA LOLP Simulation using SiennaPRASInterface
 ###########################################################################################
+#= # Define the range of weather years
+weather_years = 1998:2022 # testing for only a few yrs for now
+# Dictionary to store results for each weather year
+# weather_year_results = Dict{Int, Tuple{Simulation, DecisionModel}}()
+shortfall_results = []
+shortfall_stats_array = []
+
+# Iterate over each weather year
+for wy in weather_years
+
+    # manual entry (i.e. for troubleshooting purposes)
+    #wy = 1999
+
+    # Generate strings for the current year
+    year_str = string(wy)
+
+    #define unique identifies for timeseries pointers and decision model names
+    uc_decision_name = "DA_WY_$year_str"  # e.g., "DA_WY_1998"
+    ts_WY_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Yxxxx"
+
+    # Update demand schedules for active weather year (deprecated bc can now explicitly call DeviceRAModel for PowerLoad)
+    update_max_active_power_ts!(sys, "Nevada Power", ts_WY_name)
+    update_max_active_power_ts!(sys, "Sierra", ts_WY_name)
+
+#=     #check_load data
+    active_load = power_load_ts[1]
+    get_max_active_power(active_load)
+    get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = true)
+    get_time_series_array(SingleTimeSeries, active_load, "max_active_power"; ignore_scaling_factors = false) =#
+
+    ###########################
+    # Run SiennaPRASInterface
+    ###########################
+    # DeviceRAModel (PowerSystems Device, SPI Abstract Formulation, time_series_names, kwargs)
+    problem_template = RATemplate(
+        PowerSystems.Area,
+        [
+            #thermal device model
+            DeviceRAModel(PowerSystems.ThermalStandard,GeneratorPRAS(max_active_power="max_active_power"),),
+
+            #define hydro device model
+            # DeviceRAModel(PowerSystems.HydroGen, GeneratorPRAS(max_active_power="max_active_power"),),
+
+            #define storage device model
+            #DeviceRAModel(PowerSystems.EnergyReservoirStorage, EnergyReservoirLossless),
+                
+            #define renewable device model (both RenewableDispatch and RenewableNonDispatch) - weather dependent
+            DeviceRAModel(PowerSystems.RenewableGen, GeneratorPRAS(max_active_power=ts_WY_name),),
+
+            #define load device model
+            DeviceRAModel(PowerSystems.PowerLoad, StaticLoadPRAS(max_active_power=ts_WY_name),),
+        ],
+    )
+
+    # Build the PRAS SystemModel
+    pras_sys = generate_pras_system(sys, problem_template)
+
+    #define the PRAS method -> seqential MC with 20 samples of 8760 FO draws
+    # samples, seed, threaded, verbose
+    method = SequentialMonteCarlo(samples=20, seed=1, verbose=true, threaded=false)
+
+    # Run the PRAS simulation, retrieve shortfalls and related statistics
+    shortfalls, shortfall_stats = assess(pras_sys, method, ShortfallSamples(), Shortfall())
+    push!(shortfall_results, shortfalls)
+    push!(shortfall_stats_array, shortfall_stats)
+    println("SiennaPRASInterface simulation completed for: WY $wy.")
+end =#
+
+#############################   ORIGINAL PRAS SCRIPT #######################################
 # Define the range of weather years
 weather_years = 1998:2022 # testing for only a few yrs for now
 # Dictionary to store results for each weather year
@@ -527,6 +634,8 @@ for wy in weather_years
 end
 
 
+###########################################################################################
+
 # Create a DataFrame to store summary statistics for all weather years
 summary_df = DataFrame(weather_year = Int[], eue = Float64[], std_error = Float64[])
 hourly_ens = DataFrame(hour = 1:8760)
@@ -552,7 +661,6 @@ for (idx, wy) in enumerate(weather_years)
     # Horizontally concatenate with the main DataFrame
     hourly_ens = hcat(hourly_ens, year_df)
 end
-
 
 # Resample the hourly ens by 24 hour chunks, counting the number of samples with shortfall more efficiently
 daily_shortfall_hrs_df = DataFrame(hour = 1:365)

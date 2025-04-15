@@ -1,129 +1,124 @@
-﻿Item,Category,MTTR,outage_transition_probability,EFOR,incr EFOR,Maintenance Frequency,Mean Time to Repair,Forced Outage Rate,Min Time to Repair,Repair Time Scale,,,Item,Category,Maintenance Frequency,Mean Time to Repair,Forced Outage Rate,Min Time to Repair,Repair Time Scale
-Chuck Lenzi 1_A,NG CC,89,0.0005,0.04,1.87,2.21,74,2,15,74,,,Chuck Lenzi 1_A,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Chuck Lenzi 1_B,NG CC,89,0.0005,0.04,1.87,2.21,74,2,15,74,,,Chuck Lenzi 1_B,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Chuck Lenzi 2_A,NG CC,89,0.0004,0.03,1.87,2.21,74,1.6,15,74,,,Chuck Lenzi 2_A,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Chuck Lenzi 2_B,NG CC,89,0.0004,0.03,1.87,2.21,74,1.6,15,74,,,Chuck Lenzi 2_B,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-"Clark 5, 6, 10_A",NG CC,89,0.0015,0.11,1.87,2.21,74,9.6,15,74,,,"Clark 5, 6, 10_A",NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-"Clark 5, 6, 10_B",NG CC,89,0.0015,0.11,1.87,2.21,74,9.6,15,74,,,"Clark 5, 6, 10_B",NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-"Clark 7, 8, 9_A",NG CC,89,0.0016,0.12,1.87,2.21,74,10.3,15,74,,,"Clark 7, 8, 9_A",NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-"Clark 7, 8, 9_B",NG CC,89,0.0016,0.12,1.87,2.21,74,10.3,15,74,,,"Clark 7, 8, 9_B",NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Harry Allen CC_A,NG CC,89,0.0005,0.04,1.87,2.21,74,2.3,15,74,,,Harry Allen CC_A,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Harry Allen CC_B,NG CC,89,0.0005,0.04,1.87,2.21,74,2.3,15,74,,,Harry Allen CC_B,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-LV Gen 1,NG CC,89,0.0014,0.11,1.87,2.21,74,9.1,15,74,,,LV Gen 1,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-LV Gen 2_A,NG CC,89,0.0013,0.1,1.87,2.21,74,8.2,15,74,,,LV Gen 2_A,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-LV Gen 2_B,NG CC,89,0.0013,0.1,1.87,2.21,74,8.2,15,74,,,LV Gen 2_B,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-LV Gen 3_A,NG CC,89,0.001,0.08,1.87,2.21,74,6.2,15,74,,,LV Gen 3_A,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-LV Gen 3_B,NG CC,89,0.001,0.08,1.87,2.21,74,6.2,15,74,,,LV Gen 3_B,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Silverhawk CC_A,NG CC,89,0.0004,0.04,1.87,2.21,74,1.9,15,74,,,Silverhawk CC_A,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Silverhawk CC_B,NG CC,89,0.0004,0.04,1.87,2.21,74,1.9,15,74,,,Silverhawk CC_B,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Tracy 4&5 CC,NG CC,89,0.0012,0.1,1.87,2.21,74,7.9,15,74,,,Tracy 4&5 CC,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-"Tracy 8, 9, 10_A",NG CC,89,0.0004,0.03,1.87,2.21,74,1.4,15,74,,,"Tracy 8, 9, 10_A",NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-"Tracy 8, 9, 10_B",NG CC,89,0.0004,0.03,1.87,2.21,74,1.4,15,74,,,"Tracy 8, 9, 10_B",NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Walt Higgings CC_A,NG CC,89,0.0009,0.07,1.87,2.21,74,5.6,15,74,,,Walt Higgings CC_A,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Walt Higgings CC_B,NG CC,89,0.0009,0.07,1.87,2.21,74,5.6,15,74,,,Walt Higgings CC_B,NG CC,NG CC Maintenance Frequency,NG CC Mean Time to Repair,data_file,NG CC Min Time To Repair,NG CC Repair Time Scale
-Clark 11,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 11,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 12,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 12,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 13,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 13,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 14,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 14,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 15,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 15,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 16,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 16,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 17,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 17,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 18,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 18,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 19,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 19,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 20,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 20,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 21,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 21,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 22,NG CT,77,0.0014,0.1,2.47,3.09,70,7.2,7,70,,,Clark 22,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark 4,NG CT,77,0.0026,0.17,2.47,3.09,70,14.3,7,70,,,Clark 4,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark Mt. 3,NG CT,77,0.0026,0.17,2.47,3.09,70,14.4,7,70,,,Clark Mt. 3,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Clark Mt. 4,NG CT,77,0.0012,0.09,2.47,3.09,70,6.3,7,70,,,Clark Mt. 4,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Harry Allen 3,NG CT,77,0.004,0.23,2.47,3.09,70,20.9,7,70,,,Harry Allen 3,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Harry Allen 4,NG CT,77,0.0026,0.17,2.47,3.09,70,14.3,7,70,,,Harry Allen 4,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Silverhawk 3,NG CT,77,0.0006,0.04,2.47,3.09,70,2,7,70,,,Silverhawk 3,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Silverhawk 4,NG CT,77,0.0006,0.04,2.47,3.09,70,2,7,70,,,Silverhawk 4,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Sun Peak 3,NG CT,77,0.0011,0.08,2.47,3.09,70,5.3,7,70,,,Sun Peak 3,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Sun Peak 4,NG CT,77,0.0026,0.16,2.47,3.09,70,14,7,70,,,Sun Peak 4,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Sun Peak 5,NG CT,77,0.0028,0.18,2.47,3.09,70,15.1,7,70,,,Sun Peak 5,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Valmy CT 3,NG CT,77,0.0006,0.04,2.47,3.09,70,2,7,70,,,Valmy CT 3,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Valmy CT 4,NG CT,77,0.0006,0.04,2.47,3.09,70,2,7,70,,,Valmy CT 4,NG CT,NG CT Maintenance Frequency,NG CT Mean Time to Repair,data_file,NG CT Min Time To Repair,NG CT Repair Time Scale
-Ft. Churchill 1,NG ST,165,0.0008,0.11,4.16,2.55,143,7,22,143,,,Ft. Churchill 1,NG ST,NG ST Maintenance Frequency,NG ST Mean Time to Repair,data_file,NG ST Min Time To Repair,NG ST Repair Time Scale
-Ft. Churchill 2,NG ST,165,0.0006,0.09,4.16,2.55,143,4.8,22,143,,,Ft. Churchill 2,NG ST,NG ST Maintenance Frequency,NG ST Mean Time to Repair,data_file,NG ST Min Time To Repair,NG ST Repair Time Scale
-Tracy 3,NG ST,165,0.0016,0.21,4.16,2.55,143,16.8,22,143,,,Tracy 3,NG ST,NG ST Maintenance Frequency,NG ST Mean Time to Repair,data_file,NG ST Min Time To Repair,NG ST Repair Time Scale
-Valmy 1,Coal ST,133,0.0005,0.07,3.76,2.79,118,2.8,15,118,,,Valmy 1,Coal ST,Coal ST Maintenance Frequency,Coal ST Mean Time to Repair,data_file,Coal ST Min Time To Repair,Coal ST Repair Time Scale
-Valmy 2,Coal ST,133,0.0013,0.15,3.76,2.79,118,11.2,15,118,,,Valmy 2,Coal ST,Coal ST Maintenance Frequency,Coal ST Mean Time to Repair,data_file,Coal ST Min Time To Repair,Coal ST Repair Time Scale
-Liberty (Cal Peco),Oil IC,37,0.0024,0.08,1.61,4.03,35,6.58,2,35,,,Liberty (Cal Peco),Oil IC,Oil IC Maintenance Frequency,Oil IC Mean Time to Repair,Oil IC Forced Outage Rate,Oil IC Min Time To Repair,Oil IC Repair Time Scale
-Beowawe Geothermal Power Plant,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Beowawe Geothermal Power Plant,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Burdette Geothermal Power Plant,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Burdette Geothermal Power Plant,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Desert Peak 2 Geothermal Power,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Desert Peak 2 Geothermal Power,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Galena 1,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Galena 1,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Galena 3 Geothermal Power Plant,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Galena 3 Geothermal Power Plant,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Gerlach,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Gerlach,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Jersey Valley Geothermal,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Jersey Valley Geothermal,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Lone Mountain,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Lone Mountain,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-McGinness Hills Geothermal,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,McGinness Hills Geothermal,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-North Valley 2,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,North Valley 2,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-North Valley Eavor Loop,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,North Valley Eavor Loop,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-North Valley Geothermal,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,North Valley Geothermal,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Ormat Western Geothermal,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Ormat Western Geothermal,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Pinto,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Pinto,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Tuscarora Geothermal,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,Tuscarora Geothermal,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-USG San Emidio Geothermal,Geothermal,147,0.0011,0.14,3.8,2.6,128,9.9,19,128,,,USG San Emidio Geothermal,Geothermal,Geothermal Maintenance Frequency,Geothermal Mean Time to Repair,Geothermal Forced Outage Rate,Geothermal Min Time To Repair,Geothermal Repair Time Scale
-Hoover Dam (NV),Hydro,178,0.0007,0.1,2.16,3,63,8.25,13,165,,,Hoover Dam (NV),Hydro,Hydro Maintenance Frequency,Hydro Mean Time to Repair,Hydro Forced Outage Rate,Hydro Min Time To Repair,Hydro Repair Time Scale
-Apex Landfill Facility,Landfill/Biogas,77,0.0019,0.13,2.47,3.09,70,10.08,7,70,,,Apex Landfill Facility,Landfill/Biogas,Biogas CT Maintenance Frequency,Biogas CT Mean Time to Repair,Biogas CT Forced Outage Rate,Biogas CT Min Time To Repair,Biogas CT Repair Time Scale
-Lockwood Renewable Energy Facility,Landfill/Biogas,77,0.0019,0.13,2.47,3.09,70,10.08,7,70,,,Lockwood Renewable Energy Facility,Landfill/Biogas,Biogas CT Maintenance Frequency,Biogas CT Mean Time to Repair,Biogas CT Forced Outage Rate,Biogas CT Min Time To Repair,Biogas CT Repair Time Scale
-_PCM Generic Expansion_NVP_PV,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,_PCM Generic Expansion_NVP_PV,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-_PCM Generic Expansion_SPPC_PV,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,_PCM Generic Expansion_SPPC_PV,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-ACE Searchlight Solar,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,ACE Searchlight Solar,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Boulder Solar I,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Boulder Solar I,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Boulder Solar II,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Boulder Solar II,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Copper Mountain Solar 5,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Copper Mountain Solar 5,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Eagle Shadow Mountain Solar Farm,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Eagle Shadow Mountain Solar Farm,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-FRV Spectrum Solar,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,FRV Spectrum Solar,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Mountain View Solar,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Mountain View Solar,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Nellis Solar Array II,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Nellis Solar Array II,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-RV Apex Solar,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,RV Apex Solar,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Silver State Solar,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Silver State Solar,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Switch Station 1 (Playa Solar 1),UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Switch Station 1 (Playa Solar 1),UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Switch Station 2 (Playa Solar 2),UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Switch Station 2 (Playa Solar 2),UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Techren Solar 2,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Techren Solar 2,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Techren Solar I,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Techren Solar I,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Techren Solar III,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Techren Solar III,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Techren Solar IV,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Techren Solar IV,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Techren Solar V,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Techren Solar V,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Turquoise Nevada,UPV - Standalone,0,0,0,0,0,0,0,0,0,,,Turquoise Nevada,UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Arrow Canyon Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0,,,Arrow Canyon Solar,UPV - Hybrid,#N/A,#N/A,#N/A,#N/A,#N/A
-Battle Mountain Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0,,,Battle Mountain Solar,UPV - Hybrid,#N/A,#N/A,#N/A,#N/A,#N/A
-Boulder Solar III,UPV - Hybrid,0,0,0,0,0,0,0,0,0,,,Boulder Solar III,UPV - Hybrid,#N/A,#N/A,#N/A,#N/A,#N/A
-Dodge Flat Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0,,,Dodge Flat Solar,UPV - Hybrid,#N/A,#N/A,#N/A,#N/A,#N/A
-Dry Lake East Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0,,,Dry Lake East Solar,UPV - Hybrid,#N/A,#N/A,#N/A,#N/A,#N/A
-Dry Lake Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0,,,Dry Lake Solar,UPV - Hybrid,#N/A,#N/A,#N/A,#N/A,#N/A
-Fish Springs Ranch Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0,,,Fish Springs Ranch Solar,UPV - Hybrid,#N/A,#N/A,#N/A,#N/A,#N/A
-Gemini Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0,,,Gemini Solar,UPV - Hybrid,#N/A,#N/A,#N/A,#N/A,#N/A
-Libra Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0,,,Libra Solar,UPV - Hybrid,#N/A,#N/A,#N/A,#N/A,#N/A
-Sierra Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0,,,Sierra Solar,UPV - Hybrid,#N/A,#N/A,#N/A,#N/A,#N/A
-Ft. Churchill Solar,Concentrated Solar,0,0,0,0,0,0,0,0,0,,,Ft. Churchill Solar,Concentrated Solar,#N/A,#N/A,#N/A,#N/A,#N/A
-DPV_Nevada Power,DPV,0,0,0,0,0,0,0,0,0,,,DPV_Nevada Power,DPV,#N/A,#N/A,#N/A,#N/A,#N/A
-DPV_Sierra,DPV,0,0,0,0,0,0,0,0,0,,,DPV_Sierra,DPV,#N/A,#N/A,#N/A,#N/A,#N/A
-_PCM Generic Expansion_SPPC_Wind (ID),LBW,0,0,0,0,0,0,0,0,0,,,_PCM Generic Expansion_SPPC_Wind (ID),LBW,#N/A,#N/A,#N/A,#N/A,#N/A
-Spring Valley Wind,LBW,0,0,0,0,0,0,0,0,0,,,Spring Valley Wind,LBW,#N/A,#N/A,#N/A,#N/A,#N/A
-Goodsprings,Other,37,0.0024,0.08,1.61,4.03,35,6.58,2,35,,,Goodsprings,Other,Other Maintenance Frequency,Other Mean Time to Repair,Other Forced Outage Rate,Other Min Time To Repair,Other Repair Time Scale
-Tuning Adjustment,Market Purchases,0,0,0,0,0,0,0,0,0,,,Tuning Adjustment,Market Purchases,#N/A,#N/A,#N/A,#N/A,#N/A
-NVE.Owned.DR/DSM.ACLM,LT Only DR Resources,0,0,0,0,0,0,0,0,0,,,NVE.Owned.DR/DSM.ACLM,LT Only DR Resources,#N/A,#N/A,#N/A,#N/A,#N/A
-NVE.Owned.DR/DSM.BESS-2,LT Only DR Resources,0,0,0,0,0,0,0,0,0,,,NVE.Owned.DR/DSM.BESS-2,LT Only DR Resources,#N/A,#N/A,#N/A,#N/A,#N/A
-NVE.Owned.DR/DSM.PV,LT Only DR Resources,0,0,0,0,0,0,0,0,0,,,NVE.Owned.DR/DSM.PV,LT Only DR Resources,#N/A,#N/A,#N/A,#N/A,#N/A
-PPA.Contracted.DR/DSM.PV,LT Only DR Resources,0,0,0,0,0,0,0,0,0,,,PPA.Contracted.DR/DSM.PV,LT Only DR Resources,#N/A,#N/A,#N/A,#N/A,#N/A
-_PCM Generic Expansion_NVP_BESS,Standalone,32,0.0017,0.05,0.27,1,24,5,8,24,,,_PCM Generic Expansion_NVP_BESS,Standalone,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-_PCM Generic Expansion_SPPC_BESS,Standalone,32,0.0017,0.05,0.27,1,24,5,8,24,,,_PCM Generic Expansion_SPPC_BESS,Standalone,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Reid Gardner BESS,Standalone,32,0.0017,0.05,0.27,1,24,5,8,24,,,Reid Gardner BESS,Standalone,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Arrow Canyon Solar BESS,Hybrid,32,0.0017,0.05,0.27,1,24,5,8,24,,,Arrow Canyon Solar BESS,Hybrid,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Battle Mountain Solar BESS,Hybrid,32,0.0017,0.05,0.27,1,24,5,8,24,,,Battle Mountain Solar BESS,Hybrid,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Boulder Solar III BESS,Hybrid,32,0.0017,0.05,0.27,1,24,5,8,24,,,Boulder Solar III BESS,Hybrid,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Dodge Flat Solar BESS,Hybrid,32,0.0017,0.05,0.27,1,24,5,8,24,,,Dodge Flat Solar BESS,Hybrid,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Dry Lake East Solar BESS,Hybrid,32,0.0017,0.05,0.27,1,24,5,8,24,,,Dry Lake East Solar BESS,Hybrid,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Dry Lake Solar BESS,Hybrid,32,0.0017,0.05,0.27,1,24,5,8,24,,,Dry Lake Solar BESS,Hybrid,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Fish Springs Ranch Solar BESS,Hybrid,32,0.0017,0.05,0.27,1,24,5,8,24,,,Fish Springs Ranch Solar BESS,Hybrid,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Gemini Solar BESS,Hybrid,32,0.0017,0.05,0.27,1,24,5,8,24,,,Gemini Solar BESS,Hybrid,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Libra Solar BESS,Hybrid,32,0.0017,0.05,0.27,1,24,5,8,24,,,Libra Solar BESS,Hybrid,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-Sierra Solar BESS,Hybrid,32,0.0017,0.05,0.27,1,24,5,8,24,,,Sierra Solar BESS,Hybrid,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
-_NVE IRP Expansion_SPPC_PV (Standalone),UPV - Standalone,0,0,0,0,0,0,0,0,0,,,_NVE IRP Expansion_SPPC_PV (Standalone),UPV - Standalone,#N/A,#N/A,#N/A,#N/A,#N/A
-Idaho Wind,LBW,0,0,0,0,0,0,0,0,0,,,Idaho Wind,LBW,#N/A,#N/A,#N/A,#N/A,#N/A
-_NVE IRP Expansion_SPPC_BESS (Standalone),Standalone,32,0.0017,0.05,0.27,1,24,5,8,24,,,_NVE IRP Expansion_SPPC_BESS (Standalone),Standalone,BESS Maintenance Frequency,BESS Mean Time to Repair,BESS Forced Outage Rate,BESS Min Time to Repair,BESS Repair Time Scale
+﻿Item,Category,MTTR,outage_transition_probability,EFOR,incr EFOR,Maintenance_Frequency,Mean_Time_to_Repair,Forced_Outage_Rate,Min_Time_to_Repair,Repair_Time_Scale
+Chuck Lenzi 1_A,NG CC,89,0.000229305,0.02,1.866894977,2.21,74,2,15,74
+Chuck Lenzi 1_B,NG CC,89,0.000229305,0.02,1.866894977,2.21,74,2,15,74
+Chuck Lenzi 2_A,NG CC,89,0.000182698,0.016,1.866894977,2.21,74,1.6,15,74
+Chuck Lenzi 2_B,NG CC,89,0.000182698,0.016,1.866894977,2.21,74,1.6,15,74
+"Clark 5, 6, 10_A",NG CC,89,0.001193199,0.096,1.866894977,2.21,74,9.6,15,74
+"Clark 5, 6, 10_B",NG CC,89,0.001193199,0.096,1.866894977,2.21,74,9.6,15,74
+"Clark 7, 8, 9_A",NG CC,89,0.001290193,0.103,1.866894977,2.21,74,10.3,15,74
+"Clark 7, 8, 9_B",NG CC,89,0.001290193,0.103,1.866894977,2.21,74,10.3,15,74
+Harry Allen CC_A,NG CC,89,0.000264511,0.023,1.866894977,2.21,74,2.3,15,74
+Harry Allen CC_B,NG CC,89,0.000264511,0.023,1.866894977,2.21,74,2.3,15,74
+LV Gen 1,NG CC,89,0.001124832,0.091,1.866894977,2.21,74,9.1,15,74
+LV Gen 2_A,NG CC,89,0.001003647,0.082,1.866894977,2.21,74,8.2,15,74
+LV Gen 2_B,NG CC,89,0.001003647,0.082,1.866894977,2.21,74,8.2,15,74
+LV Gen 3_A,NG CC,89,0.000742675,0.062,1.866894977,2.21,74,6.2,15,74
+LV Gen 3_B,NG CC,89,0.000742675,0.062,1.866894977,2.21,74,6.2,15,74
+Silverhawk CC_A,NG CC,89,0.000217618,0.019,1.866894977,2.21,74,1.9,15,74
+Silverhawk CC_B,NG CC,89,0.000217618,0.019,1.866894977,2.21,74,1.9,15,74
+Tracy 4&5 CC,NG CC,89,0.000963779,0.079,1.866894977,2.21,74,7.9,15,74
+"Tracy 8, 9, 10_A",NG CC,89,0.000159537,0.014,1.866894977,2.21,74,1.4,15,74
+"Tracy 8, 9, 10_B",NG CC,89,0.000159537,0.014,1.866894977,2.21,74,1.4,15,74
+Walt Higgings CC_A,NG CC,89,0.00066654,0.056,1.866894977,2.21,74,5.6,15,74
+Walt Higgings CC_B,NG CC,89,0.00066654,0.056,1.866894977,2.21,74,5.6,15,74
+Clark 11,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 12,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 13,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 14,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 15,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 16,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 17,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 18,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 19,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 20,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 21,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 22,NG CT,77,0.001007613,0.072,2.469178082,3.09,70,7.2,7,70
+Clark 4,NG CT,77,0.002167028,0.143,2.469178082,3.09,70,14.3,7,70
+Clark Mt. 3,NG CT,77,0.002184731,0.144,2.469178082,3.09,70,14.4,7,70
+Clark Mt. 4,NG CT,77,0.000873193,0.063,2.469178082,3.09,70,6.3,7,70
+Harry Allen 3,NG CT,77,0.003431461,0.209,2.469178082,3.09,70,20.9,7,70
+Harry Allen 4,NG CT,77,0.002167028,0.143,2.469178082,3.09,70,14.3,7,70
+Silverhawk 3,NG CT,77,0.000265041,0.02,2.469178082,3.09,70,2,7,70
+Silverhawk 4,NG CT,77,0.000265041,0.02,2.469178082,3.09,70,2,7,70
+Sun Peak 3,NG CT,77,0.000726834,0.053,2.469178082,3.09,70,5.3,7,70
+Sun Peak 4,NG CT,77,0.002114165,0.14,2.469178082,3.09,70,14,7,70
+Sun Peak 5,NG CT,77,0.002309822,0.151,2.469178082,3.09,70,15.1,7,70
+Valmy CT 3,NG CT,77,0.000265041,0.02,2.469178082,3.09,70,2,7,70
+Valmy CT 4,NG CT,77,0.000265041,0.02,2.469178082,3.09,70,2,7,70
+Ft. Churchill 1,NG ST,165,0.000456175,0.07,4.162671233,2.55,143,7,22,143
+Ft. Churchill 2,NG ST,165,0.000305577,0.048,4.162671233,2.55,143,4.8,22,143
+Tracy 3,NG ST,165,0.001223776,0.168,4.162671233,2.55,143,16.8,22,143
+Valmy 1,Coal ST,133,0.000216591,0.028,3.758219178,2.79,118,2.8,15,118
+Valmy 2,Coal ST,133,0.000948317,0.112,3.758219178,2.79,118,11.2,15,118
+Liberty (Cal Peco),Oil IC,37,0.001903638,0.0658,1.610159817,4.03,35,6.58,2,35
+Beowawe Geothermal Power Plant,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Burdette Geothermal Power Plant,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Desert Peak 2 Geothermal Power,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Galena 1,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Galena 3 Geothermal Power Plant,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Gerlach,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Jersey Valley Geothermal,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Lone Mountain,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+McGinness Hills Geothermal,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+North Valley 2,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+North Valley Eavor Loop,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+North Valley Geothermal,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Ormat Western Geothermal,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Pinto,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Tuscarora Geothermal,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+USG San Emidio Geothermal,Geothermal,147,0.000747469,0.099,3.799086758,2.6,128,9.9,19,128
+Hoover Dam (NV),Hydro,178,0.000505159,0.0825,2.157534247,3,63,8.25,13,165
+Apex Landfill Facility,Landfill/Biogas,77,0.00145584,0.1008,2.469178082,3.09,70,10.08,7,70
+Lockwood Renewable Energy Facility,Landfill/Biogas,77,0.00145584,0.1008,2.469178082,3.09,70,10.08,7,70
+_PCM Generic Expansion_NVP_PV,UPV - Standalone,0,0,0,0,0,0,0,0,0
+_PCM Generic Expansion_SPPC_PV,UPV - Standalone,0,0,0,0,0,0,0,0,0
+ACE Searchlight Solar,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Boulder Solar I,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Boulder Solar II,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Copper Mountain Solar 5,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Eagle Shadow Mountain Solar Farm,UPV - Standalone,0,0,0,0,0,0,0,0,0
+FRV Spectrum Solar,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Mountain View Solar,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Nellis Solar Array II,UPV - Standalone,0,0,0,0,0,0,0,0,0
+RV Apex Solar,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Silver State Solar,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Switch Station 1 (Playa Solar 1),UPV - Standalone,0,0,0,0,0,0,0,0,0
+Switch Station 2 (Playa Solar 2),UPV - Standalone,0,0,0,0,0,0,0,0,0
+Techren Solar 2,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Techren Solar I,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Techren Solar III,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Techren Solar IV,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Techren Solar V,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Turquoise Nevada,UPV - Standalone,0,0,0,0,0,0,0,0,0
+Arrow Canyon Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0
+Battle Mountain Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0
+Boulder Solar III,UPV - Hybrid,0,0,0,0,0,0,0,0,0
+Dodge Flat Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0
+Dry Lake East Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0
+Dry Lake Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0
+Fish Springs Ranch Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0
+Gemini Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0
+Libra Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0
+Sierra Solar,UPV - Hybrid,0,0,0,0,0,0,0,0,0
+Ft. Churchill Solar,Concentrated Solar,0,0,0,0,0,0,0,0,0
+_PCM Generic Expansion_SPPC_Wind (ID),LBW,0,0,0,0,0,0,0,0,0
+Spring Valley Wind,LBW,0,0,0,0,0,0,0,0,0
+Goodsprings,Other,0,0,0,0,0,0,0,0,0
+Tuning Adjustment,Market Purchases,0,0,0,0,0,0,0,0,0
+NVE_Owned_DR_DSM_ACLM,LT Only DR Resources,0,0,0,0,0,0,0,0,0
+NVE_Owned_DR_DSM_BESS-2,LT Only DR Resources,0,0,0,0,0,0,0,0,0
+NVE_Owned_DR_DSM_PV,LT Only DR Resources,0,0,0,0,0,0,0,0,0
+PPA_Contracted_DR_DSM_PV,LT Only DR Resources,0,0,0,0,0,0,0,0,0
+Reid Gardner BESS,Standalone,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+Arrow Canyon Solar BESS,Hybrid,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+Battle Mountain Solar BESS,Hybrid,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+Boulder Solar III BESS,Hybrid,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+Dodge Flat Solar BESS,Hybrid,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+Dry Lake East Solar BESS,Hybrid,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+Dry Lake Solar BESS,Hybrid,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+Fish Springs Ranch Solar BESS,Hybrid,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+Gemini Solar BESS,Hybrid,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+Libra Solar BESS,Hybrid,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+Sierra Solar BESS,Hybrid,32,0.001644737,0.05,0.273972603,1,24,5,8,24
+DPV_Nevada Power ND,DPV,0,0,0,0,0,0,0,0,0
+DPV_Sierra ND,DPV,0,0,0,0,0,0,0,0,0

@@ -22,7 +22,8 @@ function initialize_paths_and_inputs(r2x_output_name::String, scenario_name::Str
     scenario_dir_stochastics = joinpath(output_dir, scenario_name,"stochastics") # Scenario name passed as argument
 
     # Stochastic inputs
-    solar_dir = joinpath(data_dir, "LOLP_inputs", "solar")
+    FTM_solar_dir = joinpath(data_dir, "LOLP_inputs", "solar") #FTM
+    BTM_solar_dir = joinpath(data_dir, "LOLP_inputs", "DPV") #BTM
     wind_dir = joinpath(data_dir, "LOLP_inputs", "wind")
     load_dir = joinpath(data_dir, "LOLP_inputs", "load")
     LOLP_inputs = joinpath(data_dir, "LOLP_inputs")
@@ -57,7 +58,8 @@ function initialize_paths_and_inputs(r2x_output_name::String, scenario_name::Str
         :sim_files_dir => sim_files_dir,
         :scenario_dir_d => scenario_dir_deterministic,
         :scenario_dir_s => scenario_dir_stochastics,
-        :solar_dir => solar_dir,
+        :FTM_solar_dir => FTM_solar_dir,
+        :BTM_solar_dir => BTM_solar_dir,
         :wind_dir => wind_dir,
         :load_dir => load_dir,
         :LOLP_inputs => LOLP_inputs,
@@ -220,6 +222,10 @@ function Demand_Response_CleanUp!(sys::System)
     set_available!(get_component(RenewableDispatch, sys, "NVE.Owned.DR/DSM.PV"), false)
     set_available!(get_component(RenewableDispatch, sys, "PPA.Contracted.DR/DSM.PV"), false)
 
+    # Remove original DR units from the system as a precautionary to make sure PRAS isnt picking these up)
+    remove_component!(RenewableDispatch, sys, "NVE.Owned.DR/DSM.PV")
+    remove_component!(RenewableDispatch, sys, "PPA.Contracted.DR/DSM.PV")
+
     # define $3000/MWh cost CostCurve (w/ no VOM); clears after tuning adjustment per benchmark system
     DR_CC = CostCurve(LinearCurve(3000),UnitSystem.NATURAL_UNITS,LinearCurve(0))
 
@@ -270,11 +276,13 @@ end
 
 function convert_BTM_units!(sys::System, paths::Dict)
 
-#Q: Ask Jose why chaging the type in the gen.csv file doesnt work
-
 #Deactive initial BTM solar units bc R2X picks them up as curtailable resources)
 set_available!(get_component(RenewableDispatch, sys, "DPV_Sierra"), false)
 set_available!(get_component(RenewableDispatch, sys, "DPV_Nevada Power"), false)
+
+#remove these units from system as a precautionary to make sure PRAS isnt picking these up
+remove_component!(RenewableDispatch, sys, "DPV_Sierra")
+remove_component!(RenewableDispatch, sys, "DPV_Nevada Power")   
 
 # instantiate DPV_Nevada Power BTM
 DPV_Nevada_Power_ND = RenewableNonDispatch(;
@@ -487,10 +495,10 @@ function define_device_model_non_weather(template_uc)
     thermal_model = DeviceModel(ThermalStandard, ThermalStandardUnitCommitment; time_series_names = Dict{Any, String}(
                     PowerSimulations.FuelCostParameter => "fuel_price",
                     PowerSimulations.ActivePowerTimeSeriesParameter => "max_active_power",))
-    set_device_model!(template_uc, thermal_model)
+    PowerSimulations.set_device_model!(template_uc, thermal_model)
 
     # Define Hydro model
-    set_device_model!(template_uc, HydroDispatch, HydroDispatchRunOfRiver)
+    PowerSimulations.set_device_model!(template_uc, HydroDispatch, HydroDispatchRunOfRiver)
 
     # Define custom DeviceModel for EnergyReservoirStorage
     storage_model = DeviceModel(
@@ -505,20 +513,18 @@ function define_device_model_non_weather(template_uc)
         ),
     )
     # Assign the storage model to the template_uc
-    set_device_model!(template_uc, storage_model)
+    PowerSimulations.set_device_model!(template_uc, storage_model)
 end
 
 function define_device_model_weather_deterministic(template_uc)
     # define the load model
-    set_device_model!(template_uc, PowerLoad, StaticPowerLoad)
+    PowerSimulations.set_device_model!(template_uc, PowerLoad, StaticPowerLoad)
 
     # define the renewable dispatch model
-    set_device_model!(template_uc, RenewableDispatch, RenewableFullDispatch)
+    PowerSimulations.set_device_model!(template_uc, RenewableDispatch, RenewableFullDispatch)
 
     # define the renewable non-dispatch model
-    set_device_model!(template_uc, RenewableNonDispatch, FixedOutput)
-
-
+    PowerSimulations.set_device_model!(template_uc, RenewableNonDispatch, FixedOutput)
 end
 
 function define_device_model_weather_stochastic(template_uc; load_timeseries_name, renewable_timeseries_name)
@@ -529,21 +535,30 @@ function define_device_model_weather_stochastic(template_uc; load_timeseries_nam
         time_series_names = Dict(ActivePowerTimeSeriesParameter => load_timeseries_name)
     )
     # Assign custom load model to template
-    set_device_model!(template_uc, load_model)
+    PowerSimulations.set_device_model!(template_uc, load_model)
 
-    # Define custom RenewableDispatch model for MC runs
-    renewable_model = DeviceModel(
+    # Define custom RenewableDispatch model for MC runs (FTM)
+    ftm_renewable_model = DeviceModel(
         RenewableDispatch,
         RenewableFullDispatch;
         time_series_names = Dict(ActivePowerTimeSeriesParameter => renewable_timeseries_name)
     )
     # Assign custom RenewableDispatch model to template
-    set_device_model!(template_uc, renewable_model)
+    PowerSimulations.set_device_model!(template_uc, ftm_renewable_model)
+
+    # Define custom RenewableNonDispatch model for MC runs (BTM)
+    btm_renewable_model = DeviceModel(
+        RenewableNonDispatch,
+        FixedOutput;
+        time_series_names = Dict(ActivePowerTimeSeriesParameter => renewable_timeseries_name)
+    )
+    # Assign custom RenewableDispatch model to template
+    PowerSimulations.set_device_model!(template_uc, btm_renewable_model)
 end
 
 function define_branch_model(template_uc)
     # define the branch model (static branch -> add unbounded flow variables and use flow constraints)
-    set_device_model!(template_uc, AreaInterchange, StaticBranch)  #Q: is this defining TX?
+    PowerSimulations.set_device_model!(template_uc, AreaInterchange, StaticBranch)  #Q: is this defining TX?
 end
 
 function define_network_model(template_uc)
@@ -567,7 +582,7 @@ function build_and_execute_simulation(template_uc, sys::System, paths::Dict; dec
         initialize_model = true, # Q: what does this do?
         optimizer_solve_log_print = true, #solver output
         direct_mode_optimizer = true, # performance thing; default is true; set it false if you have specific need
-        #rebuild_model = false, # never have to use this, R&D thing
+        rebuild_model = false, # never have to use this, R&D thing
         store_variable_names = true,
         calculate_conflict = true, #infeasibility (gurobi only)
         export_optimization_model = false, # this exports the LP (location is...)
@@ -614,7 +629,7 @@ function query_write_export_results(sim::Simulation, path_scenario::String, uc_d
     load_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__PowerLoad")
     thermal_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__ThermalStandard")
     renewDispatch_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableDispatch")
-    renewNonDispatch_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableNonDispatch")
+    renewNonDispatch_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__RenewableNonDispatch") # Sienna doesnt store nonDispatch
     hydro_parameter = read_realized_parameter(results, "ActivePowerTimeSeriesParameter__HydroDispatch")
 
     # Output Realized Generation Values
@@ -658,7 +673,7 @@ function query_write_export_results(sim::Simulation, path_scenario::String, uc_d
     CSV.write(joinpath(path_scenario, "storage_charge.csv"), storage_charge)
     CSV.write(joinpath(path_scenario, "storage_discharge.csv"), storage_discharge)
     CSV.write(joinpath(path_scenario, "power_balance.csv"), power_balance)
-    CSV.write(joinpath(path_scenario, "production_costs.csv"), all_pc)
+    CSV.write(joinpath(path_scenario, "production_costs.csv"), all_pc)    
 
     # Export generation by fuel type
 #=     all_gen_data = PowerAnalytics.get_generation_data(results) # do we need to define timeseries for all inputs for this to work?
@@ -666,4 +681,42 @@ function query_write_export_results(sim::Simulation, path_scenario::String, uc_d
     fuel = PowerAnalytics.categorize_data(all_gen_data.data, cat; curtailment = true, slacks = true)
     fuel_agg = PowerAnalytics.combine_categories(fuel)
     CSV.write(joinpath(path_scenario, "generation_by_fuel.csv"), fuel_agg) =#
+end
+
+function system_capacity_query(unit_collection::Dict, paths::Dict)
+    # Initialize an empty DataFrame
+    df = DataFrame(Resource = String[], MW_capacity = Float64[])
+
+    # for each generator collection, loop through each unit w/in that collection
+    for (category, gen_collection) in unit_collection
+        if category == "StorageUnits" #batteries
+            for unit in gen_collection
+                if get_available(unit)  # Check if the unit is active
+                    name = get_name(unit)  # Get the generator's name
+                    capacity = get_output_active_power_limits(unit).max  # Get the max active discharge power (MW)
+
+                    # Append to DataFrame
+                    push!(df, (name, capacity))
+                else
+                # do nothing
+                end
+            end
+        else # all other generator types
+            for unit in gen_collection
+                if get_available(unit)  # Check if the unit is active
+
+                    name = get_name(unit)  # Get the generator's name
+                    capacity = get_max_active_power(unit)  # Get the max active power (MW)
+
+                    # Append to DataFrame
+                    push!(df, (name, capacity))
+                else
+                    #do nothing
+                end
+            end
+        end # if loop
+    end
+
+    #write df to csv
+    CSV.write(joinpath(paths[:data_dir], "nve_nameplate_capacity.csv"), df);
 end
