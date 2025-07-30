@@ -720,3 +720,56 @@ function system_capacity_query(unit_collection::Dict, paths::Dict)
     #write df to csv
     CSV.write(joinpath(paths[:data_dir], "nve_nameplate_capacity.csv"), df);
 end
+
+function export_load_time_series(sys::System, paths::Dict, weather_years::Union{Int, UnitRange{Int}})
+    # Initialize DataFrames for each load area
+    np_df = DataFrame()
+    sierra_df = DataFrame()
+    nve_df = DataFrame()
+
+    # Get both PowerLoad objects
+    np_load = get_component(PowerLoad, sys, "Nevada Power")
+    sierra_load = get_component(PowerLoad, sys, "Sierra")
+
+    # Add hour and date columns to all DataFrames
+    np_df.hour = collect(1:8760)
+    np_df.date = collect(DateTime(2030, 1, 1):Hour(1):DateTime(2030, 12, 31, 23))
+    sierra_df.hour = collect(1:8760)
+    sierra_df.date = collect(DateTime(2030, 1, 1):Hour(1):DateTime(2030, 12, 31, 23))
+    nve_df.hour = collect(1:8760)
+    nve_df.date = collect(DateTime(2030, 1, 1):Hour(1):DateTime(2030, 12, 31, 23))
+
+    # Loop through weather years
+    for wy in weather_years
+        year_str = string(wy)
+        ts_name = "max_active_power_Y$year_str"
+        
+        # Get time series data for Nevada Power
+        np_ts = get_time_series_array(SingleTimeSeries, np_load, ts_name; ignore_scaling_factors = false)
+        np_values = values(np_ts)
+        
+        # Get time series data for Sierra
+        sierra_ts = get_time_series_array(SingleTimeSeries, sierra_load, ts_name; ignore_scaling_factors = false)
+        sierra_values = values(sierra_ts)
+        
+        # Add load values to respective DataFrames
+        np_df[!, Symbol("WY_$year_str")] = np_values
+        sierra_df[!, Symbol("WY_$year_str")] = sierra_values
+        nve_df[!, Symbol("WY_$year_str")] = np_values .+ sierra_values
+    end
+
+    # Export to CSVs
+    np_csv_path = joinpath(paths[:data_dir], "nevada_power_load_timeseries.csv")
+    sierra_csv_path = joinpath(paths[:data_dir], "sierra_load_timeseries.csv")
+    nve_csv_path = joinpath(paths[:data_dir], "nve_total_load_timeseries.csv")
+
+    CSV.write(np_csv_path, np_df)
+    CSV.write(sierra_csv_path, sierra_df)
+    CSV.write(nve_csv_path, nve_df)
+
+    println("Exported load time series data to:")
+    println("Nevada Power: $(np_csv_path)")
+    println("Sierra: $(sierra_csv_path)")
+    println("NVE Total: $(nve_csv_path)")
+end
+

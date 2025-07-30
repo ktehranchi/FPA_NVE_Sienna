@@ -24,7 +24,18 @@ using SiennaPRASInterface
 ###########################
 # Specify Run Type
 ###########################
-run_type = "Monte_Carlo"; # "Deterministic" or "Monte_Carlo"
+# note RA study is only run in Monte Carlo mode
+# you need to manually specify the weather years 
+run_type = "Deterministic"; # "Deterministic" or "Monte_Carlo"
+
+#define weather years
+if run_type == "Deterministic"
+    weather_years = 1998;
+elseif run_type == "Monte_Carlo"
+    weather_years = 1998:2022;
+else
+    @warn "Incorrect setting for run_type; $run_type is not a valid option"
+end
 
 ###########################
 # Define Your Paths
@@ -51,6 +62,10 @@ include(helpers_file_path)
 ###########################
 # Configure logging
 logger = configure_logging(console_level=Logging.Info);
+
+# define constants 
+const SPI = SiennaPRASInterface
+const PSY = PowerSystems
 
 ###########################
 # Build The Initial System
@@ -261,6 +276,8 @@ unit_collections = Dict(
     "GenUnits" => all_generators,
     "StorageUnits" => all_storage)
 
+active_component = get_component(ThermalStandard, sys, "Ft. Churchill 2")
+
 ###########################
 # Query Nameplate Capacity of System
 ###########################
@@ -448,6 +465,9 @@ else
     @warn "Incorrect setting for run_type; $run_type is not a valid option"
 end
 
+# Export Load Time Series 
+# export_load_time_series(sys, paths, 1998:2022) #activate for troubleshooting purposes
+
 #################################
 # create timeseries fxs (48-hr horizon & 24-hr lookahead; i.e. 24 hour "realized intervals")
 #################################
@@ -458,10 +478,10 @@ transform_single_time_series!(sys, Hour(48), Hour(24))
 # Sienna Temporary Patches
 ###########################
 # first get baseline values
-active_unit = get_component(ThermalStandard, sys, "Chuck Lenzi 2_B")
+active_unit = get_component(ThermalStandard, sys, "Chuck Lenzi 1_A")
 show_time_series(active_unit)
 active_unit.operation_cost #note how fuel_cost has a fixed value specified (this is ignoring the ts we have attached)
-show_time_series(active_load)
+show_time_series(active_unit)
 
 # correct for bug that has production cost expression ignoring fuel_prices sourced from timeseries
 update_thermal_fuel_price_timeseries!(sys)
@@ -478,14 +498,20 @@ active_unit.operation_cost # note: you should not see a fixed price under fuel_c
 # For Loop to Iterate Over Each Weather Year for PCM in PowerSimualtions.jl WITHOUT FORCED OUTAGES
 # This objective of running this portion of code is to ensure that all the weather-related parameters are flowing through correctly
 ###########################################################################################
-# Define the range of weather years
+# deprecated because we are using SiennaPRASInterface for RA model
+
+#= # Define the range of weather years
 if run_type == "Deterministic"
     weather_years = 1998;
 elseif run_type == "Monte_Carlo" 
-    weather_years = 1999:1999; # testing  only a few yrs to ensure proper configuration across weather years
+
+    weather_years = 1998; # testing  only a few yrs to ensure proper configuration across weather years
 else
     @warn "Incorrect setting for run_type; $run_type is not a valid option"
-end 
+end =# 
+
+# Dictionary to store simulation results
+sim_results = Dict{String, Any}()
 
 # Iterate over each weather year
 for wy in weather_years
@@ -493,24 +519,37 @@ for wy in weather_years
     year_str = string(wy)
 
     if run_type == "Deterministic"
-
         #assign name
         uc_decision_name = "base_yr"
-
         # Create an empty model reference
         template_uc = ProblemTemplate()
-
         # Define thermal, hydro, and storage device models (non-weather-dependent)
         define_device_model_non_weather(template_uc)
-
         # Define load and renewable device models (deterministic)
         define_device_model_weather_deterministic(template_uc)
-
         # Define branch and network models
         define_branch_model(template_uc)
         define_network_model(template_uc)
+
+        ###########################
+        # Build and Execute Simulation
+        ###########################
+        get_units_base(sys)
+        set_units_base_system!(sys, "NATURAL_UNITS")
+        sim, UC_decision = build_and_execute_simulation(template_uc, sys, paths; decision_name=uc_decision_name);
+
+        # Print a message to indicate that the simulation is complete
+        println("Simulation completed for: $uc_decision_name")
+
+        ###########################
+        # Store Simulation Results in Dictionary
+        ###########################
+        sim_results[uc_decision_name] = (sim=sim, UC_decision=UC_decision)
+
     elseif run_type == "Monte_Carlo"
-        #define unique identifies for timeseries pointers and decision model names
+        # commenting this out because we are using SiennaPRASInterface for RA model
+        
+#=         #define unique identifies for timeseries pointers and decision model names
         uc_decision_name = "DA_WY_$year_str"  # e.g., "DA_WY_1998"
         ts_WY_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Y1998"
 
@@ -528,249 +567,259 @@ for wy in weather_years
 
         # Define branch and network models
         define_branch_model(template_uc)
-        define_network_model(template_uc)
+        define_network_model(template_uc) =#
     else
         @warn "Incorrect setting for run_type; $run_type is not a valid option"
     end
+end
 
-    ###########################
-    # Build and Execute Simulation
-    ###########################
-    get_units_base(sys)
-    set_units_base_system!(sys, "NATURAL_UNITS")
-    sim, UC_decision = build_and_execute_simulation(template_uc, sys, paths; decision_name=uc_decision_name);
+#sim_results
 
-    # Print a message to indicate that the simulation is complete
-    println("Simulation completed for: $uc_decision_name")
+###########################
+# Export Results (Separate Loop)
+###########################
+# Skip export for Monte_Carlo since it's deprecated (using SiennaPRASInterface instead)
+if run_type == "Deterministic"
+    for wy in weather_years
+        year_str = string(wy)
+        
+        uc_decision_name = "base_yr"
+        file_path = paths[:scenario_dir_d]
 
-    ###########################
-    # Export the Results
-    ###########################
-    if run_type == "Deterministic"
-        # define file paths to store (processed) results for the active year
-        file_path = (paths[:scenario_dir_d])
-    elseif run_type == "Monte_Carlo"
-        # define file paths to store (processed) results for the active weather yr
-        file_path = joinpath(paths[:scenario_dir_s], "results_WY_$year_str")
-    else
-        @warn "Incorrect setting for run_type; $run_type is not a valid option"
-    end 
-    
-    # check if folder directory exists; if not, create it
-    if !ispath(file_path)
-        mkpath(file_path)
-    else
-        # do nothing
+        # Check if simulation results exist
+        if !haskey(sim_results, uc_decision_name)
+            @warn "Simulation results not found for $uc_decision_name"
+            continue
+        end
+
+        # Get simulation results from dictionary
+        sim = sim_results[uc_decision_name].sim
+        println("Retrieved simulation results for: $uc_decision_name")
+
+        # Export results
+        try
+            query_write_export_results(sim, file_path, uc_decision_name)
+            println("Successfully exported results for: $uc_decision_name")
+        catch e
+            @error "Failed to export results for $uc_decision_name" exception=(e, catch_backtrace())
+        end
     end
-
-    # export the results
-    query_write_export_results(sim, file_path, uc_decision_name)        
+elseif run_type == "Monte_Carlo"
+    println("Skipping export for Monte_Carlo mode - deprecated (using SiennaPRASInterface for RA model)")
+else
+    @warn "Incorrect setting for run_type; $run_type is not a valid option"
 end
 
 ###########################################################################################
 # For Loop to Iterate Over Each Weather Year for our Monte Carlo RA LOLP Simulation using SiennaPRASInterface
 ###########################################################################################
-# Define the range of weather years
-weather_years = 1998:2022 # testing for only a few yrs for now
-# Dictionary to store results for each weather year
-# weather_year_results = Dict{Int, Tuple{Simulation, DecisionModel}}()
-shortfall_results = []
-shortfall_stats_array = []
+if run_type == "Monte_Carlo"
 
-# Iterate over each weather year
-for wy in weather_years
+    # Dictionary to store results for each weather year
+    # weather_year_results = Dict{Int, Tuple{Simulation, DecisionModel}}()
+    shortfall_results = []
+    shortfall_stats_array = []
 
-    # manual entry (i.e. for troubleshooting purposes)
-    #wy = 1998
+    # Iterate over each weather year
+    for wy in weather_years
 
-    # Generate strings for the current year
-    year_str = string(wy)
+        # manual entry (i.e. for troubleshooting purposes)
+        #wy = 1998
 
-    #define unique identifies for timeseries pointers and decision model names
-    uc_decision_name = "DA_WY_$year_str"  # e.g., "DA_WY_1998"
-    ts_WY_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Yxxxx"
+        # Generate strings for the current year
+        year_str = string(wy)
 
-    ###########################
-    # Run SiennaPRASInterface
-    ###########################
-    # DeviceRAModel (PowerSystems Device, SPI Abstract Formulation, time_series_names, kwargs)
-    problem_template = RATemplate(
-        PowerSystems.Area,
-        [
-            #define thermal device model
-            DeviceRAModel(PowerSystems.ThermalStandard,GeneratorPRAS(max_active_power="max_active_power"),),
+        #define unique identifies for timeseries pointers and decision model names
+        # uc_decision_name = "DA_WY_$year_str"  # e.g., "DA_WY_1998"
+        ts_WY_name = "max_active_power_Y$year_str"  # e.g., "max_active_power_Yxxxx"
 
-            #define hydro device model
-            DeviceRAModel(PowerSystems.HydroGen, GeneratorPRAS(max_active_power="max_active_power"),),
+        ###########################
+        # Run SiennaPRASInterface
+        ###########################
+        # DeviceRAModel (PowerSystems Device, SPI Abstract Formulation, time_series_names, kwargs)
+        problem_template = RATemplate(
+            PowerSystems.Area,
+            [
+                #define thermal device model
+                DeviceRAModel(PowerSystems.ThermalStandard,GeneratorPRAS(max_active_power="max_active_power"),),
 
-            #define storage device model
-            DeviceRAModel(PowerSystems.EnergyReservoirStorage, EnergyReservoirLossless()),
-                
-            #define renewable device model (both RenewableDispatch and RenewableNonDispatch) - weather dependent
-            DeviceRAModel(PowerSystems.RenewableGen, GeneratorPRAS(max_active_power=ts_WY_name),),
+                #define hydro device model
+                DeviceRAModel(PowerSystems.HydroGen, GeneratorPRAS(max_active_power="max_active_power"),),
 
-            #define load device model (weather dependent)
-            DeviceRAModel(PowerSystems.PowerLoad, StaticLoadPRAS(max_active_power=ts_WY_name),),
+                #define storage device model
+                DeviceRAModel(PowerSystems.EnergyReservoirStorage, EnergyReservoirLossless()),
+                    
+                #define renewable device model (both RenewableDispatch and RenewableNonDispatch) - weather dependent
+                DeviceRAModel(PowerSystems.RenewableGen, GeneratorPRAS(max_active_power=ts_WY_name),),
 
-            #define line device model
-            DeviceRAModel(PowerSystems.Line, LinePRAS(),),
+                #define load device model (weather dependent)
+                DeviceRAModel(PowerSystems.PowerLoad, StaticLoadPRAS(max_active_power=ts_WY_name),),
 
-            #define AreaInterchange device model
-            DeviceRAModel(PowerSystems.AreaInterchange, AreaInterchangeLimit(),),
-        ],
-    )    
+                #define line device model
+                DeviceRAModel(PowerSystems.Line, LinePRAS(),),
 
-    # Convert PowerSimulations.jl system (i.e., PSY) to PRAS model (i.e., PSI) 
-    pras_sys = generate_pras_system(sys, problem_template)
+                #define AreaInterchange device model
+                DeviceRAModel(PowerSystems.AreaInterchange, AreaInterchangeLimit(),),
+            ],
+        )    
 
-    ##########################
-    #SPI Troubleshooting (make sure load is being sent over to PRAS in NATURAL UNITS)
-    ##########################
-    const SPI = SiennaPRASInterface
-    const PSY = PowerSystems
-    loads_to_formula = SPI.build_component_to_formulation(SPI.LoadPRAS, sys, problem_template.device_models)
-    static_ts_summary = PSY.get_static_time_series_summary_table(sys)
-    s2p_meta = SPI.S2P_metadata(static_ts_summary)
-    regions= get_components(Area, sys)
-    SPI.get_region_loads(s2p_meta,regions, loads_to_formula,)
+        # Convert PowerSimulations.jl system (i.e., PSY) to PRAS model (i.e., PSI) 
+        pras_sys = generate_pras_system(sys, problem_template)
 
-    pras_sys.generators.names
-    # find index (idx) of generator of interest in pras_sys.generators
-    idx = findfirst(==("DPV_Nevada Power ND"), pras_sys.generators.names)
-    idx = findfirst(==("_PCM Generic Expansion_SPPC_Wind (ID)"), pras_sys.generators.names)
-    profile = pras_sys.generators.capacity[idx,:]
+        ##########################
+        #SPI Troubleshooting (make sure load is being sent over to PRAS in NATURAL UNITS)
+        ##########################
 
-    active_re_unit = get_component(RenewableNonDispatch, sys, "DPV_Nevada Power ND")    
-    active_re_unit = get_component(RenewableDispatch, sys, "_PCM Generic Expansion_SPPC_Wind (ID)")
-    get_max_active_power(active_re_unit)
-    psy_no_scaling = values(get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power_Y1999"; ignore_scaling_factors = true))
-    psy_scaling = values(get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power_Y1999"; ignore_scaling_factors = false))
+        loads_to_formula = SPI.build_component_to_formulation(SPI.LoadPRAS, sys, problem_template.device_models)
+        static_ts_summary = PSY.get_static_time_series_summary_table(sys)
+        s2p_meta = SPI.S2P_metadata(static_ts_summary)
+        regions= get_components(Area, sys)
+        SPI.get_region_loads(s2p_meta,regions, loads_to_formula,)
 
-    df_summary = DataFrame(pras_ts = profile, psy_no_scaling = psy_no_scaling, psy_scaling = psy_scaling) 
+        pras_sys.generators.names
+        # find index (idx) of generator of interest in pras_sys.generators
+        idx = findfirst(==("DPV_Nevada Power ND"), pras_sys.generators.names)
+        idx = findfirst(==("_PCM Generic Expansion_SPPC_Wind (ID)"), pras_sys.generators.names)
+        profile = pras_sys.generators.capacity[idx,:]
 
-    CSV.write("generator_capacity.csv", df_summary)
+        active_re_unit = get_component(RenewableNonDispatch, sys, "DPV_Nevada Power ND")    
+        active_re_unit = get_component(RenewableDispatch, sys, "_PCM Generic Expansion_SPPC_Wind (ID)")
+        get_max_active_power(active_re_unit)
+        psy_no_scaling = values(get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power_Y1999"; ignore_scaling_factors = true))
+        psy_scaling = values(get_time_series_array(SingleTimeSeries, active_re_unit, "max_active_power_Y1999"; ignore_scaling_factors = false))
 
-    #General Inquiry (appliestodevice checks)
-    typeof(pras_sys)
-    DeviceRAModel_type = typeof(DeviceRAModel(PSY.ThermalStandard,GeneratorPRAS(),))   
+        df_summary = DataFrame(pras_ts = profile, psy_no_scaling = psy_no_scaling, psy_scaling = psy_scaling) 
 
-    SPI.appliestodevice(DeviceRAModel(PSY.ThermalStandard,GeneratorPRAS(),), typeof(active_re_unit))
-    SPI.appliestodevice(DeviceRAModel(PSY.ThermalStandard,GeneratorPRAS(),), typeof(active_unit))
+        CSV.write("PRAS_generator_capacity.csv", df_summary)
 
-    SPI.appliestodevice(DeviceRAModel(PSY.Generator,GeneratorPRAS(),), typeof(active_re_unit))
-    SPI.appliestodevice(DeviceRAModel(PSY.Generator,GeneratorPRAS(),), typeof(active_unit))
+        #General Inquiry (applies to device checks)
+        typeof(pras_sys)
+        DeviceRAModel_type = typeof(DeviceRAModel(PSY.ThermalStandard,GeneratorPRAS(),))   
 
-    #define the PRAS method -> sequential MC with 20 samples of 8760 FO draws
-    # Set Sequential Monte Carlo method as method along with # of samples and seed value
-    # note: Sequential MC honors chronology
-    method = SequentialMonteCarlo(samples=20, seed=1, verbose=true, threaded=false)
+        SPI.appliestodevice(DeviceRAModel(PSY.ThermalStandard,GeneratorPRAS(),), typeof(active_re_unit))
+        SPI.appliestodevice(DeviceRAModel(PSY.ThermalStandard,GeneratorPRAS(),), typeof(active_unit))
 
-    # Run the PRAS simulation and assess shortfall periods and related statistics
-    shortfalls, shortfall_stats = assess(pras_sys, method, ShortfallSamples(), Shortfall())
-    push!(shortfall_results, shortfalls)
-    push!(shortfall_stats_array, shortfall_stats)
-    println("SiennaPRASInterface simulation completed for: WY $wy.")
+        SPI.appliestodevice(DeviceRAModel(PSY.Generator,GeneratorPRAS(),), typeof(active_re_unit))
+        SPI.appliestodevice(DeviceRAModel(PSY.Generator,GeneratorPRAS(),), typeof(active_unit))
+
+        #define the PRAS method -> sequential MC with 20 samples of 8760 FO draws
+        # Set Sequential Monte Carlo method as method along with # of samples and seed value
+        # note: Sequential MC honors chronology
+        method = SequentialMonteCarlo(samples=20, seed=1, verbose=true, threaded=false)
+
+        # Run the PRAS simulation and assess shortfall periods and related statistics
+        shortfalls, shortfall_stats = assess(pras_sys, method, ShortfallSamples(), Shortfall())
+        push!(shortfall_results, shortfalls)
+        push!(shortfall_stats_array, shortfall_stats)
+        println("SiennaPRASInterface simulation completed for: WY $wy.")
+    end
+
+    ###################################
+    #Export Results for post-processing 
+    ###################################
+    # Create a DataFrame to store summary statistics for all weather years
+    summary_df = DataFrame(weather_year = Int[], eue = Float64[], std_error = Float64[])
+    hourly_ens = DataFrame(hour = 1:8760)
+
+    # Process each weather year's results
+    for (idx, wy) in enumerate(weather_years)
+        # Calculate EUE (Expected Unserved Energy) for this weather year
+        eue_value = EUE(shortfall_stats_array[idx])
+        eue = eue_value.eue.estimate
+        std_error = eue_value.eue.standarderror
+        push!(summary_df, (wy, eue, std_error))
+
+        # Sum along the first dimension
+        summed_shortfall = dropdims(sum(shortfall_results[idx].shortfall, dims=1), dims=1) # 8760 by nsamples array
+
+        # Create a new DataFrame for this weather year's data
+        year_df = DataFrame(summed_shortfall, :auto)
+
+        # Rename columns with weather year prefix
+        colnames = [Symbol("$(wy)_x$i") for i in 1:size(summed_shortfall, 2)]
+        DataFrames.rename!(year_df, colnames)
+
+        # Horizontally concatenate with the main DataFrame
+        hourly_ens = hcat(hourly_ens, year_df)
+    end
+
+    #####################
+    # write Shortfall Summary across all weather years to csv
+    #####################
+    summary_csv_path = joinpath(paths[:scenario_dir_s], "shortfall_summary.csv")
+    CSV.write(summary_csv_path, summary_df)
+    println("Exported shortfall summary statistics to: $(summary_csv_path)")
+
+    #####################
+    # write hourly ENS across all samples to csv
+    #####################
+    # Write the combined DataFrame to CSV
+    all_samples_csv_path = joinpath(paths[:scenario_dir_s], "all_shortfall_samples.csv")
+    CSV.write(all_samples_csv_path, hourly_ens)
+
+    #####################
+    # calculate daily MWh and export to csv
+    #####################
+    # Drop the :hour column if it's just 1 to 8760 and not needed
+    df_daily_ENS = select(hourly_ens, Not(:hour))
+    # Add a new column for day number (1 to 365)
+    df_daily_ENS.Day = ceil.(Int, (1:nrow(df_daily_ENS)) ./ 24)
+    # Group by Day and sum each group
+    df_daily_ENS = combine(groupby(df_daily_ENS, :Day), names(df_daily_ENS, Not(:Day)) .=> sum)
+    # Create a Date column for the year 2030
+    df_daily_ENS.Date = Date(2030, 1, 1) .+ Day.(df_daily_ENS.Day .- 1)
+    #reorder columns
+    select!(df_daily_ENS, :Date, Not([:Date]))
+    #drop Day
+    select!(df_daily_ENS, Not([:Day]))
+    #export the daily shortfall amt
+    daily_shortfall_csv_path = joinpath(paths[:scenario_dir_s], "daily_shortfall_ENS.csv")
+    CSV.write(daily_shortfall_csv_path, df_daily_ENS)
+
+    #####################
+    # calculate daily ENS hours and export to csv
+    #####################
+    # Drop the :hour column if it's just 1 to 8760 and not needed
+    df_daily_hrs = select(hourly_ens, Not(:hour))
+    # Add a new column for day number (1 to 365)
+    df_daily_hrs.Day = ceil.(Int, (1:nrow(df_daily_hrs)) ./ 24)
+    # Group by Day and sum each group
+    df_daily_hrs = combine(groupby(df_daily_hrs, :Day), names(df_daily_hrs, Not(:Day)) .=> x -> count(>(0), x))
+    # Create a Date column for the year 2030
+    df_daily_hrs.Date = Date(2030, 1, 1) .+ Day.(df_daily_hrs.Day .- 1)
+    #reorder columns
+    select!(df_daily_hrs, :Date, Not([:Date]))
+    #drop Day
+    select!(df_daily_hrs, Not([:Day]))
+    #export the daily shortfall amt
+    daily_shortfall_csv_path = joinpath(paths[:scenario_dir_s], "daily_shortfall_hours.csv")
+    CSV.write(daily_shortfall_csv_path, df_daily_hrs)
+
+    #####################
+    # calculate daily event indicators and export to csv
+    #####################
+    # Drop the :hour column if it's just 1 to 8760 and not needed
+    df_daily_events = select(hourly_ens, Not(:hour))
+    # Add a new column for day number (1 to 365)
+    df_daily_events.Day = ceil.(Int, (1:nrow(df_daily_events)) ./ 24)
+    df_daily_events
+    # Group by Day and sum each group
+    df_daily_events = combine(groupby(df_daily_events, :Day),names(df_daily_events, Not(:Day)) .=> (x -> Int(any(>(0), x))))
+    # Create a Date column for the year 2030
+    df_daily_events.Date = Date(2030, 1, 1) .+ Day.(df_daily_events.Day .- 1)
+    #reorder columns
+    select!(df_daily_events, :Date, Not([:Date]))
+    #drop Day
+    select!(df_daily_events, Not([:Day]))
+    #export the daily shortfall amt
+    daily_shortfall_csv_path = joinpath(paths[:scenario_dir_s], "daily_shortfall_hours_indicator.csv")
+    CSV.write(daily_shortfall_csv_path, df_daily_events)
+
+else
+    # do nothing
 end
 
-###################################
-#Export Results for post-processing 
-###################################
-# Create a DataFrame to store summary statistics for all weather years
-summary_df = DataFrame(weather_year = Int[], eue = Float64[], std_error = Float64[])
-hourly_ens = DataFrame(hour = 1:8760)
 
-# Process each weather year's results
-for (idx, wy) in enumerate(weather_years)
-    # Calculate EUE (Expected Unserved Energy) for this weather year
-    eue_value = EUE(shortfall_stats_array[idx])
-    eue = eue_value.eue.estimate
-    std_error = eue_value.eue.standarderror
-    push!(summary_df, (wy, eue, std_error))
 
-    # Sum along the first dimension
-    summed_shortfall = dropdims(sum(shortfall_results[idx].shortfall, dims=1), dims=1) # 8760 by nsamples array
-
-    # Create a new DataFrame for this weather year's data
-    year_df = DataFrame(summed_shortfall, :auto)
-
-    # Rename columns with weather year prefix
-    colnames = [Symbol("$(wy)_x$i") for i in 1:size(summed_shortfall, 2)]
-    DataFrames.rename!(year_df, colnames)
-
-    # Horizontally concatenate with the main DataFrame
-    hourly_ens = hcat(hourly_ens, year_df)
-end
-
-#####################
-# write Shortfall Summary across all weather years to csv
-#####################
-summary_csv_path = joinpath(paths[:scenario_dir_s], "shortfall_summary.csv")
-CSV.write(summary_csv_path, summary_df)
-println("Exported shortfall summary statistics to: $(summary_csv_path)")
-
-#####################
-# write hourly ENS across all samples to csv
-#####################
-# Write the combined DataFrame to CSV
-all_samples_csv_path = joinpath(paths[:scenario_dir_s], "all_shortfall_samples.csv")
-CSV.write(all_samples_csv_path, hourly_ens)
-
-#####################
-# calculate daily MWh and export to csv
-#####################
-# Drop the :hour column if it's just 1 to 8760 and not needed
-df_daily_ENS = select(hourly_ens, Not(:hour))
-# Add a new column for day number (1 to 365)
-df_daily_ENS.Day = ceil.(Int, (1:nrow(df_daily_ENS)) ./ 24)
-# Group by Day and sum each group
-df_daily_ENS = combine(groupby(df_daily_ENS, :Day), names(df_daily_ENS, Not(:Day)) .=> sum)
-# Create a Date column for the year 2030
-df_daily_ENS.Date = Date(2030, 1, 1) .+ Day.(df_daily_ENS.Day .- 1)
-#reorder columns
-select!(df_daily_ENS, :Date, Not([:Date]))
-#drop Day
-select!(df_daily_ENS, Not([:Day]))
-#export the daily shortfall amt
-daily_shortfall_csv_path = joinpath(paths[:scenario_dir_s], "daily_shortfall_ENS.csv")
-CSV.write(daily_shortfall_csv_path, df_daily_ENS)
-
-#####################
-# calculate daily ENS hours and export to csv
-#####################
-# Drop the :hour column if it's just 1 to 8760 and not needed
-df_daily_hrs = select(hourly_ens, Not(:hour))
-# Add a new column for day number (1 to 365)
-df_daily_hrs.Day = ceil.(Int, (1:nrow(df_daily_hrs)) ./ 24)
-# Group by Day and sum each group
-df_daily_hrs = combine(groupby(df_daily_hrs, :Day), names(df_daily_hrs, Not(:Day)) .=> x -> count(>(0), x))
-# Create a Date column for the year 2030
-df_daily_hrs.Date = Date(2030, 1, 1) .+ Day.(df_daily_hrs.Day .- 1)
-#reorder columns
-select!(df_daily_hrs, :Date, Not([:Date]))
-#drop Day
-select!(df_daily_hrs, Not([:Day]))
-#export the daily shortfall amt
-daily_shortfall_csv_path = joinpath(paths[:scenario_dir_s], "daily_shortfall_hours.csv")
-CSV.write(daily_shortfall_csv_path, df_daily_hrs)
-
-#####################
-# calculate daily event indicators and export to csv
-#####################
-# Drop the :hour column if it's just 1 to 8760 and not needed
-df_daily_events = select(hourly_ens, Not(:hour))
-# Add a new column for day number (1 to 365)
-df_daily_events.Day = ceil.(Int, (1:nrow(df_daily_events)) ./ 24)
-df_daily_events
-# Group by Day and sum each group
-df_daily_events = combine(groupby(df_daily_events, :Day),names(df_daily_events, Not(:Day)) .=> (x -> Int(any(>(0), x))))
-# Create a Date column for the year 2030
-df_daily_events.Date = Date(2030, 1, 1) .+ Day.(df_daily_events.Day .- 1)
-#reorder columns
-select!(df_daily_events, :Date, Not([:Date]))
-#drop Day
-select!(df_daily_events, Not([:Day]))
-#export the daily shortfall amt
-daily_shortfall_csv_path = joinpath(paths[:scenario_dir_s], "daily_shortfall_hours_indicator.csv")
-CSV.write(daily_shortfall_csv_path, df_daily_events)
 
 
