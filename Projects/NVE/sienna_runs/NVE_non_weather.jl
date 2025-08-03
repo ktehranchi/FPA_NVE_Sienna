@@ -601,7 +601,7 @@ function build_and_execute_simulation(template_uc, sys::System, paths::Dict; dec
     # Define Simulation
     sim = Simulation(
         name = "test-sim",
-        steps = 3,  # Steps in your simulation
+        steps = 364,  # Steps in your simulation; using 364 bc we have a 1 day look-ahead
         models = sim_model,
         sequence = sim_sequence,
         simulation_folder = mktempdir(paths[:sim_files_dir], cleanup = true),
