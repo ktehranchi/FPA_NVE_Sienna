@@ -1,0 +1,39 @@
+branch: []
+bus: []
+dc_branch: []
+generator:
+- {custom_name: active_power_limits_max, name: active_power_limits_max, unit_system: natural_units}
+- {custom_name: min_rated_capacity, name: active_power_limits_min, unit_system: natural_units}
+- {custom_name: heat_rate_a0, name: heat_rate_a0}
+- {custom_name: heat_rate_a1, name: heat_rate_a1}
+- {custom_name: heat_rate_a2, name: heat_rate_a2}
+- {custom_name: heat_rate_avg_0, name: heat_rate_avg_0}
+- {custom_name: heat_rate_incr_1, name: heat_rate_incr_1}
+- {custom_name: heat_rate_incr_2, name: heat_rate_incr_2}
+- {custom_name: heat_rate_incr_3, name: heat_rate_incr_3}
+- {custom_name: heat_rate_incr_4, name: heat_rate_incr_4}
+- {custom_name: heat_rate_incr_5, name: heat_rate_incr_5}
+- {custom_name: heat_rate_incr_6, name: heat_rate_incr_6}
+- {custom_name: output_point_0, name: output_point_0}
+- {custom_name: output_point_1, name: output_point_1}
+- {custom_name: output_point_2, name: output_point_2}
+- {custom_name: output_point_3, name: output_point_3}
+- {custom_name: output_point_4, name: output_point_4}
+- {custom_name: output_point_5, name: output_point_5}
+- {custom_name: output_point_6, name: output_point_6}
+- {custom_name: startup_cost, name: startup_cost}
+- {custom_name: variable_cost, name: fixed_cost, unit_system: natural_units}
+- {custom_name: fixed_cost, name: variable_cost, unit_system: natural_units}
+- {custom_name: active_power, name: rating}
+- {custom_name: prime_mover_type, name: unit_type}
+- {custom_name: base_mva, name: base_mva}
+- {custom_name: base_mva, name: base_power}
+- {custom_name: base_mva, name: power_factor}
+- {custom_name: available, name: status_at_start}
+load: []
+reserves: []
+simulation_objects: []
+storage:
+- {custom_name: output_active_power_limit_max, name: input_active_power_limit_max, unit_system: natural_units}
+- {custom_name: initial_storage_capacity_level, name: initial_storage}
+- {custom_name: rating, name: base_power}
